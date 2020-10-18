@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@global/*": ["src/*"]
+    }
+  }
+}
