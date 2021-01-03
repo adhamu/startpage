@@ -12,6 +12,7 @@ const Bookmarks = styled.div`
 
 const Bookmark = styled.div<{ theme: Theme }>`
   text-align: left;
+  color: ${props => props.theme.colors.heading};
 
   a,
   a:visited {

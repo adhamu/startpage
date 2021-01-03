@@ -5,6 +5,8 @@ export type Theme = {
     link: string
     border: string
     highlight: string
+    heading: string
+    tertiary: string
   }
 }
 
@@ -14,9 +16,11 @@ export default (isDark: boolean): Theme => {
       colors: {
         background: '#162431',
         body: '#dee2e5',
-        link: '#0bd2ff',
+        link: '#70fe35',
         border: '#3a3a3a',
         highlight: '#af6bef',
+        heading: '#0bd2ff',
+        tertiary: '#fe7b00',
       },
     }
   }
@@ -28,6 +32,8 @@ export default (isDark: boolean): Theme => {
       link: '#ff0099',
       border: '#efefef',
       highlight: '#3a3a3a',
+      heading: '#000',
+      tertiary: '#000',
     },
   }
 }

@@ -43,6 +43,7 @@ const Container = styled.div`
 `
 
 const Date = styled.span<{ theme: Theme }>`
+  color: ${props => props.theme.colors.tertiary};
   margin-bottom: 1em;
   padding-bottom: 1em;
   border-bottom: 1px solid ${props => props.theme.colors.border};
@@ -66,7 +67,7 @@ const App = (): JSX.Element => {
     <Body theme={theme}>
       <Global styles={GlobalStyle} />
       <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <Time />
+      <Time theme={theme} />
       <Main>
         <Container>
           <Date theme={theme}>{getDate()}</Date>
