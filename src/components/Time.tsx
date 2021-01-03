@@ -3,9 +3,10 @@ import styled from '@emotion/styled'
 import { format } from 'date-fns'
 
 const Time = styled.div`
-  float: right;
+  position: absolute;
+  right: 1em;
+  top: 1em;
   font-weight: 700;
-  padding: 1em;
 `
 
 export default (): JSX.Element => {
