@@ -1,18 +1,9 @@
 import * as React from 'react'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
-
-const timeOfDay = () => {
-  const hour = new Date().getHours()
-
-  if (hour >= 5 && hour < 12) {
-    return 'morning'
-  } else if (hour >= 12 && hour < 17) {
-    return 'afternoon'
-  } else if ((hour >= 17 && hour <= 23) || hour < 5) {
-    return 'evening'
-  }
-}
+import { getDate, timeOfDay } from './date'
+import Time from './components/Time'
+import Search from './components/Search'
 
 const GlobalStyle = css`
   * {
@@ -26,18 +17,34 @@ const GlobalStyle = css`
   }
 `
 
-const Greeting = styled.div`
+const Container = styled.div`
   display: grid;
   place-content: center;
   height: 100%;
   gap: 1ch;
+  text-align: center;
+`
+
+const Date = styled.span`
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #efefef;
+`
+
+const Greeting = styled.div`
   font-size: 3em;
+  margin-bottom: 1em;
 `
 
 const App = (): JSX.Element => (
   <>
     <Global styles={GlobalStyle} />
-    <Greeting>Good {timeOfDay()}, Amit</Greeting>
+    <Time />
+    <Container>
+      <Date>{getDate()}</Date>
+      <Greeting>Good {timeOfDay()}, Amit</Greeting>
+      <Search />
+    </Container>
   </>
 )
 
