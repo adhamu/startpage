@@ -10,6 +10,7 @@ const InputText = styled.input<{ theme: Theme }>`
   padding: 10px 4px;
   background: transparent;
   color: ${props => props.theme.colors.body};
+  border-radius: 0;
 
   &:focus {
     border: 1px solid ${props => props.theme.colors.highlight};
