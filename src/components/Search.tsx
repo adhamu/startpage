@@ -1,16 +1,18 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { Theme } from '@global/theme'
 
-const InputText = styled.input`
+const InputText = styled.input<{ theme: Theme }>`
   width: 100%;
-  border: 1px solid #efefef;
+  border: 1px solid ${props => props.theme.colors.border};
   font-size: 18px;
   outline: none;
   padding: 10px 4px;
   background: transparent;
+  color: ${props => props.theme.colors.body};
 
   &:focus {
-    border: 1px solid #000;
+    border: 1px solid ${props => props.theme.colors.highlight};
   }
 `
 
@@ -37,8 +39,9 @@ const engines = {
   Startpage: 'https://www.startpage.com/sp/search',
 }
 
-export default (): JSX.Element => {
+export default ({ theme }: { theme: Theme }): JSX.Element => {
   const [selectedEngine, setSelectedEngine] = React.useState('Google')
+
   return (
     <>
       <form action={engines[selectedEngine]} method="get" target="_blank">
@@ -47,6 +50,7 @@ export default (): JSX.Element => {
           name="q"
           placeholder={`Search ${selectedEngine}...`}
           autoFocus
+          theme={theme}
         />
       </form>
       <SearchEngines>

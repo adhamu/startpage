@@ -5,6 +5,9 @@ import { getDate, timeOfDay } from './date'
 import Time from './components/Time'
 import Search from './components/Search'
 import Bookmarks from './components/Bookmarks'
+import getTheme, { Theme } from './theme'
+import useDarkMode from './hooks/useDarkMode'
+import DarkModeToggle from './components/DarkModeToggle'
 
 const GlobalStyle = css`
   * {
@@ -17,6 +20,12 @@ const GlobalStyle = css`
     font-size: 16px;
     line-height: 28px;
   }
+`
+
+const Body = styled.main<{ theme: Theme }>`
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.body};
+  border-color: red;
 `
 
 const Main = styled.main`
@@ -33,10 +42,10 @@ const Container = styled.div`
   grid-template-columns: repeat(1, 1fr);
 `
 
-const Date = styled.span`
+const Date = styled.span<{ theme: Theme }>`
   margin-bottom: 1em;
   padding-bottom: 1em;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 `
 
 const Greeting = styled.div`
@@ -45,19 +54,29 @@ const Greeting = styled.div`
   line-height: 1em;
 `
 
-const App = (): JSX.Element => (
-  <>
-    <Global styles={GlobalStyle} />
-    <Time />
-    <Main>
-      <Container>
-        <Date>{getDate()}</Date>
-        <Greeting>Good {timeOfDay()}, Amit</Greeting>
-        <Search />
-        <Bookmarks />
-      </Container>
-    </Main>
-  </>
-)
+const App = (): JSX.Element => {
+  const [theme, setTheme] = React.useState(getTheme(false))
+  const { isDarkMode, toggleDarkMode } = useDarkMode()
+
+  React.useEffect(() => {
+    setTheme(getTheme(isDarkMode))
+  }, [isDarkMode])
+
+  return (
+    <Body theme={theme}>
+      <Global styles={GlobalStyle} />
+      <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Time />
+      <Main>
+        <Container>
+          <Date theme={theme}>{getDate()}</Date>
+          <Greeting>Good {timeOfDay()}, Amit</Greeting>
+          <Search theme={theme} />
+          <Bookmarks theme={theme} />
+        </Container>
+      </Main>
+    </Body>
+  )
+}
 
 export default App

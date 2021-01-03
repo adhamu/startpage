@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { Theme } from '@global/theme'
 
 import links from '../links'
 
@@ -9,25 +10,25 @@ const Bookmarks = styled.div`
   justify-content: space-between;
 `
 
-const Bookmark = styled.div`
+const Bookmark = styled.div<{ theme: Theme }>`
   text-align: left;
 
   a,
   a:visited {
-    color: #ff0099;
+    color: ${props => props.theme.colors.link};
     text-decoration: none;
     display: block;
 
     &:hover {
-      color: #910057;
+      text-decoration: underline;
     }
   }
 `
 
-export default (): JSX.Element => (
+export default ({ theme }: { theme: Theme }): JSX.Element => (
   <Bookmarks>
     {Object.keys(links).map(category => (
-      <Bookmark key={category}>
+      <Bookmark key={category} theme={theme}>
         <h3>{category}</h3>
         {links[category].map(
           (link: { url: string; name: string }, key: string | number) => (
