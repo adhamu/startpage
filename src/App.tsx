@@ -15,22 +15,31 @@ const GlobalStyle = css`
     margin: 0;
     outline: 0;
   }
+  html {
+    height: 100%;
+  }
+  main {
+    height: 100%;
+  }
   body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
+    height: 100%;
   }
 `
 
-const Body = styled.main<{ theme: Theme }>`
+const Body = styled.div<{ theme: Theme }>`
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.body};
   border-color: red;
+  height: 100%;
 `
 
-const Main = styled.main`
+const Main = styled.div`
   max-width: 850px;
+  height: 100%;
   margin: 0 auto;
 `
 
