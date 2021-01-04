@@ -67,7 +67,11 @@ const App = (): JSX.Element => {
   return (
     <Body theme={theme}>
       <Global styles={GlobalStyle} />
-      <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <DarkModeToggle
+        theme={theme}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+      />
       <Time theme={theme} />
       <Main>
         <Container>

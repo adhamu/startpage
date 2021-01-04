@@ -1,4 +1,5 @@
 import * as path from 'path'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import * as HtmlWebPackPlugin from 'html-webpack-plugin'
 import * as webpack from 'webpack'
 
@@ -34,11 +35,12 @@ const config: webpack.Configuration = {
     },
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: './src/templates/index.html',
       filename: './index.html',
