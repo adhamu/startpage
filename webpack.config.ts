@@ -49,8 +49,15 @@ const config: webpack.Configuration = {
     new NetlifyPlugin({
       headers: {
         '/*.js': {
-          'cache-control': {
+          'Cache-Control': {
             'max-age': 31536000,
+            public: true,
+          },
+        },
+        '/*.woff2': {
+          'Cache-Control': {
+            'max-age': 31536000,
+            public: true,
           },
         },
       },
