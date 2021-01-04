@@ -11,6 +11,7 @@ const InputText = styled.input<{ theme: Theme }>`
   background: transparent;
   color: ${props => props.theme.colors.body};
   border-radius: 0;
+  -webkit-appearance: none;
 
   &:focus {
     border: 1px solid ${props => props.theme.colors.highlight};
