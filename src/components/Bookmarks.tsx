@@ -16,7 +16,7 @@ const Bookmark = styled.div<{ theme: Theme }>`
 
   a,
   a:visited {
-    color: ${props => props.theme.colors.link};
+    color: ${props => props.theme.colors.body};
     text-decoration: none;
     display: block;
 

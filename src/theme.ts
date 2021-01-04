@@ -32,7 +32,7 @@ export default (isDark: boolean): Theme => {
       link: '#ff0099',
       border: '#efefef',
       highlight: '#3a3a3a',
-      heading: '#000',
+      heading: '#ff0099',
       tertiary: '#000',
     },
   }

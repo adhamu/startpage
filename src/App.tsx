@@ -16,7 +16,8 @@ const GlobalStyle = css`
     outline: 0;
   }
   body {
-    font-family: 'Open Sans', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     font-size: 16px;
     line-height: 28px;
   }
@@ -43,7 +44,7 @@ const Container = styled.div`
 `
 
 const Date = styled.span<{ theme: Theme }>`
-  color: ${props => props.theme.colors.tertiary};
+  color: ${props => props.theme.colors.heading};
   margin-bottom: 1em;
   padding-bottom: 1em;
   border-bottom: 1px solid ${props => props.theme.colors.border};

@@ -7,8 +7,8 @@ const Time = styled.div<{ theme: Theme }>`
   position: absolute;
   right: 1em;
   top: 1em;
-  font-weight: 700;
-  color: ${props => props.theme.colors.tertiary};
+  font-weight: 600;
+  color: ${props => props.theme.colors.heading};
 `
 
 export default ({ theme }: { theme: Theme }): JSX.Element => {
