@@ -1,6 +1,7 @@
 import * as path from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import * as HtmlWebPackPlugin from 'html-webpack-plugin'
+import { NetlifyPlugin } from 'netlify-webpack-plugin'
 import * as webpack from 'webpack'
 
 const config: webpack.Configuration = {
@@ -44,6 +45,15 @@ const config: webpack.Configuration = {
     new HtmlWebPackPlugin({
       template: './src/templates/index.html',
       filename: './index.html',
+    }),
+    new NetlifyPlugin({
+      headers: {
+        '/*.js': {
+          'cache-control': {
+            'max-age': 31536000,
+          },
+        },
+      },
     }),
   ],
 }

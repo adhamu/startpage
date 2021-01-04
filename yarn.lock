@@ -3249,6 +3249,11 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+netlify-webpack-plugin@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/netlify-webpack-plugin/-/netlify-webpack-plugin-1.1.1.tgz#beff7091ac2fbd9dd23d7c43d0d3a175c802e635"
+  integrity sha512-IFVr5qrhpoD1xozCm5NP4/yHhmzf/uKocl/Zxl6rRA2+pfapYcjebqd8ZqzPqf/rxK0yTwzeGXAIiKJsciQcOA==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
