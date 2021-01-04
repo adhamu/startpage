@@ -6,8 +6,9 @@
     "sourceMap": true,
     "outDir": "./dist/",
     "jsx": "react",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
       "@global/*": ["src/*"]
     }

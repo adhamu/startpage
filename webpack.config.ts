@@ -1,8 +1,8 @@
-import * as path from 'path'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import * as HtmlWebPackPlugin from 'html-webpack-plugin'
-import { NetlifyPlugin } from 'netlify-webpack-plugin'
 import * as webpack from 'webpack'
+import * as path from 'path'
+import * as HtmlWebPackPlugin from 'html-webpack-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { NetlifyPlugin } from 'netlify-webpack-plugin'
 
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
@@ -21,11 +21,8 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
+        use: 'html-loader',
+        exclude: /node_modules/,
       },
     ],
   },

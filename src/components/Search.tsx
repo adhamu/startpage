@@ -34,7 +34,7 @@ const SearchEngine = styled.div`
   }
 `
 
-const engines = {
+const engines: Record<string, string> = {
   Google: 'https://www.google.co.uk/search',
   DuckDuckGo: 'https://duckduckgo.com',
   Startpage: 'https://www.startpage.com/sp/search',
