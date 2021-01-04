@@ -33,11 +33,7 @@ export default ({ theme }: { theme: Theme }): JSX.Element => (
         <h3>{category}</h3>
         {links[category].map(
           (link: { url: string; name: string }, key: string | number) => (
-            <a
-              href={link.url}
-              key={key}
-              target="_blank"
-              rel="noreferrer noopener">
+            <a href={link.url} key={key}>
               {link.name}
             </a>
           )

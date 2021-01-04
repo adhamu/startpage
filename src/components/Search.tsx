@@ -45,7 +45,7 @@ export default ({ theme }: { theme: Theme }): JSX.Element => {
 
   return (
     <>
-      <form action={engines[selectedEngine]} method="get" target="_blank">
+      <form action={engines[selectedEngine]} method="get">
         <InputText
           type="search"
           name="q"
