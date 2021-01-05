@@ -8,7 +8,7 @@ import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import DarkModeToggle from '@components/DarkModeToggle'
 import useTheme from '@hooks/useTheme'
-import useSettings from './hooks/useSettings'
+import useSettings from '@hooks/useSettings'
 
 const Main = styled.div`
   max-width: 850px;

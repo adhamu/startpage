@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import useSettings from '@hooks/useSettings'
+
+import useSettings, { availableSettings } from '@hooks/useSettings'
 
 const InputText = styled.input`
   width: 100%;
@@ -42,6 +43,8 @@ const engines: Record<string, string> = {
 }
 
 export default (): JSX.Element => {
+  const { SEARCH_ENGINE } = availableSettings
+
   const {
     settings: { searchEngine = 'Google' },
     setSetting,
@@ -63,7 +66,7 @@ export default (): JSX.Element => {
             <label>
               <input
                 type="radio"
-                onChange={() => setSetting('searchEngine', engine)}
+                onChange={() => setSetting(SEARCH_ENGINE, engine)}
                 checked={engine === searchEngine}
               />
               {engine}

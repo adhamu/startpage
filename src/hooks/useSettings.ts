@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 type Settings = {
   name?: string
@@ -6,24 +6,28 @@ type Settings = {
   prefersDarkMode?: string
 }
 
+export const availableSettings = {
+  NAME: 'name',
+  SEARCH_ENGINE: 'searchEngine',
+  PREFERS_DARK_MODE: 'prefersDarkMode',
+}
+
 type UseSettings = {
   settings: Settings
   setSetting: (setting: string, value: string) => void
 }
 
-const settingsList = ['name', 'searchEngine', 'prefersDarkMode']
-
 const savedSettings = () => {
   let s: Settings = {}
 
-  settingsList.map(availableSetting => {
+  for (const [, availableSetting] of Object.entries(availableSettings)) {
     if (window.localStorage.getItem(availableSetting)) {
       s = {
         ...s,
         [availableSetting]: window.localStorage.getItem(availableSetting),
       }
     }
-  })
+  }
 
   return s
 }
@@ -31,17 +35,10 @@ const savedSettings = () => {
 const useSettings = (): UseSettings => {
   const [settings, setSettings] = useState<Settings>(savedSettings())
 
-  const setSetting = (setting: string, value: string) =>
-    setSettings({
-      ...settings,
-      [setting]: value,
-    })
-
-  useEffect(() => {
-    for (const [key, value] of Object.entries(settings)) {
-      window.localStorage.setItem(key, String(value))
-    }
-  }, [settings])
+  const setSetting = (setting: string, value: string) => {
+    window.localStorage.setItem(setting, value)
+    setSettings(savedSettings())
+  }
 
   return {
     settings,

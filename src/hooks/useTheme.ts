@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Theme } from '@emotion/react'
 
 import getTheme from '@global/theme'
-import useSettings from '@hooks/useSettings'
+import useSettings, { availableSettings } from '@hooks/useSettings'
 
 type UseDarkMode = {
   isDarkMode: boolean
@@ -14,6 +14,7 @@ const isPrefersDarkMode = (): boolean =>
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
 const useTheme = (): UseDarkMode => {
+  const { PREFERS_DARK_MODE } = availableSettings
   const {
     settings: { prefersDarkMode },
     setSetting,
@@ -25,7 +26,7 @@ const useTheme = (): UseDarkMode => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
-    setSetting('prefersDarkMode', String(!isDarkMode))
+    setSetting(PREFERS_DARK_MODE, String(!isDarkMode))
   }
 
   return {
