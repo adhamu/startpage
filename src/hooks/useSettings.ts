@@ -6,14 +6,14 @@ type Settings = {
   prefersDarkMode?: string
 }
 
-const settingsList = ['name', 'searchEngine', 'prefersDarkMode']
-
 type UseSettings = {
   settings: Settings
   setSetting: (setting: string, value: string) => void
 }
 
-const getSettings = () => {
+const settingsList = ['name', 'searchEngine', 'prefersDarkMode']
+
+const savedSettings = () => {
   let s: Settings = {}
 
   settingsList.map(availableSetting => {
@@ -29,7 +29,7 @@ const getSettings = () => {
 }
 
 const useSettings = (): UseSettings => {
-  const [settings, setSettings] = useState<Settings>(getSettings())
+  const [settings, setSettings] = useState<Settings>(savedSettings())
 
   const setSetting = (setting: string, value: string) =>
     setSettings({
