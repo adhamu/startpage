@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import useSettings from '@hooks/useSettings'
 
 const InputText = styled.input`
   width: 100%;
@@ -41,15 +42,18 @@ const engines: Record<string, string> = {
 }
 
 export default (): JSX.Element => {
-  const [selectedEngine, setSelectedEngine] = React.useState('Google')
+  const {
+    settings: { searchEngine = 'Google' },
+    setSetting,
+  } = useSettings()
 
   return (
     <>
-      <form action={engines[selectedEngine]} method="get">
+      <form action={engines[searchEngine]} method="get">
         <InputText
           type="search"
           name="q"
-          placeholder={`Search ${selectedEngine}...`}
+          placeholder={`Search ${searchEngine}...`}
           autoFocus
         />
       </form>
@@ -59,8 +63,8 @@ export default (): JSX.Element => {
             <label>
               <input
                 type="radio"
-                onChange={() => setSelectedEngine(engine)}
-                checked={engine === selectedEngine}
+                onChange={() => setSetting('searchEngine', engine)}
+                checked={engine === searchEngine}
               />
               {engine}
             </label>
