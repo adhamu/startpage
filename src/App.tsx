@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Global, css } from '@emotion/react'
+import { Global, css, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { getDate, timeOfDay } from './date'
 import Time from './components/Time'
 import Search from './components/Search'
 import Bookmarks from './components/Bookmarks'
-import getTheme, { Theme } from './theme'
+import getTheme from './theme'
 import useDarkMode from './hooks/useDarkMode'
 import DarkModeToggle from './components/DarkModeToggle'
 
@@ -30,7 +30,7 @@ const GlobalStyle = css`
   }
 `
 
-const Body = styled.div<{ theme: Theme }>`
+const Body = styled.div`
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.body};
   border-color: red;
@@ -52,7 +52,7 @@ const Container = styled.div`
   grid-template-columns: repeat(1, 1fr);
 `
 
-const Date = styled.span<{ theme: Theme }>`
+const Date = styled.span`
   color: ${props => props.theme.colors.heading};
   margin-bottom: 1em;
   padding-bottom: 1em;
@@ -74,23 +74,24 @@ const App = (): JSX.Element => {
   }, [isDarkMode])
 
   return (
-    <Body theme={theme}>
-      <Global styles={GlobalStyle} />
-      <DarkModeToggle
-        theme={theme}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-      />
-      <Time theme={theme} />
-      <Main>
-        <Container>
-          <Date theme={theme}>{getDate()}</Date>
-          <Greeting>Good {timeOfDay()}, Amit</Greeting>
-          <Search theme={theme} />
-          <Bookmarks theme={theme} />
-        </Container>
-      </Main>
-    </Body>
+    <ThemeProvider theme={theme}>
+      <Body>
+        <Global styles={GlobalStyle} />
+        <DarkModeToggle
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+        <Time />
+        <Main>
+          <Container>
+            <Date>{getDate()}</Date>
+            <Greeting>Good {timeOfDay()}, Amit</Greeting>
+            <Search />
+            <Bookmarks />
+          </Container>
+        </Main>
+      </Body>
+    </ThemeProvider>
   )
 }
 

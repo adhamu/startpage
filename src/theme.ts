@@ -1,14 +1,4 @@
-export type Theme = {
-  colors: {
-    background: string
-    body: string
-    link: string
-    border: string
-    highlight: string
-    heading: string
-    tertiary: string
-  }
-}
+import { Theme } from '@emotion/react'
 
 export default (isDark: boolean): Theme => {
   if (isDark) {

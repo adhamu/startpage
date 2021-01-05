@@ -1,9 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { format } from 'date-fns'
-import { Theme } from '@global/theme'
 
-const Time = styled.div<{ theme: Theme }>`
+const Time = styled.div`
   position: absolute;
   right: 1em;
   top: 1em;
@@ -11,7 +10,7 @@ const Time = styled.div<{ theme: Theme }>`
   color: ${props => props.theme.colors.heading};
 `
 
-export default ({ theme }: { theme: Theme }): JSX.Element => {
+export default (): JSX.Element => {
   const [time, setTime] = React.useState(new Date())
 
   React.useEffect(() => {
@@ -22,5 +21,5 @@ export default ({ theme }: { theme: Theme }): JSX.Element => {
     return () => clearTimeout(timer)
   })
 
-  return <Time theme={theme}>{format(time, 'HH:mm')}</Time>
+  return <Time>{format(time, 'HH:mm')}</Time>
 }

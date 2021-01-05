@@ -1,8 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { Theme } from '@global/theme'
 
-const InputText = styled.input<{ theme: Theme }>`
+const InputText = styled.input`
   width: 100%;
   border: 1px solid ${props => props.theme.colors.border};
   font-size: 18px;
@@ -41,7 +40,7 @@ const engines: Record<string, string> = {
   Startpage: 'https://www.startpage.com/sp/search',
 }
 
-export default ({ theme }: { theme: Theme }): JSX.Element => {
+export default (): JSX.Element => {
   const [selectedEngine, setSelectedEngine] = React.useState('Google')
 
   return (
@@ -52,7 +51,6 @@ export default ({ theme }: { theme: Theme }): JSX.Element => {
           name="q"
           placeholder={`Search ${selectedEngine}...`}
           autoFocus
-          theme={theme}
         />
       </form>
       <SearchEngines>
