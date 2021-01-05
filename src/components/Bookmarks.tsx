@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import links from '../links'
+import links from '@global/links'
 
 const Bookmarks = styled.div`
   margin-top: 3em;

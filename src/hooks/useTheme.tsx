@@ -1,4 +1,13 @@
 import { useState } from 'react'
+import { Theme } from '@emotion/react'
+
+import getTheme from '@global/theme'
+
+type UseDarkMode = {
+  isDarkMode: boolean
+  toggleDarkMode: () => void
+  theme: Theme
+}
 
 const isPrefersDarkMode = (): boolean => {
   if (typeof window !== 'undefined') {
@@ -12,12 +21,7 @@ const isPrefersDarkMode = (): boolean => {
   }
 }
 
-type UseDarkMode = {
-  isDarkMode: boolean
-  toggleDarkMode: () => void
-}
-
-const useDarkMode = (): UseDarkMode => {
+const useTheme = (): UseDarkMode => {
   const [isDarkMode, setIsDarkMode] = useState(isPrefersDarkMode())
 
   const toggleDarkMode = () => {
@@ -28,7 +32,8 @@ const useDarkMode = (): UseDarkMode => {
   return {
     isDarkMode,
     toggleDarkMode,
+    theme: getTheme(isDarkMode),
   }
 }
 
-export default useDarkMode
+export default useTheme

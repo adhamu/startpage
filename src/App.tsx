@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { Global, css, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
-import { getDate, timeOfDay } from './date'
-import Time from './components/Time'
-import Search from './components/Search'
-import Bookmarks from './components/Bookmarks'
-import getTheme from './theme'
-import useDarkMode from './hooks/useDarkMode'
-import DarkModeToggle from './components/DarkModeToggle'
+
+import { getDate, timeOfDay } from '@global/date'
+import Time from '@components/Time'
+import Search from '@components/Search'
+import Bookmarks from '@components/Bookmarks'
+import DarkModeToggle from '@components/DarkModeToggle'
+import useTheme from '@hooks/useTheme'
 
 const GlobalStyle = css`
   * {
@@ -66,12 +66,7 @@ const Greeting = styled.div`
 `
 
 const App = (): JSX.Element => {
-  const [theme, setTheme] = React.useState(getTheme(false))
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
-
-  React.useEffect(() => {
-    setTheme(getTheme(isDarkMode))
-  }, [isDarkMode])
+  const { isDarkMode, toggleDarkMode, theme } = useTheme()
 
   return (
     <ThemeProvider theme={theme}>
