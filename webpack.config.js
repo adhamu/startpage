@@ -1,10 +1,9 @@
-import * as webpack from 'webpack'
-import * as path from 'path'
-import * as HtmlWebPackPlugin from 'html-webpack-plugin'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import { NetlifyPlugin } from 'netlify-webpack-plugin'
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { NetlifyPlugin } = require('netlify-webpack-plugin')
 
-const config: webpack.Configuration = {
+module.exports = {
   entry: './src/index.tsx',
   devServer: {
     historyApiFallback: true,
@@ -61,5 +60,3 @@ const config: webpack.Configuration = {
     }),
   ],
 }
-
-export default config
