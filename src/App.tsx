@@ -15,18 +15,11 @@ const GlobalStyle = css`
     margin: 0;
     outline: 0;
   }
-  html {
-    height: 100%;
-  }
-  main {
-    height: 100%;
-  }
   body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
-    height: 100%;
   }
 `
 
@@ -34,25 +27,15 @@ const Body = styled.div`
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.body};
   border-color: red;
-  height: 100%;
 `
 
 const Main = styled.div`
   max-width: 850px;
-  height: 100%;
-  margin: 0 auto;
+  margin: 8em auto;
+  padding: 0 1em;
 `
 
-const Container = styled.div`
-  display: grid;
-  place-content: center;
-  height: 100%;
-  gap: 1ch;
-  margin: 0 2em;
-  grid-template-columns: repeat(1, 1fr);
-`
-
-const Date = styled.span`
+const Date = styled.h4`
   color: ${props => props.theme.colors.heading};
   margin-bottom: 1em;
   padding-bottom: 1em;
@@ -78,12 +61,10 @@ const App = (): JSX.Element => {
         />
         <Time />
         <Main>
-          <Container>
-            <Date>{getDate()}</Date>
-            <Greeting>Good {timeOfDay()}, Amit</Greeting>
-            <Search />
-            <Bookmarks />
-          </Container>
+          <Date>{getDate()}</Date>
+          <Greeting>Good {timeOfDay()}, Amit</Greeting>
+          <Search />
+          <Bookmarks />
         </Main>
       </Body>
     </ThemeProvider>
