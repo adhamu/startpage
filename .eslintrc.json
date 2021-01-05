@@ -18,13 +18,15 @@
     }
   },
   "plugins": ["@typescript-eslint", "react"],
-  "overrides": [{
-    "files": "*.js",
-    "rules":{
-      "camelcase": "off",
-      "@typescript-eslint/no-var-requires": "off"
+  "overrides": [
+    {
+      "files": "*.js",
+      "rules": {
+        "camelcase": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
     }
-  }],
+  ],
   "rules": {
     "array-bracket-spacing": ["error", "never"],
     "array-bracket-newline": ["error", "consistent"],
@@ -130,18 +132,13 @@
     "no-trailing-spaces": "error",
     "no-unneeded-ternary": "error",
     "no-undef": 0,
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "local",
-        "ignoreRestSiblings": true
-      }
-    ],
+    "no-unused-vars": "off",
     "no-useless-escape": "error",
     "no-useless-constructor": "error",
     "no-useless-rename": "error",
     "no-extra-semi": "off",
     "@typescript-eslint/no-extra-semi": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "no-var": "error",
     "no-whitespace-before-property": "error",
     "object-curly-newline": ["error"],
