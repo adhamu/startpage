@@ -9,13 +9,24 @@ const Greeting = styled.div`
   line-height: 1em;
 `
 
+const Input = styled.input`
+  background-color: transparent;
+  border: none;
+  color: ${props => props.theme.colors.body};
+  font-size: 1em;
+`
+
 export default (): JSX.Element => {
-  const [name] = useStorage('name')
+  const [name, setName] = useStorage('name', '')
 
   return (
     <Greeting>
       Good {timeOfDay()}
-      {name && `, ${name}`}
+      <Input
+        type="text"
+        defaultValue={name}
+        onChange={e => setName(e.target.value)}
+      />
     </Greeting>
   )
 }
