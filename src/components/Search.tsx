@@ -41,7 +41,7 @@ export default (): JSX.Element => {
 
   return (
     <>
-      <form action={searchEngines[searchEngine as string]} method="get">
+      <form action={searchEngines[searchEngine]} method="get">
         <InputText
           type="search"
           name="q"

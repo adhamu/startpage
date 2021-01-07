@@ -17,7 +17,7 @@ const AppProvider = ({ children }: Props): JSX.Element => {
     'prefersDarkMode',
     matchMediaFallback()
   )
-  const { theme } = useTheme(prefersDarkMode as boolean)
+  const { theme } = useTheme(prefersDarkMode)
 
   return (
     <ThemeProvider theme={theme}>
@@ -39,7 +39,7 @@ const AppProvider = ({ children }: Props): JSX.Element => {
         }}
       />
       <DarkModeToggle
-        isDarkMode={prefersDarkMode as boolean}
+        isDarkMode={prefersDarkMode}
         toggleDarkMode={() => setPrefersDarkMode(!prefersDarkMode)}
       />
       {children}

@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react'
 import { keys, set, get } from 'idb-keyval'
-import { BookmarkLink } from '@global/types'
 import { store } from '@global/config'
 
-export type Key = 'name' | 'searchEngine' | 'prefersDarkMode'
-export type Value = string | boolean | BookmarkLink
-
-type Settings = {
-  name?: string
-  searchEngine?: string
-  prefersDarkMode?: boolean
+type Settings<T> = {
+  [key in string]?: T
 }
 
-type UseSettings = {
-  settings: Settings
-  setSetting: (setting: Key, value: Value) => void
+type UseSettings<T> = {
+  settings: Settings<T>
+  setSetting: (setting: string, value: T) => void
 }
 
 const getSettings = async () => {
@@ -32,8 +26,8 @@ const getSettings = async () => {
   return settings
 }
 
-const useSettings = (): UseSettings => {
-  const [settings, setSettings] = useState<Settings>({})
+const useSettings = <T>(): UseSettings<T> => {
+  const [settings, setSettings] = useState<Settings<T>>({})
 
   useEffect(() => {
     ;(async () => {
@@ -42,7 +36,7 @@ const useSettings = (): UseSettings => {
     })()
   }, [])
 
-  const setSetting = (setting: string, value: Value) => {
+  const setSetting = (setting: string, value: T) => {
     set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,
