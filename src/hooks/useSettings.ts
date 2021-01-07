@@ -6,14 +6,12 @@ import { store } from '@global/config'
 type Value = string | boolean | BookmarkLink
 
 type Settings = {
-  name?: string
-  searchEngine?: string
-  prefersDarkMode?: boolean
+  [key in string]: any
 }
 
 type UseSettings = {
   settings: Settings
-  setSetting: (setting: string, value: Value) => void
+  setSetting: (setting: string, value: any) => void
 }
 
 const getSettings = async () => {
@@ -41,7 +39,7 @@ const useSettings = (): UseSettings => {
     })()
   }, [])
 
-  const setSetting = (setting: string, value: Value) => {
+  const setSetting = (setting: string, value: any) => {
     set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,
