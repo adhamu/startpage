@@ -2,12 +2,18 @@ import * as React from 'react'
 import { Global, ThemeProvider } from '@emotion/react'
 
 import useTheme from '@hooks/useTheme'
+import useSettings from '@hooks/useSettings'
+import DarkModeToggle from '@components/DarkModeToggle'
 
 type Props = {
-  prefersDarkMode: boolean
   children: React.ReactElement[]
 }
-const AppProvider = ({ prefersDarkMode, children }: Props): JSX.Element => {
+const AppProvider = ({ children }: Props): JSX.Element => {
+  const {
+    setSetting,
+    settings: { prefersDarkMode },
+  } = useSettings()
+
   const { theme } = useTheme(prefersDarkMode)
 
   return (
@@ -28,6 +34,10 @@ const AppProvider = ({ prefersDarkMode, children }: Props): JSX.Element => {
             color: theme.colors.body,
           },
         }}
+      />
+      <DarkModeToggle
+        isDarkMode={prefersDarkMode}
+        toggleDarkMode={() => setSetting('prefersDarkMode', !prefersDarkMode)}
       />
       {children}
     </ThemeProvider>

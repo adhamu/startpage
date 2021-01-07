@@ -5,7 +5,6 @@ import { getDate, timeOfDay } from '@global/date'
 import Time from '@components/Time'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
-import DarkModeToggle from '@components/DarkModeToggle'
 import useSettings from '@hooks/useSettings'
 import AppProvider from './AppProvider'
 
@@ -31,15 +30,11 @@ const Greeting = styled.div`
 const App = (): JSX.Element => {
   const {
     setSetting,
-    settings: { prefersDarkMode, name, searchEngine },
+    settings: { name, searchEngine },
   } = useSettings()
 
   return (
-    <AppProvider prefersDarkMode={prefersDarkMode}>
-      <DarkModeToggle
-        isDarkMode={prefersDarkMode}
-        toggleDarkMode={() => setSetting('prefersDarkMode', !prefersDarkMode)}
-      />
+    <AppProvider>
       <Time />
       <Main>
         <Date>{getDate()}</Date>
