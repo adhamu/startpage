@@ -6,12 +6,16 @@ import useSettings from '@hooks/useSettings'
 import DarkModeToggle from '@components/DarkModeToggle'
 
 type Props = {
-  children: React.ReactElement[]
+  children: React.ReactElement
 }
+
+const matchMediaFallback = (): boolean =>
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
 const AppProvider = ({ children }: Props): JSX.Element => {
   const {
     setSetting,
-    settings: { prefersDarkMode },
+    settings: { prefersDarkMode = matchMediaFallback() },
   } = useSettings()
 
   const { theme } = useTheme(prefersDarkMode)

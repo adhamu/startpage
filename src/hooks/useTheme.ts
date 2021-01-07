@@ -7,10 +7,7 @@ type UseTheme = {
   theme: Theme
 }
 
-const matchMediaFallback = (): boolean =>
-  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-
-const useTheme = (isDarkMode: boolean = matchMediaFallback()): UseTheme => {
+const useTheme = (isDarkMode: boolean): UseTheme => {
   const [theme, setTheme] = useState(getTheme(isDarkMode))
 
   useEffect(() => {

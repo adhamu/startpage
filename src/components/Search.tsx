@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { searchEngines } from '@global/config'
+import useSettings from '@global/hooks/useSettings'
 
 const InputText = styled.input`
   width: 100%;
@@ -35,34 +36,36 @@ const SearchEngine = styled.div`
   }
 `
 
-type Props = {
-  searchEngine: string
-  changeEngine: (engine: string) => void
-}
+export default (): JSX.Element => {
+  const {
+    setSetting,
+    settings: { searchEngine = 'Google' },
+  } = useSettings()
 
-export default ({ searchEngine, changeEngine }: Props): JSX.Element => (
-  <>
-    <form action={searchEngines[searchEngine]} method="get">
-      <InputText
-        type="search"
-        name="q"
-        placeholder={`Search ${searchEngine}...`}
-        autoFocus
-      />
-    </form>
-    <SearchEngines>
-      {Object.keys(searchEngines).map((engine, key) => (
-        <SearchEngine key={key}>
-          <label>
-            <input
-              type="radio"
-              onChange={() => changeEngine(engine)}
-              checked={engine === searchEngine}
-            />
-            {engine}
-          </label>
-        </SearchEngine>
-      ))}
-    </SearchEngines>
-  </>
-)
+  return (
+    <>
+      <form action={searchEngines[searchEngine]} method="get">
+        <InputText
+          type="search"
+          name="q"
+          placeholder={`Search ${searchEngine}...`}
+          autoFocus
+        />
+      </form>
+      <SearchEngines>
+        {Object.keys(searchEngines).map((engine, key) => (
+          <SearchEngine key={key}>
+            <label>
+              <input
+                type="radio"
+                onChange={() => setSetting('searchEngine', engine)}
+                checked={engine === searchEngine}
+              />
+              {engine}
+            </label>
+          </SearchEngine>
+        ))}
+      </SearchEngines>
+    </>
+  )
+}

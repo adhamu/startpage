@@ -2,12 +2,16 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { format } from 'date-fns'
 
-const Time = styled.div`
-  position: absolute;
-  right: 1em;
-  top: 1em;
+import { getDate } from '@global/date'
+
+const DateTime = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-weight: 600;
   color: ${props => props.theme.colors.heading};
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 `
 
 export default (): JSX.Element => {
@@ -21,5 +25,10 @@ export default (): JSX.Element => {
     return () => clearTimeout(timer)
   })
 
-  return <Time>{format(time, 'HH:mm')}</Time>
+  return (
+    <DateTime>
+      <div>{getDate()}</div>
+      <div>{format(time, 'HH:mm')}</div>
+    </DateTime>
+  )
 }

@@ -1,12 +1,11 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { getDate, timeOfDay } from '@global/date'
-import Time from '@components/Time'
+import AppProvider from '@global/AppProvider'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
-import useSettings from '@hooks/useSettings'
-import AppProvider from './AppProvider'
+import Greeting from '@components/Greeting'
+import DateTime from '@components/DateTime'
 
 const Main = styled.div`
   max-width: 850px;
@@ -14,42 +13,15 @@ const Main = styled.div`
   padding: 0 1em;
 `
 
-const Date = styled.h4`
-  color: ${props => props.theme.colors.heading};
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-`
-
-const Greeting = styled.div`
-  font-size: 3em;
-  margin-bottom: 1em;
-  line-height: 1em;
-`
-
-const App = (): JSX.Element => {
-  const {
-    setSetting,
-    settings: { name, searchEngine },
-  } = useSettings()
-
-  return (
-    <AppProvider>
-      <Time />
-      <Main>
-        <Date>{getDate()}</Date>
-        <Greeting>
-          Good {timeOfDay()}
-          {name && `, ${name}`}
-        </Greeting>
-        <Search
-          searchEngine={searchEngine || 'Google'}
-          changeEngine={(value: string) => setSetting('searchEngine', value)}
-        />
-        <Bookmarks />
-      </Main>
-    </AppProvider>
-  )
-}
+const App = (): JSX.Element => (
+  <AppProvider>
+    <Main>
+      <DateTime />
+      <Greeting />
+      <Search />
+      <Bookmarks />
+    </Main>
+  </AppProvider>
+)
 
 export default App
