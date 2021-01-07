@@ -3,6 +3,8 @@ import { keys, set, get, Store } from 'idb-keyval'
 
 const store = new Store('startpage', 'user-preferences')
 
+type Value = string | boolean
+
 type Settings = {
   name?: string
   searchEngine?: string
@@ -17,7 +19,7 @@ export const availableSettings = {
 
 type UseSettings = {
   settings: Settings
-  setSetting: (setting: string, value: any) => void
+  setSetting: (setting: string, value: Value) => void
 }
 
 const getSettings = async () => {
@@ -45,7 +47,7 @@ const useSettings = (): UseSettings => {
     })()
   }, [])
 
-  const setSetting = (setting: string, value: any) => {
+  const setSetting = (setting: string, value: Value) => {
     set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,

@@ -35,7 +35,7 @@ const App = (): JSX.Element => {
     window.matchMedia('(prefers-color-scheme: dark)').matches
 
   const {
-    settings: { prefersDarkMode = matchMediaFallback(), name },
+    settings: { prefersDarkMode = matchMediaFallback(), name, searchEngine },
     setSetting,
   } = useSettings()
 
@@ -75,7 +75,10 @@ const App = (): JSX.Element => {
           Good {timeOfDay()}
           {name && `, ${name}`}
         </Greeting>
-        <Search />
+        <Search
+          searchEngine={searchEngine || 'Google'}
+          changeEngine={(value: string) => setSetting('searchEngine', value)}
+        />
         <Bookmarks />
       </Main>
     </ThemeProvider>
