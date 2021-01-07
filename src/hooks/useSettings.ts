@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { keys, set, get, Store } from 'idb-keyval'
+
+const store = new Store('startpage', 'user-preferences')
 
 type Settings = {
   name?: string
   searchEngine?: string
-  prefersDarkMode?: string
+  prefersDarkMode?: boolean
 }
 
 export const availableSettings = {
@@ -14,30 +17,41 @@ export const availableSettings = {
 
 type UseSettings = {
   settings: Settings
-  setSetting: (setting: string, value: string) => void
+  setSetting: (setting: string, value: any) => void
 }
 
-const savedSettings = () => {
-  let s: Settings = {}
+const getSettings = async () => {
+  const getKeys = await keys(store)
 
-  for (const [, availableSetting] of Object.entries(availableSettings)) {
-    if (window.localStorage.getItem(availableSetting)) {
-      s = {
-        ...s,
-        [availableSetting]: window.localStorage.getItem(availableSetting),
-      }
+  const settings = getKeys.reduce(async (acc, curr) => {
+    const value = await get(curr, store)
+
+    return {
+      ...(await acc),
+      [curr as string]: value,
     }
-  }
+  }, Promise.resolve({}))
 
-  return s
+  return settings
 }
 
 const useSettings = (): UseSettings => {
-  const [settings, setSettings] = useState<Settings>(savedSettings())
+  const [settings, setSettings] = useState<Settings>({})
 
-  const setSetting = (setting: string, value: string) => {
-    window.localStorage.setItem(setting, value)
-    setSettings(savedSettings())
+  useEffect(() => {
+    ;(async () => {
+      const s = await getSettings()
+      setSettings(s)
+    })()
+  }, [])
+
+  const setSetting = (setting: string, value: any) => {
+    set(setting, value, store).then(() => {
+      setSettings(prevState => ({
+        ...prevState,
+        [setting]: value,
+      }))
+    })
   }
 
   return {

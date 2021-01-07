@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react'
 
-export default (isDark: boolean): Theme => {
+export default (isDark: boolean | undefined): Theme => {
   if (isDark) {
     return {
       colors: {
