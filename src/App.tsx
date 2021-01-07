@@ -35,7 +35,7 @@ const App = (): JSX.Element => {
     window.matchMedia('(prefers-color-scheme: dark)').matches
 
   const {
-    settings: { prefersDarkMode = matchMediaFallback() },
+    settings: { prefersDarkMode = matchMediaFallback(), name },
     setSetting,
   } = useSettings()
 
