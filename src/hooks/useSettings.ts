@@ -3,15 +3,18 @@ import { keys, set, get } from 'idb-keyval'
 import { BookmarkLink } from '@global/types'
 import { store } from '@global/config'
 
-type Value = string | boolean | BookmarkLink
+export type Key = 'name' | 'searchEngine' | 'prefersDarkMode'
+export type Value = string | boolean | BookmarkLink
 
 type Settings = {
-  [key in string]: any
+  name?: string
+  searchEngine?: string
+  prefersDarkMode?: boolean
 }
 
 type UseSettings = {
   settings: Settings
-  setSetting: (setting: string, value: any) => void
+  setSetting: (setting: Key, value: Value) => void
 }
 
 const getSettings = async () => {
@@ -39,7 +42,7 @@ const useSettings = (): UseSettings => {
     })()
   }, [])
 
-  const setSetting = (setting: string, value: any) => {
+  const setSetting = (setting: string, value: Value) => {
     set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,

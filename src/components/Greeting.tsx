@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import useSettings from '@global/hooks/useSettings'
 import { timeOfDay } from '@global/date'
+import useStorage from '@global/hooks/useStorage'
 
 const Greeting = styled.div`
   font-size: 3em;
@@ -10,9 +10,7 @@ const Greeting = styled.div`
 `
 
 export default (): JSX.Element => {
-  const {
-    settings: { name },
-  } = useSettings()
+  const [name] = useStorage('name')
 
   return (
     <Greeting>

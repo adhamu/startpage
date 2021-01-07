@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
-import useSettings, { Value } from './useSettings'
+import useSettings, { Key, Value } from '@hooks/useSettings'
 
-const useStorage = (key: string, initialState: Value) => {
+type UseStorage = readonly [Value, (value: Value) => void]
+
+const useStorage = (key: Key, initialState: Value = null): UseStorage => {
   const [item, setItem] = useState(initialState)
   const { settings, setSetting } = useSettings()
 
@@ -11,11 +13,11 @@ const useStorage = (key: string, initialState: Value) => {
 
   return [
     item,
-    value => {
+    (value: Value) => {
       setItem(value)
       return setSetting(key, value)
     },
-  ]
+  ] as const
 }
 
 export default useStorage
