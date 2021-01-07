@@ -1,14 +1,13 @@
 import * as React from 'react'
-import { Global, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { getDate, timeOfDay } from '@global/date'
-import getTheme from '@global/theme'
 import Time from '@components/Time'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import DarkModeToggle from '@components/DarkModeToggle'
 import useSettings from '@hooks/useSettings'
+import AppProvider from './AppProvider'
 
 const Main = styled.div`
   max-width: 850px;
@@ -30,40 +29,13 @@ const Greeting = styled.div`
 `
 
 const App = (): JSX.Element => {
-  const matchMediaFallback = (): boolean =>
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-
   const {
-    settings: { prefersDarkMode = matchMediaFallback(), name, searchEngine },
     setSetting,
+    settings: { prefersDarkMode, name, searchEngine },
   } = useSettings()
 
-  const [theme, setTheme] = React.useState(getTheme(prefersDarkMode))
-
-  React.useEffect(() => {
-    setTheme(getTheme(prefersDarkMode))
-  }, [prefersDarkMode])
-
   return (
-    <ThemeProvider theme={theme}>
-      <Global
-        styles={{
-          '*': {
-            padding: 0,
-            margin: 0,
-            outline: 0,
-          },
-          body: {
-            fontFamily: 'Source Sans Pro, sans-serif',
-            fontWeight: 400,
-            fontSize: '16px',
-            lineHeight: '28px',
-            background: theme.colors.background,
-            color: theme.colors.body,
-          },
-        }}
-      />
+    <AppProvider prefersDarkMode={prefersDarkMode}>
       <DarkModeToggle
         isDarkMode={prefersDarkMode}
         toggleDarkMode={() => setSetting('prefersDarkMode', !prefersDarkMode)}
@@ -81,7 +53,7 @@ const App = (): JSX.Element => {
         />
         <Bookmarks />
       </Main>
-    </ThemeProvider>
+    </AppProvider>
   )
 }
 

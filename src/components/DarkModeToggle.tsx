@@ -72,7 +72,7 @@ export default ({ isDarkMode, toggleDarkMode }: Props): JSX.Element => (
     <label>
       <FontAwesomeIcon className="dark" icon={faMoon} fixedWidth={true} />
       <FontAwesomeIcon className="light" icon={faSun} fixedWidth={true} />
-      <input type="checkbox" checked={isDarkMode} onChange={toggleDarkMode} />
+      <input type="checkbox" checked={!!isDarkMode} onChange={toggleDarkMode} />
       <div></div>
     </label>
   </DarkModeToggle>
