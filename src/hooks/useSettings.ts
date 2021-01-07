@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react'
-import { keys, set, get, Store } from 'idb-keyval'
+import { keys, set, get } from 'idb-keyval'
+import { BookmarkLink } from '@global/types'
+import { store } from '@global/config'
 
-const store = new Store('startpage', 'user-preferences')
-
-type Value = string | boolean
+type Value = string | boolean | BookmarkLink
 
 type Settings = {
   name?: string
   searchEngine?: string
   prefersDarkMode?: boolean
-}
-
-export const availableSettings = {
-  NAME: 'name',
-  SEARCH_ENGINE: 'searchEngine',
-  PREFERS_DARK_MODE: 'prefersDarkMode',
 }
 
 type UseSettings = {

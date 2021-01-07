@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { searchEngines } from '@global/config'
 
 const InputText = styled.input`
   width: 100%;
@@ -34,12 +35,6 @@ const SearchEngine = styled.div`
   }
 `
 
-const engines: Record<string, string> = {
-  Google: 'https://www.google.co.uk/search',
-  DuckDuckGo: 'https://duckduckgo.com',
-  Startpage: 'https://www.startpage.com/sp/search',
-}
-
 type Props = {
   searchEngine: string
   changeEngine: (engine: string) => void
@@ -47,7 +42,7 @@ type Props = {
 
 export default ({ searchEngine, changeEngine }: Props): JSX.Element => (
   <>
-    <form action={engines[searchEngine]} method="get">
+    <form action={searchEngines[searchEngine]} method="get">
       <InputText
         type="search"
         name="q"
@@ -56,7 +51,7 @@ export default ({ searchEngine, changeEngine }: Props): JSX.Element => (
       />
     </form>
     <SearchEngines>
-      {Object.keys(engines).map((engine, key) => (
+      {Object.keys(searchEngines).map((engine, key) => (
         <SearchEngine key={key}>
           <label>
             <input
