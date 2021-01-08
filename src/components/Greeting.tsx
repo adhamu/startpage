@@ -1,7 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+
 import { timeOfDay } from '@global/date'
-import { AppContext } from '@global/hooks/useSettings'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
 const Greeting = styled.div`
   font-size: 3em;
@@ -12,7 +13,7 @@ const Greeting = styled.div`
 export default (): JSX.Element => {
   const {
     settings: { name },
-  } = React.useContext(AppContext)
+  } = React.useContext(SettingsContext)
 
   return (
     <Greeting>

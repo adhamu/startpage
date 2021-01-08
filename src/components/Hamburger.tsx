@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { Link, useLocation } from 'react-router-dom'
 
 const Wrapper = styled.div`
   z-index: 99999;
@@ -9,7 +8,7 @@ const Wrapper = styled.div`
   right: 0;
 `
 
-const Menu = styled(Link)`
+const Menu = styled.div`
   cursor: pointer;
   z-index: 99999;
   top: 1.4em;
@@ -82,18 +81,14 @@ const Button = styled.button`
   }
 `
 
-const Hamburger = (): JSX.Element => {
-  const location = useLocation()
-
-  return (
-    <Wrapper>
-      <Menu to={location.pathname === '/preferences' ? '/' : '/preferences'}>
-        <Button className={location.pathname !== '/' ? 'isActive' : ''}>
-          <span>Toggle Navigation</span>
-        </Button>
-      </Menu>
-    </Wrapper>
-  )
-}
+const Hamburger = (): JSX.Element => (
+  <Wrapper>
+    <Menu>
+      <Button>
+        <span>Toggle Navigation</span>
+      </Button>
+    </Menu>
+  </Wrapper>
+)
 
 export default Hamburger

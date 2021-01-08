@@ -1,7 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { searchEngines } from '@global/config'
-import { BookmarkLinks } from '@global/types'
+import { BookmarkLink } from '@global/types'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
 const Preferences = styled.div`
   height: 100%;
@@ -14,17 +15,20 @@ const Preferences = styled.div`
 `
 
 export default (): JSX.Element => {
-  return <></>
+  const {
+    settings: { name, searchEngine, bookmarks },
+    setSetting,
+  } = React.useContext(SettingsContext)
 
-  /* const [label, setLabel] = React.useState('')
+  const [label, setLabel] = React.useState('')
   const [url, setUrl] = React.useState('')
 
   const addBookmark = () => {
-    if (label && url && !bookmarks.find(f => f.url === url)) {
+    if (label && url && !bookmarks?.find((f: BookmarkLink) => f.url === url)) {
       if (bookmarks !== undefined) {
-        setBookmarks([...bookmarks, { label, url }])
+        setSetting('bookmarks', [...bookmarks, { label, url }])
       } else {
-        setBookmarks([{ label, url }])
+        setSetting('bookmarks', [{ label, url }])
       }
       setLabel('')
       setUrl('')
@@ -32,7 +36,10 @@ export default (): JSX.Element => {
   }
 
   const removeBookmark = (label: string, url: string) => {
-    setBookmarks(bookmarks.filter(f => f.label !== label && f.url !== url))
+    setSetting(
+      'bookmarks',
+      bookmarks?.filter((f: BookmarkLink) => f.label !== label && f.url !== url)
+    )
   }
 
   return (
@@ -44,13 +51,13 @@ export default (): JSX.Element => {
         <input
           type="text"
           defaultValue={name}
-          onChange={e => setName(e.target.value)}
+          onChange={e => setSetting('name', e.target.value)}
         />
       </fieldset>
       <fieldset>
         <legend>Search Engine</legend>
         <select
-          onChange={e => setSearchEngine(e.target.value)}
+          onChange={e => setSetting('searchEngine', e.target.value)}
           value={searchEngine}>
           {Object.keys(searchEngines).map((engine, key) => (
             <option key={key} value={engine}>
@@ -61,10 +68,13 @@ export default (): JSX.Element => {
       </fieldset>
       <fieldset>
         <legend>Bookmarks</legend>
-        {bookmarks?.map(({ url, label }, key) => (
+        {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
           <p key={key}>
-            <a href={url}>{label}</a>
-            <button onClick={() => removeBookmark(label, url)}>Remove</button>
+            <a href={bookmark.url}>{bookmark.label}</a>
+            <button
+              onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
+              Remove
+            </button>
           </p>
         ))}
         <legend>Add Bookmark</legend>
@@ -79,5 +89,5 @@ export default (): JSX.Element => {
         <button onClick={() => addBookmark()}>Add</button>
       </fieldset>
     </Preferences>
-  ) */
+  )
 }

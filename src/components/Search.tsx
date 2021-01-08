@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { searchEngines } from '@global/config'
-import { AppContext } from '@global/hooks/useSettings'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
 const InputText = styled.input`
   width: 100%;
@@ -21,8 +21,8 @@ const InputText = styled.input`
 
 export default (): JSX.Element => {
   const {
-    settings: { searchEngine },
-  } = React.useContext(AppContext)
+    settings: { searchEngine = 'Google' },
+  } = React.useContext(SettingsContext)
 
   return (
     <form action={searchEngines[searchEngine]} method="get">

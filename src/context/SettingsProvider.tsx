@@ -17,22 +17,13 @@ const getSettings = async () => {
   return settings
 }
 
-interface Props {
-  children: (value: UseSettings) => React.ReactNode
+export interface SettingsProviderProps {
+  children: React.ReactNode
 }
 
-type Settings = {
-  [key in string]?: any
-}
+export const SettingsContext = React.createContext(null)
 
-interface UseSettings {
-  settings: Settings
-  setSetting: (setting: string, value: any) => void
-}
-
-export const AppContext = React.createContext(null)
-
-const AppProvider2 = ({ children }: Props): JSX.Element => {
+const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
   const [settings, setSettings] = React.useState({})
 
   React.useEffect(() => {
@@ -42,7 +33,10 @@ const AppProvider2 = ({ children }: Props): JSX.Element => {
     })()
   }, [])
 
-  const setSetting = (setting: string, value: any) => {
+  const setSetting = <T extends Record<string, unknown>>(
+    setting: string,
+    value: T
+  ) => {
     set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,
@@ -52,10 +46,10 @@ const AppProvider2 = ({ children }: Props): JSX.Element => {
   }
 
   return (
-    <AppContext.Provider value={{ settings, setSetting }}>
+    <SettingsContext.Provider value={{ settings, setSetting }}>
       {children}
-    </AppContext.Provider>
+    </SettingsContext.Provider>
   )
 }
 
-export default AppProvider2
+export default SettingsProvider
