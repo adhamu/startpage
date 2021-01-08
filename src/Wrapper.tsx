@@ -32,6 +32,41 @@ const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
             background: theme.colors.background,
             color: theme.colors.body,
           },
+          'h1, h2, h3, h4, h5': {
+            marginBottom: '1em',
+          },
+          hr: {
+            borderColor: theme.colors.border,
+          },
+          label: {
+            display: 'block',
+            fontWeight: 700,
+          },
+          'input, select': {
+            width: '100%',
+            background: 'transparent',
+            color: theme.colors.body,
+            border: `1px solid ${theme.colors.border}`,
+            appearance: 'none',
+            '-webkit-appearance': 'none',
+            boxShadow: 'none',
+            padding: '10px 4px',
+            fontSize: '18px',
+            lineHeight: '28px',
+            outline: 'none',
+            borderRadius: 0,
+          },
+          'input[type="text"]': {
+            width: 'calc(100% - 0.5em - 10px)',
+            padding: '10px',
+          },
+          'input:focus, select:focus': {
+            border: `1px solid ${theme.colors.highlight}`,
+          },
+          'a, a:visited': {
+            color: theme.colors.body,
+            textDecoration: 'none',
+          },
         }}
       />
       <DarkModeToggle

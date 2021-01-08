@@ -10,11 +10,14 @@ import DateTime from '@components/DateTime'
 import Preferences from '@components/Preferences'
 import Menu from '@components/Menu'
 
-const Main = styled.div<{ menuOpen: boolean }>`
-  display: ${props => (props.menuOpen ? 'none' : 'block')};
+const Layout = styled.div`
   max-width: 850px;
   margin: 8em auto;
   padding: 0 1em;
+`
+
+const Main = styled.div<{ menuOpen: boolean }>`
+  display: ${props => (props.menuOpen ? 'none' : 'block')};
 `
 
 const App = (): JSX.Element => {
@@ -24,15 +27,15 @@ const App = (): JSX.Element => {
     <SettingsProvider>
       <Wrapper>
         <Menu menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
-        <Main menuOpen={menuOpen}>
+        <Layout>
           <DateTime />
-          <Greeting />
-          <Search />
-          <Bookmarks />
-          <br />
-          <br />
-        </Main>
-        <Preferences menuOpen={menuOpen} />
+          <Main menuOpen={menuOpen}>
+            <Greeting />
+            <Search />
+            <Bookmarks />
+          </Main>
+          <Preferences menuOpen={menuOpen} />
+        </Layout>
       </Wrapper>
     </SettingsProvider>
   )

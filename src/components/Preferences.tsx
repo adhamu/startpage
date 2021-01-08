@@ -6,11 +6,6 @@ import { SettingsContext } from '@global/context/SettingsProvider'
 
 const Preferences = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
-  color: ${props => props.theme.colors.body};
-  background: ${props => props.theme.colors.background};
-  max-width: 850px;
-  margin: 8em auto;
-  padding: 0 1em;
 `
 
 export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => {
@@ -44,49 +39,46 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => {
   return (
     <Preferences menuOpen={menuOpen}>
       <h1>Preferences</h1>
-      <hr />
-      <fieldset>
-        <legend>Name</legend>
-        <input
-          type="text"
-          defaultValue={name}
-          onChange={e => setSetting('name', e.target.value)}
-        />
-      </fieldset>
-      <fieldset>
-        <legend>Search Engine</legend>
-        <select
-          onChange={e => setSetting('searchEngine', e.target.value)}
-          value={searchEngine}>
-          {Object.keys(searchEngines).map((engine, key) => (
-            <option key={key} value={engine}>
-              {engine}
-            </option>
-          ))}
-        </select>
-      </fieldset>
-      <fieldset>
-        <legend>Bookmarks</legend>
-        {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
-          <p key={key}>
-            <a href={bookmark.url}>{bookmark.label}</a>
-            <button
-              onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
-              Remove
-            </button>
-          </p>
+      <label>Name</label>
+      <input
+        type="text"
+        defaultValue={name}
+        onChange={e => setSetting('name', e.target.value)}
+      />
+      <br />
+      <br />
+      <label>Search Engine</label>
+      <select
+        onChange={e => setSetting('searchEngine', e.target.value)}
+        value={searchEngine}>
+        {Object.keys(searchEngines).map((engine, key) => (
+          <option key={key} value={engine}>
+            {engine}
+          </option>
         ))}
-        <legend>Add Bookmark</legend>
-        <label>Label</label>
-        <input
-          type="text"
-          value={label}
-          onChange={e => setLabel(e.target.value)}
-        />
-        <label>URL</label>
-        <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-        <button onClick={() => addBookmark()}>Add</button>
-      </fieldset>
+      </select>
+      <br />
+      <br />
+      <label>Bookmarks</label>
+      {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
+        <p key={key}>
+          <a href={bookmark.url}>{bookmark.label}</a>
+          <button onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
+            Remove
+          </button>
+        </p>
+      ))}
+      <br />
+      <label>Add Bookmark</label>
+      <label>Label</label>
+      <input
+        type="text"
+        value={label}
+        onChange={e => setLabel(e.target.value)}
+      />
+      <label>URL</label>
+      <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
+      <button onClick={() => addBookmark()}>Add</button>
     </Preferences>
   )
 }

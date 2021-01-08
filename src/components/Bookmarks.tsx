@@ -13,20 +13,14 @@ const Bookmarks = styled.div`
   justify-content: space-between;
 `
 
-const Bookmark = styled.div`
+const Bookmark = styled.a`
   text-align: left;
-  color: ${props => props.theme.colors.heading};
-  display: inline-block;
+  color: ${props => props.theme.colors.body};
   padding: 0.1em 0.5em;
+  text-decoration: none;
 
-  a,
-  a:visited {
-    color: ${props => props.theme.colors.body};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    color: ${props => props.theme.colors.heading};
   }
 `
 
@@ -47,11 +41,9 @@ export default (): JSX.Element => {
   return (
     <Bookmarks>
       {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
-        <Bookmark key={key}>
-          <Icon src={`${new URL(bookmark.url).origin}/favicon.ico`} />
-          <a href={bookmark.url} key={key}>
-            {bookmark.label}
-          </a>
+        <Bookmark href={bookmark.url} key={key}>
+          <Icon src={`${new URL(bookmark.url).origin}/favicon.ico`} />{' '}
+          {bookmark.label}
         </Bookmark>
       ))}
     </Bookmarks>

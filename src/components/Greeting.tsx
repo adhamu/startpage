@@ -4,8 +4,7 @@ import styled from '@emotion/styled'
 import { timeOfDay } from '@global/date'
 import { SettingsContext } from '@global/context/SettingsProvider'
 
-const Greeting = styled.div`
-  font-size: 3em;
+const Greeting = styled.h1`
   margin-bottom: 1em;
   line-height: 1em;
 `
