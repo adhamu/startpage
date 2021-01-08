@@ -7,7 +7,7 @@ import { BookmarkLink } from '@global/types'
 const Bookmarks = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  grid-template-columns: repeat(auto-fill, 180px);
   margin-top: 3em;
   grid-gap: 0.2em;
   justify-content: space-between;

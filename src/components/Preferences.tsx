@@ -4,17 +4,16 @@ import { searchEngines } from '@global/config'
 import { BookmarkLink } from '@global/types'
 import { SettingsContext } from '@global/context/SettingsProvider'
 
-const Preferences = styled.div`
-  height: 100%;
-  position: relative;
+const Preferences = styled.div<{ menuOpen: boolean }>`
+  display: ${props => (props.menuOpen ? 'block' : 'none')};
   color: ${props => props.theme.colors.body};
   background: ${props => props.theme.colors.background};
-  opacity: 0.95;
-  top: 0;
-  z-index: 1;
+  max-width: 850px;
+  margin: 8em auto;
+  padding: 0 1em;
 `
 
-export default (): JSX.Element => {
+export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => {
   const {
     settings: { name, searchEngine, bookmarks },
     setSetting,
@@ -43,7 +42,7 @@ export default (): JSX.Element => {
   }
 
   return (
-    <Preferences>
+    <Preferences menuOpen={menuOpen}>
       <h1>Preferences</h1>
       <hr />
       <fieldset>
