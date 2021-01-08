@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import useSettings from '@global/hooks/useSettings'
-import { BookmarkLinks } from '@global/types'
+import { AppContext } from '@global/hooks/useSettings'
+import { BookmarkLink } from '@global/types'
 
 const Bookmarks = styled.div`
   display: grid;
@@ -38,21 +38,19 @@ const Icon = styled.img`
   margin-right: 0.5em;
 `
 
-export default (): JSX.Element => {
-  const {
-    settings: { bookmarks },
-  } = useSettings<BookmarkLinks>()
-
-  return (
-    <Bookmarks>
-      {bookmarks?.map(({ label, url }, key: number) => (
-        <Bookmark key={key}>
-          <Icon src={`${new URL(url).origin}/favicon.ico`} />
-          <a href={url} key={key}>
-            {label}
-          </a>
-        </Bookmark>
-      ))}
-    </Bookmarks>
-  )
-}
+export default (): JSX.Element => (
+  <AppContext.Consumer>
+    {({ settings }) => (
+      <Bookmarks>
+        {settings.bookmarks?.map((bookmark: BookmarkLink, key: number) => (
+          <Bookmark key={key}>
+            <Icon src={`${new URL(bookmark.url).origin}/favicon.ico`} />
+            <a href={bookmark.url} key={key}>
+              {bookmark.label}
+            </a>
+          </Bookmark>
+        ))}
+      </Bookmarks>
+    )}
+  </AppContext.Consumer>
+)

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { searchEngines } from '@global/config'
-import useStorage from '@hooks/useStorage'
 import { BookmarkLinks } from '@global/types'
 
 const Preferences = styled.div`
@@ -15,11 +14,9 @@ const Preferences = styled.div`
 `
 
 export default (): JSX.Element => {
-  const [name, setName] = useStorage<string>('name')
-  const [searchEngine, setSearchEngine] = useStorage('searchEngine', 'Google')
-  const [bookmarks, setBookmarks] = useStorage<BookmarkLinks>('bookmarks', [])
+  return <></>
 
-  const [label, setLabel] = React.useState('')
+  /* const [label, setLabel] = React.useState('')
   const [url, setUrl] = React.useState('')
 
   const addBookmark = () => {
@@ -82,5 +79,5 @@ export default (): JSX.Element => {
         <button onClick={() => addBookmark()}>Add</button>
       </fieldset>
     </Preferences>
-  )
+  ) */
 }

@@ -2,22 +2,14 @@ import * as React from 'react'
 import { Global, ThemeProvider } from '@emotion/react'
 
 import useTheme from '@hooks/useTheme'
-import DarkModeToggle from '@components/DarkModeToggle'
-import useStorage from './hooks/useStorage'
+import AppProvider2 from './hooks/useSettings'
 
 type Props = {
-  children: React.ReactElement | React.ReactElement[]
+  children: (value: UseSettings) => React.ReactNode
 }
 
-const matchMediaFallback = (): boolean =>
-  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-
 const AppProvider = ({ children }: Props): JSX.Element => {
-  const [prefersDarkMode, setPrefersDarkMode] = useStorage(
-    'prefersDarkMode',
-    matchMediaFallback()
-  )
-  const { theme } = useTheme(prefersDarkMode)
+  const { theme } = useTheme(false)
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,11 +30,7 @@ const AppProvider = ({ children }: Props): JSX.Element => {
           },
         }}
       />
-      <DarkModeToggle
-        isDarkMode={prefersDarkMode}
-        toggleDarkMode={() => setPrefersDarkMode(!prefersDarkMode)}
-      />
-      {children}
+      <AppProvider2>{children}</AppProvider2>
     </ThemeProvider>
   )
 }
