@@ -48,7 +48,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
             color: theme.colors.body,
             border: `1px solid ${theme.colors.border}`,
             appearance: 'none',
-            '-webkit-appearance': 'none',
+            WebkitAppearance: 'none',
             boxShadow: 'none',
             padding: '10px 4px',
             fontSize: '18px',
