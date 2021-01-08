@@ -84,7 +84,6 @@ const Button = styled.button`
 
 const Hamburger = (): JSX.Element => {
   const location = useLocation()
-  console.log(location.pathname)
 
   return (
     <Wrapper>

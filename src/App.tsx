@@ -20,19 +20,19 @@ const App = (): JSX.Element => (
   <Router>
     <AppProvider>
       <Hamburger />
-      <Switch>
-        <Route path="/preferences">
-          <Preferences />
-        </Route>
-        <Route path="/">
-          <Main>
+      <Main>
+        <Switch>
+          <Route path="/preferences">
+            <Preferences />
+          </Route>
+          <Route path="/">
             <DateTime />
             <Greeting />
             <Search />
             <Bookmarks />
-          </Main>
-        </Route>
-      </Switch>
+          </Route>
+        </Switch>
+      </Main>
     </AppProvider>
   </Router>
 )
