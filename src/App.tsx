@@ -1,11 +1,14 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import AppProvider from '@global/AppProvider'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import Greeting from '@components/Greeting'
 import DateTime from '@components/DateTime'
+import Preferences from './components/Preferences'
+import Hamburger from './components/Hamburger'
 
 const Main = styled.div`
   max-width: 850px;
@@ -14,14 +17,24 @@ const Main = styled.div`
 `
 
 const App = (): JSX.Element => (
-  <AppProvider>
-    <Main>
-      <DateTime />
-      <Greeting />
-      <Search />
-      <Bookmarks />
-    </Main>
-  </AppProvider>
+  <Router>
+    <AppProvider>
+      <Hamburger />
+      <Switch>
+        <Route path="/preferences">
+          <Preferences />
+        </Route>
+        <Route path="/">
+          <Main>
+            <DateTime />
+            <Greeting />
+            <Search />
+            <Bookmarks />
+          </Main>
+        </Route>
+      </Switch>
+    </AppProvider>
+  </Router>
 )
 
 export default App

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-
-import links from '@global/links'
+import useSettings from '@global/hooks/useSettings'
+import { BookmarkLinks } from '@global/types'
 
 const Bookmarks = styled.div`
   display: grid;
@@ -38,15 +38,21 @@ const Icon = styled.img`
   margin-right: 0.5em;
 `
 
-export default (): JSX.Element => (
-  <Bookmarks>
-    {links.map((link, key) => (
-      <Bookmark key={key}>
-        <Icon src={`${new URL(link.url).origin}/favicon.ico`} />
-        <a href={link.url} key={key}>
-          {link.label}
-        </a>
-      </Bookmark>
-    ))}
-  </Bookmarks>
-)
+export default (): JSX.Element => {
+  const {
+    settings: { bookmarks },
+  } = useSettings<BookmarkLinks>()
+
+  return (
+    <Bookmarks>
+      {bookmarks?.map(({ label, url }, key: number) => (
+        <Bookmark key={key}>
+          <Icon src={`${new URL(url).origin}/favicon.ico`} />
+          <a href={url} key={key}>
+            {label}
+          </a>
+        </Bookmark>
+      ))}
+    </Bookmarks>
+  )
+}

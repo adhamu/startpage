@@ -6,7 +6,7 @@ import DarkModeToggle from '@components/DarkModeToggle'
 import useStorage from './hooks/useStorage'
 
 type Props = {
-  children: React.ReactElement
+  children: React.ReactElement | React.ReactElement[]
 }
 
 const matchMediaFallback = (): boolean =>
