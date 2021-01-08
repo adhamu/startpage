@@ -1,8 +1,22 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { searchEngines } from '@global/config'
 import { BookmarkLink } from '@global/types'
 import { SettingsContext } from '@global/context/SettingsProvider'
+
+import { Google, DuckDuckGo, Startpage } from '@global/icons'
+
+const SearchEngine = styled.button<{ isActive: boolean }>`
+  background: 0;
+  border: 0;
+  cursor: pointer;
+
+  ${props => console.log(props.isActive)}
+
+  svg {
+    width: 100px;
+    height: auto;
+  }
+`
 
 const Preferences = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
@@ -48,15 +62,15 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => {
       <br />
       <br />
       <label>Search Engine</label>
-      <select
-        onChange={e => setSetting('searchEngine', e.target.value)}
-        value={searchEngine}>
-        {Object.keys(searchEngines).map((engine, key) => (
-          <option key={key} value={engine}>
-            {engine}
-          </option>
-        ))}
-      </select>
+      <SearchEngine isActive={searchEngine === 'Google'}>
+        <Google />
+      </SearchEngine>
+      <SearchEngine isActive={searchEngine === 'DuckDuckGo'}>
+        <DuckDuckGo />
+      </SearchEngine>
+      <SearchEngine isActive={searchEngine === 'Startpage'}>
+        <Startpage />
+      </SearchEngine>
       <br />
       <br />
       <label>Bookmarks</label>
