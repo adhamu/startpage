@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { keys, set, get } from 'idb-keyval'
+
 import { store } from '@global/config'
 
 const getSettings = async () => {

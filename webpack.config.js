@@ -31,6 +31,9 @@ module.exports = {
       '@global': path.resolve(__dirname, 'src/'),
       '@components': path.resolve(__dirname, 'src/components/'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@icons': path.resolve(__dirname, 'src/icons'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@preferences': path.resolve(__dirname, 'src/components/Preferences'),
     },
   },
   output: {

@@ -1,6 +1,7 @@
 import * as React from 'react'
+
 import { searchEngines } from '@global/config'
-import { SettingsContext } from '@global/context/SettingsProvider'
+import { SettingsContext } from '@context/SettingsProvider'
 
 export default (): JSX.Element => {
   const {
@@ -8,7 +9,9 @@ export default (): JSX.Element => {
   } = React.useContext(SettingsContext)
 
   return (
-    <form action={searchEngines[searchEngine]} method="get">
+    <form
+      action={searchEngines.find(f => f.label === searchEngine).url}
+      method="get">
       <input
         type="search"
         name="q"

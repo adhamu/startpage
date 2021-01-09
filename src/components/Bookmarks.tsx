@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { SettingsContext } from '@global/context/SettingsProvider'
+import { SettingsContext } from '@context/SettingsProvider'
 import { BookmarkLink } from '@global/types'
 
 const Bookmarks = styled.div`
@@ -42,7 +42,11 @@ export default (): JSX.Element => {
     <Bookmarks>
       {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
         <Bookmark href={bookmark.url} key={key}>
-          <Icon src={`${new URL(bookmark.url).origin}/favicon.ico`} />{' '}
+          <Icon
+            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${
+              new URL(bookmark.url).hostname
+            }`}
+          />{' '}
           {bookmark.label}
         </Bookmark>
       ))}

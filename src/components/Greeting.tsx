@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 import { timeOfDay } from '@global/date'
-import { SettingsContext } from '@global/context/SettingsProvider'
+import { SettingsContext } from '@context/SettingsProvider'
 
 const Greeting = styled.h1`
   margin-bottom: 1em;

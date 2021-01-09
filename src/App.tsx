@@ -2,12 +2,12 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 import Wrapper from '@global/Wrapper'
-import SettingsProvider from '@global/context/SettingsProvider'
+import SettingsProvider from '@context/SettingsProvider'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import Greeting from '@components/Greeting'
 import DateTime from '@components/DateTime'
-import Preferences from '@components/Preferences'
+import Preferences from '@global/components/Preferences'
 import Menu from '@components/Menu'
 
 const Layout = styled.div`
