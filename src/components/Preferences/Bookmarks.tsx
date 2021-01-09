@@ -10,7 +10,7 @@ const EditRow = styled.div`
   align-items: center;
   grid-template-columns: 1fr 2fr 100px;
   margin-bottom: 0.5em;
-  grid-gap: 2em;
+  grid-gap: 0.5em;
   justify-content: space-between;
 `
 
