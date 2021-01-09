@@ -41,10 +41,6 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
   'input, select, button': {
     borderRadius: '4px',
   },
-  'input[type="text"]': {
-    width: 'calc(100% - 0.5em - 10px)',
-    padding: '10px',
-  },
   'input:focus, select:focus': {
     border: `1px solid ${theme.colors.highlight}`,
   },

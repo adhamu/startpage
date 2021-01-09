@@ -5,6 +5,7 @@ export type SearchEngine = {
 }
 
 export type BookmarkLink = {
+  id: number
   label: string
   url: string
 }
