@@ -26,7 +26,7 @@ const Product = styled.button<{ isActive: boolean }>`
 const SearchEngine = (): JSX.Element => {
   const {
     setSetting,
-    settings: { searchEngine },
+    settings: { searchEngine = 'Google' },
   } = React.useContext(SettingsContext)
 
   return (

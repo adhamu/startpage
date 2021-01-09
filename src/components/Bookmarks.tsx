@@ -18,6 +18,7 @@ const Bookmark = styled.a`
   color: ${props => props.theme.colors.body};
   padding: 0.1em 0.5em;
   text-decoration: none;
+  font-weight: 700;
 
   &:hover {
     color: ${props => props.theme.colors.heading};
@@ -28,8 +29,8 @@ const Icon = styled.img`
   display: inline-block;
   vertical-align: middle;
   line-height: 16px;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   margin-right: 0.5em;
 `
 

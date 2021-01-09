@@ -1,7 +1,21 @@
 import * as React from 'react'
+import styled from '@emotion/styled'
 
 import { SettingsContext } from '@context/SettingsProvider'
 import { BookmarkLink } from '@global/types'
+
+const EditRow = styled.div`
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr 100px;
+  margin-bottom: 0.5em;
+  grid-gap: 1em;
+  justify-content: space-around;
+
+  button {
+    align-items: grid-column-end;
+  }
+`
 
 const Bookmarks = (): JSX.Element => {
   const {
@@ -31,28 +45,63 @@ const Bookmarks = (): JSX.Element => {
     )
   }
 
+  const updateLabel = (label: string, url: string) => {
+    const b = bookmarks
+
+    const b1 = b?.filter((f: BookmarkLink) => f.url !== url)
+    const b2 = b?.find((f: BookmarkLink) => f.url === url)
+
+    b2.label = label
+
+    setSetting('bookmarks', [...b1, b2])
+  }
+
+  const updateUrl = (label: string, url: string) => {
+    const b = bookmarks
+
+    const b1 = b?.filter((f: BookmarkLink) => f.label !== label)
+    const b2 = b?.find((f: BookmarkLink) => f.label === label)
+
+    b2.url = url
+
+    setSetting('bookmarks', [...b1, b2])
+  }
+
   return (
     <>
       <label>Bookmarks</label>
+      <EditRow>
+        <input
+          type="text"
+          value={label}
+          placeholder="Enter a label for this bookmark"
+          onChange={e => setLabel(e.target.value)}
+        />
+        <input
+          type="text"
+          value={url}
+          placeholder="https://www.google.com"
+          onChange={e => setUrl(e.target.value)}
+        />
+        <button onClick={() => addBookmark()}>Add</button>
+      </EditRow>
       {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
-        <p key={key}>
-          <a href={bookmark.url}>{bookmark.label}</a>
+        <EditRow key={key}>
+          <input
+            type="text"
+            defaultValue={bookmark.label}
+            onChange={e => updateLabel(e.target.value, bookmark.url)}
+          />
+          <input
+            type="text"
+            defaultValue={bookmark.url}
+            onChange={e => updateUrl(bookmark.label, e.target.value)}
+          />
           <button onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
             Remove
           </button>
-        </p>
+        </EditRow>
       ))}
-      <br />
-      <label>Add Bookmark</label>
-      <label>Label</label>
-      <input
-        type="text"
-        value={label}
-        onChange={e => setLabel(e.target.value)}
-      />
-      <label>URL</label>
-      <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-      <button onClick={() => addBookmark()}>Add</button>
     </>
   )
 }
