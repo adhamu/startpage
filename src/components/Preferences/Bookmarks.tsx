@@ -30,7 +30,9 @@ const Button = styled.button<{ isDisabled?: boolean }>`
     props.isDisabled
       ? `
       cursor: not-allowed;
-      background-color: ${props.theme.colors.border};
+      background-color: ${props.theme.colors.background};
+      border: 1px solid ${props.theme.colors.border};
+      color: ${props.theme.colors.border};
     `
       : ''}
 
@@ -48,8 +50,11 @@ const Bookmarks = (): JSX.Element => {
   const [label, setLabel] = React.useState('')
   const [url, setUrl] = React.useState('')
 
+  const isExists = (url: string) =>
+    bookmarks?.find((f: BookmarkLink) => f.url === url)
+
   const addBookmark = () => {
-    if (label && url && !bookmarks?.find((f: BookmarkLink) => f.url === url)) {
+    if (label && url && !isExists(url)) {
       if (bookmarks !== undefined) {
         setSetting('bookmarks', [...bookmarks, { id: Date.now(), label, url }])
       } else {
@@ -75,6 +80,8 @@ const Bookmarks = (): JSX.Element => {
     setSetting('bookmarks', b)
   }
 
+  const validateLabel = (label: string) => !!label
+
   const validateUrl = (url: string) => {
     try {
       new URL(url)
@@ -98,7 +105,11 @@ const Bookmarks = (): JSX.Element => {
           placeholder="https://www.google.com"
           onChange={e => setUrl(e.target.value)}
         />
-        <Button onClick={() => addBookmark()} isDisabled={!validateUrl(url)}>
+        <Button
+          onClick={() => addBookmark()}
+          isDisabled={
+            isExists(url) || !validateLabel(label) || !validateUrl(url)
+          }>
           Add
         </Button>
       </EditRow>
