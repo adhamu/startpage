@@ -1,5 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons'
 
 import { SettingsContext } from '@context/SettingsProvider'
 import { BookmarkLink } from '@global/types'
@@ -7,7 +9,7 @@ import { BookmarkLink } from '@global/types'
 const EditRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 2fr 100px;
+  grid-template-columns: 1fr 2fr 40px;
   margin-bottom: 0.5em;
   grid-gap: 1em;
   justify-content: space-around;
@@ -15,6 +17,14 @@ const EditRow = styled.div`
   button {
     align-items: grid-column-end;
   }
+`
+
+const Button = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: gainsboro;
+  font-size: 24px;
 `
 
 const Bookmarks = (): JSX.Element => {
@@ -83,7 +93,9 @@ const Bookmarks = (): JSX.Element => {
           placeholder="https://www.google.com"
           onChange={e => setUrl(e.target.value)}
         />
-        <button onClick={() => addBookmark()}>Add</button>
+        <Button onClick={() => addBookmark()}>
+          <FontAwesomeIcon icon={faPlusSquare} color="#2ecc71" />
+        </Button>
       </EditRow>
       {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
         <EditRow key={key}>
@@ -97,9 +109,9 @@ const Bookmarks = (): JSX.Element => {
             defaultValue={bookmark.url}
             onChange={e => updateUrl(bookmark.label, e.target.value)}
           />
-          <button onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
-            Remove
-          </button>
+          <Button onClick={() => removeBookmark(bookmark.label, bookmark.url)}>
+            <FontAwesomeIcon icon={faMinusSquare} color="#e74c3c" />
+          </Button>
         </EditRow>
       ))}
     </>

@@ -11,9 +11,14 @@ const matchMediaFallback = (): boolean =>
 
 const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const {
-    settings: { prefersDarkMode = matchMediaFallback() },
+    settings: { prefersDarkMode },
     setSetting,
   } = React.useContext(SettingsContext)
+
+  if (prefersDarkMode === undefined) {
+    setSetting('prefersDarkMode', matchMediaFallback())
+  }
+
   const { theme } = useTheme(prefersDarkMode)
 
   return (
