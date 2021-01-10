@@ -68,8 +68,8 @@ export default (isDark: boolean | undefined): Theme => {
 
   return {
     colors: {
-      background: '#fff',
-      body: '#000',
+      background: '#ffffff',
+      body: '#000000',
       border: '#efefef',
       highlight: '#ff0099',
       searchBox: '#3a3a3a',
