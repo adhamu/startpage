@@ -108,8 +108,6 @@ export default ({ bookmark }: Props): JSX.Element => {
     setMode('remove')
   }
 
-  const isValid = () => !isExists() && validateLabel() && validateUrl()
-
   React.useEffect(() => {
     determineMode()
   }, [url, label])
@@ -127,13 +125,17 @@ export default ({ bookmark }: Props): JSX.Element => {
         onChange={e => setUrl(e.target.value)}
       />
       {mode === 'update' && (
-        <Button isDisabled={!isValid()} onClick={updateBookmark}>
+        <Button
+          isDisabled={!validateLabel() || !validateUrl()}
+          onClick={updateBookmark}>
           Update
         </Button>
       )}
       {mode === 'remove' && <Button onClick={removeBookmark}>Remove</Button>}
       {mode === 'add' && (
-        <Button onClick={addBookmark} isDisabled={!isValid()}>
+        <Button
+          onClick={addBookmark}
+          isDisabled={isExists() || !validateLabel() || !validateUrl()}>
           Add
         </Button>
       )}
