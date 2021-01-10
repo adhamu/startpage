@@ -18,7 +18,7 @@ const Product = styled.button<{ isActive: boolean }>`
     props.isActive ? `border-color: ${props.theme.colors.heading};` : ''}
 
   svg {
-    height: 54px;
+    height: 40px;
     width: auto;
   }
 `

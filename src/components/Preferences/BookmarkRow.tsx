@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import TextInput from '@preferences/TextInput'
 import { BookmarkLink } from '@global/types'
 import { SettingsContext } from '@context/SettingsProvider'
+import Button from '@preferences/Button'
 
 const BookmarkRow = styled.div`
   display: grid;
@@ -12,33 +13,6 @@ const BookmarkRow = styled.div`
   margin-bottom: 0.5em;
   grid-gap: 0.5em;
   justify-content: space-between;
-`
-
-const Button = styled.button<{ isDisabled?: boolean }>`
-  cursor: pointer;
-  background: none;
-  border: none;
-  text-transform: uppercase;
-  font-weight: 700;
-  width: 100px;
-  background: ${props => props.theme.colors.highlight};
-  color: ${props => props.theme.colors.background};
-  padding: 10px 10px;
-  font-size: 12px;
-
-  ${props =>
-    props.isDisabled
-      ? `
-      cursor: not-allowed;
-      background-color: ${props.theme.colors.background};
-      border: 1px solid ${props.theme.colors.border};
-      color: ${props.theme.colors.border};
-    `
-      : ''}
-
-  &:hover {
-    opacity: 0.6;
-  }
 `
 
 type Props = {
@@ -126,16 +100,22 @@ export default ({ bookmark }: Props): JSX.Element => {
       />
       {mode === 'update' && (
         <Button
-          isDisabled={!validateLabel() || !validateUrl()}
+          disabled={!validateLabel() || !validateUrl()}
+          className="warning"
           onClick={updateBookmark}>
           Update
         </Button>
       )}
-      {mode === 'remove' && <Button onClick={removeBookmark}>Remove</Button>}
+      {mode === 'remove' && (
+        <Button className="danger" onClick={removeBookmark}>
+          Remove
+        </Button>
+      )}
       {mode === 'add' && (
         <Button
           onClick={addBookmark}
-          isDisabled={isExists() || !validateLabel() || !validateUrl()}>
+          className="success"
+          disabled={isExists() || !validateLabel() || !validateUrl()}>
           Add
         </Button>
       )}
