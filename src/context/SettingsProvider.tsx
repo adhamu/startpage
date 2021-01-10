@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { keys, set, get } from 'idb-keyval'
+import { keys, set, get, del } from 'idb-keyval'
 
 import { store } from '@global/config'
 
@@ -46,8 +46,15 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
     })
   }
 
+  const deleteSetting = async (setting: string) => {
+    await del(setting, store)
+
+    const s = await getSettings()
+    setSettings(s)
+  }
+
   return (
-    <SettingsContext.Provider value={{ settings, setSetting }}>
+    <SettingsContext.Provider value={{ settings, setSetting, deleteSetting }}>
       {children}
     </SettingsContext.Provider>
   )

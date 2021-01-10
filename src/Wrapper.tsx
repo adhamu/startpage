@@ -11,15 +11,15 @@ const matchMediaFallback = (): boolean =>
 
 const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const {
-    settings: { theme, prefersDarkMode = matchMediaFallback() },
+    settings: { prefersDarkMode = matchMediaFallback() },
     setSetting,
   } = React.useContext(SettingsContext)
 
-  const getTheme = theme === undefined ? useTheme(prefersDarkMode) : theme
+  const theme = useTheme()
 
   return (
-    <ThemeProvider theme={getTheme}>
-      <Global styles={globalStyles(getTheme)} />
+    <ThemeProvider theme={theme}>
+      <Global styles={globalStyles(theme)} />
       <DarkModeToggle
         isDarkMode={prefersDarkMode}
         toggleDarkMode={() => setSetting('prefersDarkMode', !prefersDarkMode)}

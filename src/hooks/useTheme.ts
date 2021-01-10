@@ -1,14 +1,31 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import getTheme from '@global/theme'
 import { Theme } from '@emotion/react'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
-const useTheme = (isDarkMode: boolean): Theme => {
-  const [theme, setTheme] = useState(getTheme(isDarkMode))
+const matchMediaFallback = (): boolean =>
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+const useTheme = (): Theme => {
+  const {
+    settings: { themeLight, themeDark, prefersDarkMode },
+  } = useContext(SettingsContext)
+  const [theme, setTheme] = useState(getTheme(matchMediaFallback()))
+
+  const refreshTheme = (prefersDarkMode: boolean) => {
+    if (prefersDarkMode) {
+      themeDark !== undefined ? setTheme(themeDark) : setTheme(getTheme(true))
+    } else {
+      themeLight !== undefined
+        ? setTheme(themeLight)
+        : setTheme(getTheme(false))
+    }
+  }
 
   useEffect(() => {
-    setTheme(getTheme(isDarkMode))
-  }, [isDarkMode])
+    refreshTheme(prefersDarkMode)
+  }, [prefersDarkMode, themeLight, themeDark])
 
   return theme
 }
