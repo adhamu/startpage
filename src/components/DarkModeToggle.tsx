@@ -14,7 +14,7 @@ const DarkModeToggle = styled.div`
     font-size: 16px;
     width: 2.8em;
     height: 1.25em;
-    background: ${props => props.theme.colors.heading};
+    background: ${props => props.theme.colors.highlight};
     border-radius: 1em;
     position: relative;
     padding: 2px;

@@ -5,11 +5,9 @@ declare module '@emotion/react' {
     colors: {
       background: string
       body: string
-      link: string
       border: string
       highlight: string
-      heading: string
-      tertiary: string
+      searchBox: string
     }
   }
 }

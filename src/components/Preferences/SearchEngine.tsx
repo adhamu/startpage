@@ -15,7 +15,7 @@ const Product = styled.button<{ isActive: boolean }>`
   margin-bottom: 1em;
 
   ${props =>
-    props.isActive ? `border-color: ${props.theme.colors.heading};` : ''}
+    props.isActive ? `border-color: ${props.theme.colors.highlight};` : ''}
 
   svg {
     height: 40px;

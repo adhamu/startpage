@@ -8,7 +8,7 @@ const DateTime = styled.div`
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-  color: ${props => props.theme.colors.heading};
+  color: ${props => props.theme.colors.highlight};
   margin-bottom: 1em;
   padding-bottom: 1em;
   border-bottom: 1px solid ${props => props.theme.colors.border};

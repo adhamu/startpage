@@ -21,7 +21,7 @@ const Bookmark = styled.a`
   font-weight: 700;
 
   &:hover {
-    color: ${props => props.theme.colors.heading};
+    color: ${props => props.theme.colors.highlight};
   }
 `
 
