@@ -11,6 +11,7 @@ type Props = {
   placeholder?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   value?: string
+  ref?: React.RefObject<HTMLInputElement>
 }
 
 export default ({
@@ -18,6 +19,7 @@ export default ({
   placeholder,
   onChange,
   value,
+  ref,
 }: Props): JSX.Element => (
   <TextInput
     type="text"
@@ -25,5 +27,6 @@ export default ({
     placeholder={placeholder}
     onChange={onChange}
     value={value}
+    ref={ref}
   />
 )
