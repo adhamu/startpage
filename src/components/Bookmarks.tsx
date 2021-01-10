@@ -41,16 +41,20 @@ export default (): JSX.Element => {
 
   return (
     <Bookmarks>
-      {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
-        <Bookmark href={bookmark.url} key={key}>
-          <Icon
-            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${
-              new URL(bookmark.url).hostname
-            }`}
-          />{' '}
-          {bookmark.label}
-        </Bookmark>
-      ))}
+      {bookmarks
+        ?.sort((a: BookmarkLink, b: BookmarkLink) =>
+          a.label.localeCompare(b.label)
+        )
+        .map((bookmark: BookmarkLink) => (
+          <Bookmark href={bookmark.url} key={bookmark.id}>
+            <Icon
+              src={`https://www.google.com/s2/favicons?sz=64&domain_url=${
+                new URL(bookmark.url).hostname
+              }`}
+            />{' '}
+            {bookmark.label}
+          </Bookmark>
+        ))}
     </Bookmarks>
   )
 }

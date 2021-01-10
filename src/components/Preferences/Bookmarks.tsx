@@ -13,9 +13,13 @@ const Bookmarks = (): JSX.Element => {
     <>
       <label>Bookmarks</label>
       <BookmarkRow />
-      {bookmarks?.map((bookmark: BookmarkLink, key: number) => (
-        <BookmarkRow key={key} bookmark={bookmark} />
-      ))}
+      {bookmarks
+        ?.sort((a: BookmarkLink, b: BookmarkLink) =>
+          a.label.localeCompare(b.label)
+        )
+        .map((bookmark: BookmarkLink) => (
+          <BookmarkRow key={bookmark.id} bookmark={bookmark} />
+        ))}
     </>
   )
 }

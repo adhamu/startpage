@@ -80,31 +80,35 @@ export default ({ bookmark }: Props): JSX.Element => {
 
   const addBookmark = () => {
     if (label && url && !isExists()) {
+      const newBookmark = { id: Date.now(), label, url }
       if (bookmarks !== undefined) {
-        setSetting('bookmarks', [...bookmarks, { id: Date.now(), label, url }])
+        setSetting('bookmarks', [...bookmarks, newBookmark])
       } else {
-        setSetting('bookmarks', [{ id: Date.now(), label, url }])
+        setSetting('bookmarks', [newBookmark])
       }
       setLabel('')
       setUrl('')
     }
   }
 
-  const updateBookmark = (id: number) => {
+  const updateBookmark = () => {
     const b = bookmarks
-    const i = bookmarks.findIndex((c: BookmarkLink) => c.id === id)
-    b[i] = { label, url }
+    const i = bookmarks.findIndex((c: BookmarkLink) => c.id === bookmark.id)
+    b[i] = { ...b[i], label, url }
 
     setSetting('bookmarks', b)
     setMode('remove')
   }
 
-  const removeBookmark = (id: number) => {
+  const removeBookmark = () => {
     setSetting(
       'bookmarks',
-      bookmarks?.filter((f: BookmarkLink) => f.id !== id)
+      bookmarks?.filter((f: BookmarkLink) => f.id !== bookmark.id)
     )
+    setMode('remove')
   }
+
+  const isValid = () => !isExists() && validateLabel() && validateUrl()
 
   React.useEffect(() => {
     determineMode()
@@ -123,15 +127,13 @@ export default ({ bookmark }: Props): JSX.Element => {
         onChange={e => setUrl(e.target.value)}
       />
       {mode === 'update' && (
-        <Button onClick={() => updateBookmark(bookmark.id)}>Update</Button>
+        <Button isDisabled={!isValid()} onClick={updateBookmark}>
+          Update
+        </Button>
       )}
-      {mode === 'remove' && (
-        <Button onClick={() => removeBookmark(bookmark.id)}>Remove</Button>
-      )}
+      {mode === 'remove' && <Button onClick={removeBookmark}>Remove</Button>}
       {mode === 'add' && (
-        <Button
-          onClick={addBookmark}
-          isDisabled={isExists() || !validateLabel() || !validateUrl()}>
+        <Button onClick={addBookmark} isDisabled={!isValid()}>
           Add
         </Button>
       )}
