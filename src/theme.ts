@@ -45,7 +45,7 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
     borderRadius: '4px',
   },
   'input:focus, select:focus': {
-    border: `1px solid ${theme.colors.searchBox}`,
+    border: `1px solid ${theme.colors.inputFocus}`,
   },
   'a, a:visited': {
     color: theme.colors.body,
@@ -61,7 +61,7 @@ export default (isDark: boolean | undefined): Theme => {
         body: '#dee2e5',
         border: '#3a3a3a',
         highlight: '#0bd2ff',
-        searchBox: '#af6bef',
+        inputFocus: '#af6bef',
       },
     }
   }
@@ -72,7 +72,7 @@ export default (isDark: boolean | undefined): Theme => {
       body: '#000000',
       border: '#efefef',
       highlight: '#ff0099',
-      searchBox: '#3a3a3a',
+      inputFocus: '#3a3a3a',
     },
   }
 }

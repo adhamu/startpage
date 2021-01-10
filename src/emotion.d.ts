@@ -7,7 +7,7 @@ declare module '@emotion/react' {
       body: string
       border: string
       highlight: string
-      searchBox: string
+      inputFocus: string
     }
   }
 }

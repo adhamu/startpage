@@ -55,7 +55,7 @@ const Theme = (): JSX.Element => {
                 | 'body'
                 | 'border'
                 | 'highlight'
-                | 'searchBox',
+                | 'inputFocus',
               key: number
             ) => (
               <div key={key}>
