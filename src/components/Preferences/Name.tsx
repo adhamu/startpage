@@ -12,7 +12,7 @@ const Name = (): JSX.Element => {
     <>
       <label>Name</label>
       <TextInput
-        defaultValue={name}
+        value={name !== undefined ? name : ''}
         placeholder="Enter your name"
         onChange={e => setSetting('name', e.target.value)}
       />
