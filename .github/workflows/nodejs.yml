@@ -1,0 +1,20 @@
+name: Node.js
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: yarn
+    - name: Security Audit
+      run: yarn audit
+    - name: TypeScript / JavaScript Standards
+      run: node_modules/.bin/eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json
+      env:
+        CI: true
