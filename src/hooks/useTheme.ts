@@ -9,11 +9,11 @@ const matchMediaFallback = (): boolean =>
 
 const useTheme = (): Theme => {
   const {
-    settings: { themeLight, themeDark, prefersDarkMode },
+    settings: { themeLight, themeDark, prefersDarkMode = matchMediaFallback() },
   } = useContext(SettingsContext)
-  const [theme, setTheme] = useState(getTheme(matchMediaFallback()))
+  const [theme, setTheme] = useState(getTheme(prefersDarkMode))
 
-  const refreshTheme = (prefersDarkMode: boolean) => {
+  const refreshTheme = () => {
     if (prefersDarkMode) {
       themeDark !== undefined ? setTheme(themeDark) : setTheme(getTheme(true))
     } else {
@@ -24,7 +24,7 @@ const useTheme = (): Theme => {
   }
 
   useEffect(() => {
-    refreshTheme(prefersDarkMode)
+    refreshTheme()
   }, [prefersDarkMode, themeLight, themeDark])
 
   return theme
