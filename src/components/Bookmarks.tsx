@@ -48,9 +48,13 @@ export default (): JSX.Element => {
         .map((bookmark: BookmarkLink) => (
           <Bookmark href={bookmark.url} key={bookmark.id}>
             <Icon
-              src={`https://www.google.com/s2/favicons?sz=64&domain_url=${
-                new URL(bookmark.url).hostname
-              }`}
+              src={`https://www.google.com/s2/favicons?sz=64&domain_url=${new URL(
+                bookmark.url
+              ).hostname
+                .split('.')
+                .slice(0)
+                .slice(-2)
+                .join('.')}`}
             />{' '}
             {bookmark.label}
           </Bookmark>
