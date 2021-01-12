@@ -3,9 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import getTheme from '@global/theme'
 import { Theme } from '@emotion/react'
 import { SettingsContext } from '@global/context/SettingsProvider'
-
-const matchMediaFallback = (): boolean =>
-  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+import { matchMediaFallback } from '@global/utils'
 
 const useTheme = (): Theme => {
   const {
