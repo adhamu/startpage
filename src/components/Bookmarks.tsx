@@ -34,6 +34,18 @@ const Icon = styled.img`
   margin-right: 0.5em;
 `
 
+const getFavicon = (url: string) => {
+  const parseUrl = new URL(url)
+  const urlParts = parseUrl.hostname.split('.')
+
+  const domain = urlParts
+    .slice(0)
+    .slice(-(urlParts.length === 4 ? 3 : 2))
+    .join('.')
+
+  return `${parseUrl.protocol}//${domain}/favicon.ico`
+}
+
 export default (): JSX.Element => {
   const {
     settings: { bookmarks },
@@ -47,16 +59,7 @@ export default (): JSX.Element => {
         )
         .map((bookmark: BookmarkLink) => (
           <Bookmark href={bookmark.url} key={bookmark.id}>
-            <Icon
-              src={`https://www.google.com/s2/favicons?sz=64&domain_url=${new URL(
-                bookmark.url
-              ).hostname
-                .split('.')
-                .slice(0)
-                .slice(-2)
-                .join('.')}`}
-            />{' '}
-            {bookmark.label}
+            <Icon src={getFavicon(bookmark.url)} /> {bookmark.label}
           </Bookmark>
         ))}
     </Bookmarks>
