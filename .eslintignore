@@ -1,8 +1,2 @@
-public
 node_modules
-.cache
-gatsby-*.js
-*.json
-bin
-.next
-next-env.d.ts
+dist
