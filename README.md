@@ -2,7 +2,7 @@
 
 A super simple and customisable landing page.
 
-![Node.js](https://github.com/adhamu/startpage/workflows/Node.js/badge.svg)
+[![Build](https://github.com/adhamu/startpage/workflows/Node.js/badge.svg)](https://github.com/adhamu/startpage/actions)
 
 ![startpage](screens/home.png)
 
