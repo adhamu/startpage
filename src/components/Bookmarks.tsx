@@ -43,7 +43,7 @@ const getFavicon = (url: string) => {
     .slice(-(urlParts.length === 4 ? 3 : 2))
     .join('.')
 
-  return `${parseUrl.protocol}//${domain}/favicon.ico`
+  return `https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`
 }
 
 export default (): JSX.Element => {
