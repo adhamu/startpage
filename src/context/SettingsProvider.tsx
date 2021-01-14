@@ -1,21 +1,16 @@
 import * as React from 'react'
-import { keys, set, get, del } from 'idb-keyval'
+import { keys, set, del, getMany } from 'idb-keyval'
 
 import { store } from '@global/config'
 
 const getSettings = async () => {
   const getKeys = await keys(store)
+  const getValues = await getMany(getKeys, store)
 
-  const settings = getKeys.reduce(async (acc, curr) => {
-    const value = await get(curr, store)
-
-    return {
-      ...(await acc),
-      [curr as string]: value,
-    }
-  }, Promise.resolve({}))
-
-  return settings
+  return getKeys.reduce(
+    (acc, curr, i) => ({ ...acc, [curr as string]: getValues[i] }),
+    {}
+  )
 }
 
 export interface SettingsProviderProps {
