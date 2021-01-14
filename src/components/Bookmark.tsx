@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 import { BookmarkLink } from '@global/types'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
 const Bookmark = styled.a`
   text-align: left;
@@ -53,13 +54,16 @@ const getFavicon = (url: string) => {
 
 export default ({ bookmark }: Props): JSX.Element => {
   const [error, setError] = React.useState(false)
+  const {
+    settings: { showFavicons },
+  } = React.useContext(SettingsContext)
 
   return (
     <Bookmark href={bookmark.url} key={bookmark.id}>
-      {!error && (
+      {showFavicons && !error && (
         <Icon src={getFavicon(bookmark.url)} onError={() => setError(true)} />
       )}
-      {error === true && (
+      {showFavicons && error === true && (
         <PlaceholderContainer>
           <FontAwesomeIcon icon={faLink} fixedWidth />
         </PlaceholderContainer>
