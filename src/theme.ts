@@ -26,9 +26,10 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
   },
   'input, select': {
     width: 'calc(100% - 1.5em)',
-    background: 'transparent',
+    background: theme.colors.border,
     color: theme.colors.body,
-    border: `1px solid ${theme.colors.border}`,
+    border: 'none',
+    borderBottom: `2px solid ${theme.colors.border}`,
     appearance: 'none',
     WebkitAppearance: 'none',
     boxShadow: 'none',
@@ -45,7 +46,9 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
     borderRadius: '4px',
   },
   'input:focus, select:focus': {
-    border: `1px solid ${theme.colors.inputFocus}`,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderBottom: `2px solid ${theme.colors.inputFocus}`,
   },
   'a, a:visited': {
     color: theme.colors.body,
@@ -59,7 +62,7 @@ export default (isDark: boolean | undefined): Theme => {
       colors: {
         background: '#162431',
         body: '#dee2e5',
-        border: '#3a3a3a',
+        border: '#1c2d41',
         highlight: '#0bd2ff',
         inputFocus: '#af6bef',
       },
