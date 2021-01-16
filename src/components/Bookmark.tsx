@@ -46,7 +46,7 @@ type Props = {
 export default ({ bookmark }: Props): JSX.Element => {
   const [error, setError] = React.useState(false)
   const {
-    settings: { showFavicons },
+    settings: { showFavicons = true },
   } = React.useContext(SettingsContext)
 
   return (
