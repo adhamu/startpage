@@ -74,7 +74,7 @@ export default ({ bookmark }: Props): JSX.Element => {
       const {
         data: { icons },
       } = await axios.get(
-        `http://favicongrabber.com/api/grab/${new URL(url).hostname}`,
+        `https://favicongrabber.com/api/grab/${new URL(url).hostname}`,
         { headers: { 'User-Agent': 'Mozilla/5.0' } }
       )
 
