@@ -4,7 +4,8 @@ import styled from '@emotion/styled'
 import Name from '@preferences/Name'
 import Bookmarks from '@preferences/Bookmarks'
 import SearchEngine from '@preferences/SearchEngine'
-import Theme from './Theme'
+import Theme from '@preferences/Theme'
+import FaviconToggle from '@preferences/FaviconToggle'
 
 const Preferences = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
@@ -20,6 +21,9 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
     <br />
     <br />
     <SearchEngine />
+    <br />
+    <br />
+    <FaviconToggle />
     <br />
     <br />
     <Bookmarks />

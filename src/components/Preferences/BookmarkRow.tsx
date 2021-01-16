@@ -82,6 +82,22 @@ export default ({ bookmark }: Props): JSX.Element => {
     setMode('remove')
   }
 
+  const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      switch (mode) {
+        case 'update':
+          updateBookmark()
+          break
+        case 'remove':
+          removeBookmark()
+          break
+        case 'add':
+          addBookmark()
+          break
+      }
+    }
+  }
+
   React.useEffect(() => {
     determineMode()
   }, [url, label])
@@ -92,11 +108,13 @@ export default ({ bookmark }: Props): JSX.Element => {
         placeholder="Enter a label for this bookmark"
         value={label}
         onChange={e => setLabel(e.target.value)}
+        onKeyDown={e => onEnter(e)}
       />
       <TextInput
         placeholder="https://www.google.com"
         value={url}
         onChange={e => setUrl(e.target.value)}
+        onKeyDown={e => onEnter(e)}
       />
       {mode === 'update' && (
         <Button

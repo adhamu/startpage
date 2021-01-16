@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 
 import { SettingsContext } from '@context/SettingsProvider'
 import useTheme from '@global/hooks/useTheme'
+import { matchMediaFallback } from '@global/utils'
 import Button from './Button'
 
 const ColorOptions = styled.div`
@@ -36,7 +37,7 @@ const ColorInput = styled.input`
 
 const Theme = (): JSX.Element => {
   const {
-    settings: { prefersDarkMode },
+    settings: { prefersDarkMode = matchMediaFallback() },
     setSetting,
     deleteSetting,
   } = React.useContext(SettingsContext)
