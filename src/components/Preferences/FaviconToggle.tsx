@@ -5,15 +5,16 @@ import Switch from '../Switch'
 const FaviconToggle = (): JSX.Element => {
   const {
     settings: { showFavicons },
+    setSetting,
   } = React.useContext(SettingsContext)
 
   return (
     <>
       <label>Show Favicons</label>
-      <Switch checked={showFavicons} onChange={null}>
-        <span className="dark">Foo</span>
-        <span className="light">bar</span>
-      </Switch>
+      <Switch
+        checked={showFavicons}
+        onChange={() => setSetting('showFavicons', !showFavicons)}
+      />
     </>
   )
 }

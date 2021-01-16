@@ -20,10 +20,10 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
     <Theme />
     <br />
     <br />
-    <FaviconToggle />
-    <br />
-    <br />
     <SearchEngine />
+    <br />
+    <br />
+    <FaviconToggle />
     <br />
     <br />
     <Bookmarks />

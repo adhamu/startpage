@@ -9,7 +9,6 @@ import { SettingsContext } from '@global/context/SettingsProvider'
 const Bookmark = styled.a`
   text-align: left;
   color: ${props => props.theme.colors.body};
-  padding: 0.1em 0.5em;
   text-decoration: none;
   font-weight: 700;
 

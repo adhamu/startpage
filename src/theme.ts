@@ -24,7 +24,7 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
     display: 'block',
     fontWeight: 700,
   },
-  'input[type="text"], input[type="search"], select': {
+  'input, select': {
     width: 'calc(100% - 1.5em)',
     background: theme.colors.border,
     color: theme.colors.body,
