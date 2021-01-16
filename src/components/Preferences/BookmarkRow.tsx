@@ -78,7 +78,10 @@ export default ({ bookmark }: Props): JSX.Element => {
         { headers: { 'User-Agent': 'Mozilla/5.0' } }
       )
 
-      return icons[icons.length - 1].src
+      return (
+        icons.find((f: { type: string }) => f.type === 'image/x-icon')?.src ||
+        icons[0].src
+      )
     } catch {
       return null
     }
