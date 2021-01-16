@@ -1,5 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const Button = styled.button<{ isDisabled?: boolean }>`
   cursor: pointer;
@@ -12,6 +14,7 @@ const Button = styled.button<{ isDisabled?: boolean }>`
   color: ${props => props.theme.colors.background};
   padding: 10px 10px;
   font-size: 12px;
+  text-align: center;
 
   &.warning {
     background: #fdcb6e;
@@ -52,8 +55,18 @@ export default ({
   disabled,
   className,
   children,
-}: Props): JSX.Element => (
-  <Button onClick={onClick} disabled={disabled} className={className}>
-    {children}
-  </Button>
-)
+}: Props): JSX.Element => {
+  const [clicked, setClicked] = React.useState(false)
+
+  return (
+    <Button
+      onClick={() => {
+        setClicked(true)
+        onClick()
+      }}
+      disabled={disabled}
+      className={className}>
+      {clicked ? <FontAwesomeIcon icon={faSpinner} spin /> : children}
+    </Button>
+  )
+}
