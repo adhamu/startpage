@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { SettingsContext } from '@global/context/SettingsProvider'
 
 const Button = styled.button<{ isDisabled?: boolean }>`
   cursor: pointer;
@@ -57,6 +58,11 @@ export default ({
   children,
 }: Props): JSX.Element => {
   const [clicked, setClicked] = React.useState(false)
+  const { settings } = React.useContext(SettingsContext)
+
+  React.useEffect(() => {
+    setClicked(false)
+  }, [settings])
 
   return (
     <Button

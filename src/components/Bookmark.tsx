@@ -21,8 +21,8 @@ const Icon = styled.img`
   vertical-align: middle;
   line-height: 16px;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   margin-right: 0.5em;
 `
 
@@ -30,9 +30,13 @@ const PlaceholderContainer = styled.div`
   display: inline-block;
   margin-right: 0.5em;
   line-height: 16px;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   color: ${props => props.theme.colors.body};
+
+  svg {
+    font-size: 16px;
+  }
 `
 
 type Props = {
