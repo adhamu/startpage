@@ -79,6 +79,7 @@ export default ({ bookmark }: Props): JSX.Element => {
       )
 
       return (
+        icons.find((f: { sizes: string }) => f.sizes === '32x32')?.src ||
         icons.find((f: { type: string }) => f.type === 'image/x-icon')?.src ||
         icons[0].src
       )
