@@ -8,6 +8,7 @@ export type BookmarkLink = {
   id: number
   label: string
   url: string
+  icon?: string
 }
 
 export type BookmarkLinks = BookmarkLink[]

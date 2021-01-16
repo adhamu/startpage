@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import axios from 'axios'
 
 import TextInput from '@preferences/TextInput'
 import { BookmarkLink } from '@global/types'
@@ -52,16 +53,39 @@ export default ({ bookmark }: Props): JSX.Element => {
     }
   }
 
-  const addBookmark = () => {
+  const addBookmark = async () => {
     if (label && url && !isExists()) {
-      const newBookmark = { id: Date.now(), label, url }
+      const icon = await getFavicon(url)
+      const newBookmark = { id: Date.now(), label, url, icon }
+
       if (bookmarks !== undefined) {
         setSetting('bookmarks', [...bookmarks, newBookmark])
       } else {
         setSetting('bookmarks', [newBookmark])
       }
+
       setLabel('')
       setUrl('')
+    }
+  }
+
+  const getFavicon = async (url: string): Promise<string> => {
+    const parseUrl = new URL(url)
+    const urlParts = parseUrl.hostname.split('.')
+
+    const domain = urlParts
+      .slice(0)
+      .slice(-(urlParts.length === 4 ? 3 : 2))
+      .join('.')
+
+    try {
+      const {
+        data: { icons },
+      } = await axios.get(`http://favicongrabber.com/api/grab/${domain}`)
+
+      return icons[0].src
+    } catch {
+      return `https://www.google.com/s2/favicons?sz=32&domain_url=${domain}`
     }
   }
 

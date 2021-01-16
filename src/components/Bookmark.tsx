@@ -21,8 +21,8 @@ const Icon = styled.img`
   vertical-align: middle;
   line-height: 16px;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   margin-right: 0.5em;
 `
 
@@ -30,8 +30,8 @@ const PlaceholderContainer = styled.div`
   display: inline-block;
   margin-right: 0.5em;
   line-height: 16px;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: ${props => props.theme.colors.body};
 `
 
@@ -39,30 +39,15 @@ type Props = {
   bookmark: BookmarkLink
 }
 
-const getFavicon = (url: string) => {
-  const parseUrl = new URL(url)
-  const urlParts = parseUrl.hostname.split('.')
-
-  const domain = urlParts
-    .slice(0)
-    .slice(-(urlParts.length === 4 ? 3 : 2))
-    .join('.')
-
-  return `${parseUrl.protocol}//${domain}/favicon.ico`
-}
-
 export default ({ bookmark }: Props): JSX.Element => {
-  const [error, setError] = React.useState(false)
   const {
     settings: { showFavicons },
   } = React.useContext(SettingsContext)
 
   return (
     <Bookmark href={bookmark.url} key={bookmark.id}>
-      {showFavicons && !error && (
-        <Icon src={getFavicon(bookmark.url)} onError={() => setError(true)} />
-      )}
-      {showFavicons && error === true && (
+      {showFavicons && bookmark?.icon && <Icon src={bookmark?.icon} />}
+      {showFavicons && !bookmark?.icon && (
         <PlaceholderContainer>
           <FontAwesomeIcon icon={faLink} fixedWidth />
         </PlaceholderContainer>
