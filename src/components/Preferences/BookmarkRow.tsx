@@ -70,22 +70,16 @@ export default ({ bookmark }: Props): JSX.Element => {
   }
 
   const getFavicon = async (url: string): Promise<string> => {
-    const parseUrl = new URL(url)
-    const urlParts = parseUrl.hostname.split('.')
-
-    const domain = urlParts
-      .slice(0)
-      .slice(-(urlParts.length === 4 ? 3 : 2))
-      .join('.')
-
     try {
       const {
         data: { icons },
-      } = await axios.get(`http://favicongrabber.com/api/grab/${domain}`)
+      } = await axios.get(
+        `http://favicongrabber.com/api/grab/${new URL(url).hostname}`
+      )
 
-      return icons[0].src
+      return icons[icons.length - 1].src
     } catch {
-      return `https://www.google.com/s2/favicons?sz=32&domain_url=${domain}`
+      return null
     }
   }
 
