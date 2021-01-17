@@ -8,6 +8,7 @@ import Bookmarks from '@components/Bookmarks'
 import Greeting from '@components/Greeting'
 import DateTime from '@components/DateTime'
 import Menu from '@components/Menu'
+import Loading from './components/Loading'
 
 const Weather = React.lazy(() => import('@components/Weather'))
 const Preferences = React.lazy(() => import('@global/components/Preferences'))
@@ -32,14 +33,14 @@ const App = (): JSX.Element => {
         <Layout>
           <DateTime />
           <Main menuOpen={menuOpen}>
-            <React.Suspense fallback={<div>Loading...</div>}>
+            <React.Suspense fallback={<Loading />}>
               <Weather />
             </React.Suspense>
             <Greeting />
             <Search />
             <Bookmarks />
           </Main>
-          <React.Suspense fallback={<div>Loading...</div>}>
+          <React.Suspense fallback={<Loading />}>
             <Preferences menuOpen={menuOpen} />
           </React.Suspense>
         </Layout>
