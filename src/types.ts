@@ -9,6 +9,7 @@ export type BookmarkLink = {
   label: string
   url: string
   icon?: string
+  category?: string
 }
 
 export type BookmarkLinks = BookmarkLink[]

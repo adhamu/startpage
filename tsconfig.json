@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
+    "downlevelIteration": true,
     "moduleResolution": "node",
     "sourceMap": false,
     "outDir": "./dist/",
@@ -15,7 +16,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@icons/*": ["src/icons/*"],
       "@context/*": ["src/context/*"],
-      "@preferences/*": ["src/components/Preferences/*"],
+      "@preferences/*": ["src/components/Preferences/*"]
     }
   }
 }

@@ -10,7 +10,7 @@ import Button from '@preferences/Button'
 const BookmarkRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 2fr 100px;
+  grid-template-columns: 1fr 1fr 1fr 100px;
   margin-bottom: 0.5em;
   grid-gap: 0.5em;
   justify-content: space-between;
@@ -23,6 +23,7 @@ type Props = {
 export default ({ bookmark }: Props): JSX.Element => {
   const [label, setLabel] = React.useState(bookmark?.label ?? '')
   const [url, setUrl] = React.useState(bookmark?.url ?? '')
+  const [category, setCategory] = React.useState(bookmark?.category ?? '')
   const [mode, setMode] = React.useState('remove')
 
   const {
@@ -33,7 +34,12 @@ export default ({ bookmark }: Props): JSX.Element => {
   const determineMode = () => {
     if (!bookmark) {
       setMode('add')
-    } else if (bookmark?.label !== label || bookmark?.url !== url) {
+    } else if (
+      bookmark?.label !== label ||
+      bookmark?.url !== url ||
+      (bookmark?.category && bookmark?.category !== category) ||
+      (!bookmark?.category && category !== '')
+    ) {
       setMode('update')
     } else {
       setMode('remove')
@@ -56,7 +62,7 @@ export default ({ bookmark }: Props): JSX.Element => {
   const addBookmark = async () => {
     if (label && url && !isExists()) {
       const icon = await getFavicon(url)
-      const newBookmark = { id: Date.now(), label, url, icon }
+      const newBookmark = { id: Date.now(), label, url, icon, category }
 
       if (bookmarks !== undefined) {
         setSetting('bookmarks', [...bookmarks, newBookmark])
@@ -66,6 +72,7 @@ export default ({ bookmark }: Props): JSX.Element => {
 
       setLabel('')
       setUrl('')
+      setCategory('')
     }
   }
 
@@ -91,7 +98,7 @@ export default ({ bookmark }: Props): JSX.Element => {
   const updateBookmark = () => {
     const b = bookmarks
     const i = bookmarks.findIndex((c: BookmarkLink) => c.id === bookmark.id)
-    b[i] = { ...b[i], label, url }
+    b[i] = { ...b[i], label, url, category }
 
     setSetting('bookmarks', b)
     setMode('remove')
@@ -123,7 +130,7 @@ export default ({ bookmark }: Props): JSX.Element => {
 
   React.useEffect(() => {
     determineMode()
-  }, [url, label])
+  }, [url, label, category])
 
   return (
     <BookmarkRow>
@@ -137,6 +144,12 @@ export default ({ bookmark }: Props): JSX.Element => {
         placeholder="https://www.google.com"
         value={url}
         onChange={e => setUrl(e.target.value)}
+        onKeyDown={e => onEnter(e)}
+      />
+      <TextInput
+        placeholder="Enter a category name"
+        value={category}
+        onChange={e => setCategory(e.target.value)}
         onKeyDown={e => onEnter(e)}
       />
       {mode === 'update' && (
