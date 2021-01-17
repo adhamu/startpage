@@ -30,7 +30,7 @@ const CategoryLabel = styled.div`
 const Links = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 0.5em;
+  grid-gap: 0;
 `
 
 const getUniqueCategories = (bookmarks: BookmarkLinks) => [
