@@ -20,7 +20,6 @@
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "axios": "^0.21.1",
-    "axios-cache-adapter": "^2.5.0",
     "clean-webpack-plugin": "^3.0.0",
     "date-fns": "^2.16.1",
     "dotenv-webpack": "^6.0.0",

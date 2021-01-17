@@ -2,14 +2,15 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 import Wrapper from '@global/Wrapper'
-import Preferences from '@global/components/Preferences'
 import SettingsProvider from '@context/SettingsProvider'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import Greeting from '@components/Greeting'
 import DateTime from '@components/DateTime'
 import Menu from '@components/Menu'
-import Weather from '@components/Weather'
+
+const Weather = React.lazy(() => import('@components/Weather'))
+const Preferences = React.lazy(() => import('@global/components/Preferences'))
 
 const Layout = styled.div`
   max-width: 960px;
@@ -31,12 +32,16 @@ const App = (): JSX.Element => {
         <Layout>
           <DateTime />
           <Main menuOpen={menuOpen}>
-            <Weather />
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <Weather />
+            </React.Suspense>
             <Greeting />
             <Search />
             <Bookmarks />
           </Main>
-          <Preferences menuOpen={menuOpen} />
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Preferences menuOpen={menuOpen} />
+          </React.Suspense>
         </Layout>
       </Wrapper>
     </SettingsProvider>
