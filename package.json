@@ -2,7 +2,7 @@
   "name": "startpage",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "node bin/build-env.js && webpack --mode production",
     "dev": "webpack serve --mode development --env development",
     "lint": "eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json"
   },
@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/dotenv": "^8.2.0",
     "@types/html-webpack-plugin": "^3.2.3",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -22,6 +23,7 @@
     "axios": "^0.21.1",
     "clean-webpack-plugin": "^3.0.0",
     "date-fns": "^2.16.1",
+    "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
     "eslint": "^7.11.0",
     "eslint-plugin-react": "^7.21.4",
