@@ -11,8 +11,11 @@ const Bookmarks = styled.div`
 
 const Categories = styled.div`
   display: grid;
-  grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
   padding: 1em 0;
+
+  @media (min-width: 767px) {
+    grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
+  }
 `
 
 const CategoryLabel = styled.div`
@@ -26,7 +29,7 @@ const CategoryLabel = styled.div`
 
 const Links = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 0.5em;
 `
 

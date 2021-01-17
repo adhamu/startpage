@@ -11,7 +11,7 @@ import Preferences from '@global/components/Preferences'
 import Menu from '@components/Menu'
 
 const Layout = styled.div`
-  max-width: 850px;
+  max-width: 960px;
   margin: 8em auto;
   padding: 0 1em;
 `
