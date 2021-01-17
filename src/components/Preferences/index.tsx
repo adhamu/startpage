@@ -5,7 +5,7 @@ import Name from '@preferences/Name'
 import Bookmarks from '@preferences/Bookmarks'
 import SearchEngine from '@preferences/SearchEngine'
 import Theme from '@preferences/Theme'
-import FaviconToggle from '@preferences/FaviconToggle'
+import QuickSettings from '@preferences/QuickSettings'
 
 const Preferences = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
@@ -23,7 +23,7 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
     <SearchEngine />
     <br />
     <br />
-    <FaviconToggle />
+    <QuickSettings />
     <br />
     <br />
     <Bookmarks />

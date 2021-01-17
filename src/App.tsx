@@ -2,14 +2,14 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 import Wrapper from '@global/Wrapper'
+import Preferences from '@global/components/Preferences'
 import SettingsProvider from '@context/SettingsProvider'
 import Search from '@components/Search'
 import Bookmarks from '@components/Bookmarks'
 import Greeting from '@components/Greeting'
 import DateTime from '@components/DateTime'
-import Preferences from '@global/components/Preferences'
 import Menu from '@components/Menu'
-import axios from 'axios'
+import Weather from '@components/Weather'
 
 const Layout = styled.div`
   max-width: 960px;
@@ -23,28 +23,6 @@ const Main = styled.div<{ menuOpen: boolean }>`
 
 const App = (): JSX.Element => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-  const [location, setLocation] = React.useState(null)
-
-  React.useEffect(() => {
-    navigator.geolocation.getCurrentPosition(r => {
-      setLocation({
-        longitude: r.coords.longitude,
-        latitude: r.coords.latitude,
-      })
-    })
-  }, [])
-
-  React.useEffect(() => {
-    if (location !== null) {
-      ;(async () => {
-        const { data } = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lon=${location.longitude}&lat=${location.latitude}&appid=${process.env.OPEN_WEATHER_API_KEY}`
-        )
-
-        console.log(data)
-      })()
-    }
-  }, [location])
 
   return (
     <SettingsProvider>
@@ -53,6 +31,7 @@ const App = (): JSX.Element => {
         <Layout>
           <DateTime />
           <Main menuOpen={menuOpen}>
+            <Weather />
             <Greeting />
             <Search />
             <Bookmarks />
