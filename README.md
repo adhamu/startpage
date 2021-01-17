@@ -13,6 +13,7 @@ A super simple and customisable landing page.
 - Dark Mode
 - Customisable theme
 - Bookmarks
+- Weather\*
 
 ## Technology Stack
 
@@ -55,4 +56,16 @@ This will output everything to the `/dist` directory which is where you would po
 
 ```sh
 $ yarn lint
+```
+
+## Weather
+
+In order to enable the weather capibility, you need to sign up for an API key at [https://openweathermap.org](https://openweathermap.org). Once you have done that, create an `.env` file in the root of the project as follows.
+
+```sh
+$ cp .env.example.env
+```
+
+```sh
+OPEN_WEATHER_API_KEY=YOUR_API_KEY
 ```

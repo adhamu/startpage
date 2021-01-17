@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { NetlifyPlugin } = require('netlify-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -64,5 +65,6 @@ module.exports = {
         },
       },
     }),
+    new Dotenv(),
   ],
 }
