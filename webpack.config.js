@@ -10,6 +10,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 3000,
+    https: true,
   },
   module: {
     rules: [
