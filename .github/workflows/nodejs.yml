@@ -13,7 +13,9 @@ jobs:
     - name: Install dependencies
       run: yarn
     - name: Security Audit
-      run: yarn audit
+      run: yarn audit || true
+    - name: Outdated Packages
+      run: yarn outdated || true
     - name: TypeScript / JavaScript Standards
       run: node_modules/.bin/eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json
       env:

@@ -2,10 +2,10 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import axios from 'axios'
 
-import TextInput from '@preferences/TextInput'
-import { BookmarkLink } from '@global/types'
-import { SettingsContext } from '@context/SettingsProvider'
-import Button from '@preferences/Button'
+import TextInput from './TextInput'
+import Button from './Button'
+import { BookmarkLink } from '../../types'
+import { SettingsContext } from '../../context/SettingsProvider'
 
 const BookmarkRow = styled.div`
   display: grid;

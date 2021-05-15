@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import axios from 'axios'
 
-import { SettingsContext } from '@context/SettingsProvider'
+import { SettingsContext } from '../context/SettingsProvider'
 
 const Weather = styled.div`
   margin-bottom: 1em;

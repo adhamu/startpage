@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
-import { BookmarkLink } from '@global/types'
-import { SettingsContext } from '@global/context/SettingsProvider'
+import { BookmarkLink } from '../types'
+import { SettingsContext } from '../context/SettingsProvider'
 
 const Bookmark = styled.a`
   text-align: left;

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { SettingsContext } from '@context/SettingsProvider'
-import { BookmarkLink, BookmarkLinks } from '@global/types'
+import { SettingsContext } from '../context/SettingsProvider'
+import { BookmarkLink, BookmarkLinks } from '../types'
 import Bookmark from './Bookmark'
 
 const Bookmarks = styled.div`

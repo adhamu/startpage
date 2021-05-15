@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { SettingsContext } from '@global/context/SettingsProvider'
+import { SettingsContext } from '../../context/SettingsProvider'
 
 const Button = styled.button<{ isDisabled?: boolean }>`
   cursor: pointer;

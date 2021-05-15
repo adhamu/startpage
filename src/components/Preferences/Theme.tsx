@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { SettingsContext } from '@context/SettingsProvider'
-import useTheme from '@global/hooks/useTheme'
-import { matchMediaFallback } from '@global/utils'
+import { SettingsContext } from '../../context/SettingsProvider'
+import useTheme from '../../hooks/useTheme'
+import { matchMediaFallback } from '../../utils'
 import Button from './Button'
 
 const ColorOptions = styled.div`

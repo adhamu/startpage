@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import { SettingsContext } from '@context/SettingsProvider'
-import { BookmarkLink } from '@global/types'
-import BookmarkRow from '@preferences/BookmarkRow'
+import { SettingsContext } from '../../context/SettingsProvider'
+import { BookmarkLink } from '../../types'
+import BookmarkRow from './BookmarkRow'
 
 const Bookmarks = (): JSX.Element => {
   const {

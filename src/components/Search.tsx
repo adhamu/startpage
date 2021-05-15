@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { searchEngines } from '@global/config'
-import { SettingsContext } from '@context/SettingsProvider'
+import { searchEngines } from '../config'
+import { SettingsContext } from '../context/SettingsProvider'
 
 export default (): JSX.Element => {
   const {

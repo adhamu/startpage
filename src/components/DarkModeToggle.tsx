@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 
-import Switch from '@components/Switch'
+import Switch from './Switch'
 
 const DarkModeToggle = styled.div`
   position: absolute;

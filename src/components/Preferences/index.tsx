@@ -1,11 +1,11 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import Name from '@preferences/Name'
-import Bookmarks from '@preferences/Bookmarks'
-import SearchEngine from '@preferences/SearchEngine'
-import Theme from '@preferences/Theme'
-import QuickSettings from '@preferences/QuickSettings'
+import Name from './Name'
+import Bookmarks from './Bookmarks'
+import SearchEngine from './SearchEngine'
+import Theme from './Theme'
+import QuickSettings from './QuickSettings'
 
 const Preferences = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};

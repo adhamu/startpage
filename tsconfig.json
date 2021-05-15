@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "target": "es5",
     "downlevelIteration": true,
@@ -9,14 +10,7 @@
     "jsx": "react",
     "noImplicitAny": true,
     "baseUrl": ".",
-    "skipLibCheck": true,
-    "paths": {
-      "@global/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@icons/*": ["src/icons/*"],
-      "@context/*": ["src/context/*"],
-      "@preferences/*": ["src/components/Preferences/*"]
-    }
-  }
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*.ts*"]
 }

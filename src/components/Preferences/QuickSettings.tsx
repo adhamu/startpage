@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { SettingsContext } from '@context/SettingsProvider'
-import Switch from '@components/Switch'
+import { SettingsContext } from '../../context/SettingsProvider'
+import Switch from '../Switch'
 
 const QuickSettings = styled.div`
   display: grid;

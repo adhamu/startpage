@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 
-import getTheme from '@global/theme'
+import getTheme from '../theme'
 import { Theme } from '@emotion/react'
-import { SettingsContext } from '@global/context/SettingsProvider'
-import { matchMediaFallback } from '@global/utils'
+import { SettingsContext } from '../context/SettingsProvider'
+import { matchMediaFallback } from '../utils'
 
 const useTheme = (): Theme => {
   const {

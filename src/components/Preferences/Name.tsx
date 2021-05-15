@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SettingsContext } from '@context/SettingsProvider'
+import { SettingsContext } from '../../context/SettingsProvider'
 import TextInput from './TextInput'
 
 const Name = (): JSX.Element => {

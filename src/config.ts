@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import { createStore } from 'idb-keyval'
 import { SearchEngine } from './types'
-import { DuckDuckGo, Google, Startpage } from '@icons/index'
+import { DuckDuckGo, Google, Startpage } from './icons/index'
 
 export const store = createStore('startpage', 'user-preferences')
 

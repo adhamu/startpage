@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { SettingsContext } from '@context/SettingsProvider'
+import { SettingsContext } from '../context/SettingsProvider'
 
 export default (): JSX.Element => {
   const {

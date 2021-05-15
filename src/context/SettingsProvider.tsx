@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { keys, set, del, getMany } from 'idb-keyval'
 
-import { store } from '@global/config'
+import { store } from '../config'
 
 const getSettings = async () => {
   const getKeys = await keys(store)

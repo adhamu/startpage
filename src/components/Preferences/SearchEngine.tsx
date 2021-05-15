@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { searchEngines } from '@global/config'
-import { SettingsContext } from '@context/SettingsProvider'
+import { searchEngines } from '../../config'
+import { SettingsContext } from '../../context/SettingsProvider'
 
 const Product = styled.button<{ isActive: boolean }>`
   background: 0;

@@ -2,8 +2,9 @@
   "name": "startpage",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "node bin/build-env.js && webpack --mode production",
-    "dev": "webpack serve --mode development --env development",
+    "prebuild": "rm -rf dist",
+    "build": "node bin/build-env.js && parcel build ./src/index.html --no-source-maps",
+    "dev": "parcel serve ./src/index.html --open",
     "lint": "eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json"
   },
   "devDependencies": {
@@ -12,32 +13,21 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@types/dotenv": "^8.2.0",
-    "@types/html-webpack-plugin": "^3.2.3",
+    "@types/node": "^15.3.0",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
-    "@types/webpack": "^4.41.22",
-    "@types/webpack-dev-server": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "axios": "^0.21.1",
-    "clean-webpack-plugin": "^3.0.0",
     "date-fns": "^2.17.0",
-    "dotenv": "^8.2.0",
-    "dotenv-webpack": "^6.0.0",
+    "dotenv": "^9.0.2",
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.21.4",
-    "html-loader": "^2.1.1",
-    "html-webpack-plugin": "^5.2.0",
     "idb-keyval": "^5.0.2",
-    "netlify-webpack-plugin": "^1.1.1",
+    "parcel": "^2.0.0-beta.2",
     "prettier": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "ts-loader": "^8.0.16",
-    "typescript": "^4.0.3",
-    "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.0"
+    "typescript": "^4.0.3"
   }
 }
