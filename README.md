@@ -26,7 +26,7 @@ A super simple and customisable landing page.
 
 - ESLint
 - Prettier
-- Webpack
+- Parcel
 
 ## Installation
 
@@ -42,7 +42,7 @@ $ yarn
 $ yarn dev
 ```
 
-Open up [http://localhost:3000](http://localhost:3000)
+Open up [http://localhost:1234](http://localhost:1234)
 
 ## Building for production
 
