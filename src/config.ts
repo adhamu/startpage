@@ -1,9 +1,8 @@
 import { createElement } from 'react'
-import { createStore } from 'idb-keyval'
-import { SearchEngine } from './types'
-import { DuckDuckGo, Google, Startpage } from './icons/index'
 
-export const store = createStore('startpage', 'user-preferences')
+import type { SearchEngine } from './types'
+
+import { DuckDuckGo, Google, Startpage } from './icons'
 
 export const searchEngines: SearchEngine[] = [
   {

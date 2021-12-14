@@ -1,0 +1,25 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17'
+      - name: Install dependencies
+        env:
+          GITHUB_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn
+      - name: Security Audit
+        run: yarn audit || true
+      - name: Outdated Packages
+        run: yarn outdated || true
+      - name: TypeScript / JavaScript Standards
+        run: node_modules/.bin/eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json
+        env:
+          CI: true

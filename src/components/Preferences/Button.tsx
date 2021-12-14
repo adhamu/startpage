@@ -1,10 +1,12 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { SettingsContext } from '../../context/SettingsProvider'
 
-const Button = styled.button<{ isDisabled?: boolean }>`
+const Style = styled.button<{ isDisabled?: boolean }>`
   cursor: pointer;
   background: none;
   border: none;
@@ -51,7 +53,7 @@ type Props = {
   children: string
 }
 
-export default ({
+const Button = ({
   onClick,
   disabled,
   className,
@@ -65,14 +67,18 @@ export default ({
   }, [settings])
 
   return (
-    <Button
+    <Style
       onClick={() => {
         setClicked(true)
-        onClick()
+
+        return onClick ? onClick() : false
       }}
       disabled={disabled}
-      className={className}>
+      className={className}
+    >
       {clicked ? <FontAwesomeIcon icon={faSpinner} spin /> : children}
-    </Button>
+    </Style>
   )
 }
+
+export default Button

@@ -1,12 +1,14 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
 
-import { BookmarkLink } from '../types'
+import styled from '@emotion/styled'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import type { BookmarkLink } from '../types'
+
 import { SettingsContext } from '../context/SettingsProvider'
 
-const Bookmark = styled.a`
+const Style = styled.a`
   text-align: left;
   color: ${props => props.theme.colors.body};
   text-decoration: none;
@@ -43,14 +45,14 @@ type Props = {
   bookmark: BookmarkLink
 }
 
-export default ({ bookmark }: Props): JSX.Element => {
+const Bookmark = ({ bookmark }: Props): JSX.Element => {
   const [error, setError] = React.useState(false)
   const {
     settings: { showFavicons = true },
   } = React.useContext(SettingsContext)
 
   return (
-    <Bookmark href={bookmark.url} key={bookmark.id}>
+    <Style href={bookmark.url} key={bookmark.id}>
       {showFavicons && bookmark?.icon && !error && (
         <Icon src={bookmark?.icon} onError={() => setError(true)} />
       )}
@@ -60,6 +62,8 @@ export default ({ bookmark }: Props): JSX.Element => {
         </PlaceholderContainer>
       )}{' '}
       {bookmark.label}
-    </Bookmark>
+    </Style>
   )
 }
+
+export default Bookmark

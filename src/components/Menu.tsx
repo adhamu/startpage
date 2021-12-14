@@ -1,9 +1,10 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const Menu = styled.button<{ menuOpen: boolean }>`
+import styled from '@emotion/styled'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const Style = styled.button<{ menuOpen: boolean }>`
   position: absolute;
   top: 2em;
   right: 2em;
@@ -20,14 +21,16 @@ const Menu = styled.button<{ menuOpen: boolean }>`
   ${props => (props.menuOpen ? 'transform: rotate(-90deg);' : '')}
 `
 
-export default ({
+const Menu = ({
   menuOpen,
   onClick,
 }: {
   menuOpen: boolean
   onClick: () => void
 }): JSX.Element => (
-  <Menu menuOpen={menuOpen} onClick={onClick}>
+  <Style menuOpen={menuOpen} onClick={onClick}>
     <FontAwesomeIcon icon={faBars} size="2x" />
-  </Menu>
+  </Style>
 )
+
+export default Menu

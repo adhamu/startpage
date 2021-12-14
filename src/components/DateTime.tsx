@@ -1,10 +1,11 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 import { format } from 'date-fns'
 
 import { getDate } from '../date'
 
-const DateTime = styled.div`
+const Style = styled.div`
   display: flex;
   justify-content: space-between;
   font-weight: 600;
@@ -14,7 +15,7 @@ const DateTime = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.border};
 `
 
-export default (): JSX.Element => {
+const DateTime = (): JSX.Element => {
   const [time, setTime] = React.useState(new Date())
 
   React.useEffect(() => {
@@ -26,9 +27,11 @@ export default (): JSX.Element => {
   })
 
   return (
-    <DateTime>
+    <Style>
       <div>{getDate()}</div>
       <div>{format(time, 'HH:mm')}</div>
-    </DateTime>
+    </Style>
   )
 }
+
+export default DateTime

@@ -1,14 +1,15 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
 import Wrapper from './Wrapper'
-import SettingsProvider from './context/SettingsProvider'
-import Search from './components/Search'
 import Bookmarks from './components/Bookmarks'
-import Greeting from './components/Greeting'
 import DateTime from './components/DateTime'
-import Menu from './components/Menu'
+import Greeting from './components/Greeting'
 import Loading from './components/Loading'
+import Menu from './components/Menu'
+import Search from './components/Search'
+import SettingsProvider from './context/SettingsProvider'
 
 const Weather = React.lazy(() => import('./components/Weather'))
 const Preferences = React.lazy(() => import('./components/Preferences'))

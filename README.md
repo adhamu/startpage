@@ -30,9 +30,38 @@ A super simple and customisable landing page.
 
 ## Installation
 
+### Clone the repository
+
 ```sh
 $ git clone https://github.com/adhamu/startpage
 $ cd startpage
+```
+
+### Create a Token
+
+You'll need a GitHub Personal Access Token with `read:packages` permission. You can create one at [https://github.com/settings/tokens](https://github.com/settings/tokens).
+
+Once you have it, copy it to your clipboard as you'll never see it again and add it to your `.zshrc` or `.bash_profile`
+
+```sh
+export GITHUB_REGISTRY_TOKEN=YOUR_TOKEN_HERE
+```
+
+Then `source ~/.zshrc` or `source ~/.bash_profile`.
+
+### Install the package
+
+Create an `.npmrc` in your project to install from the GitHub Package Registry
+
+```sh
+cat > .npmrc << EOF
+always-auth=true
+@adhamu:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=\${GITHUB_REGISTRY_TOKEN}
+EOF
+```
+
+```sh
 $ yarn
 ```
 

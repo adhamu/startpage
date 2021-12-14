@@ -1,22 +1,23 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
 import { SettingsContext } from '../../context/SettingsProvider'
 import Switch from '../Switch'
 
-const QuickSettings = styled.div`
+const Style = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 `
 
-export default (): JSX.Element => {
+const QuickSettings = (): JSX.Element => {
   const {
     settings: { weather = false, showFavicons = true },
     setSetting,
   } = React.useContext(SettingsContext)
 
   return (
-    <QuickSettings>
+    <Style>
       <div>
         <label>Show Favicons</label>
         <Switch
@@ -31,6 +32,8 @@ export default (): JSX.Element => {
           onChange={() => setSetting('weather', !weather)}
         />
       </div>
-    </QuickSettings>
+    </Style>
   )
 }
+
+export default QuickSettings

@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import { SettingsContext } from '../../context/SettingsProvider'
 import TextInput from './TextInput'
 

@@ -1,10 +1,10 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Loading = styled.h1`
+const Style = styled.h1`
   position: absolute;
   bottom: 0;
   right: 1em;
@@ -15,8 +15,10 @@ const Loading = styled.h1`
   }
 `
 
-export default (): JSX.Element => (
-  <Loading>
+const Loading = (): JSX.Element => (
+  <Style>
     <FontAwesomeIcon icon={faSpinner} spin fixedWidth />
-  </Loading>
+  </Style>
 )
+
+export default Loading

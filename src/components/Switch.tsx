@@ -1,7 +1,8 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
-const Switch = styled.label<{ checked: boolean }>`
+const Style = styled.label<{ checked: boolean }>`
   display: inline-block;
   font-size: 16px;
   width: 2.8em;
@@ -10,8 +11,7 @@ const Switch = styled.label<{ checked: boolean }>`
   position: relative;
   padding: 2px;
   cursor: pointer;
-  background: ${props =>
-    props.checked ? '#55efc4' : props.theme.colors.body};
+  background: ${props => (props.checked ? '#55efc4' : props.theme.colors.body)};
 
   input {
     position: absolute;
@@ -46,15 +46,17 @@ type Props = {
   children?: React.ReactNode
 }
 
-export default ({
+const Switch = ({
   checked,
   onChange,
   className,
   children,
 }: Props): JSX.Element => (
-  <Switch className={className} checked={checked}>
+  <Style className={className} checked={!!checked}>
     {children}
     <input type="checkbox" checked={checked} onChange={onChange} />
     <div></div>
-  </Switch>
+  </Style>
 )
+
+export default Switch

@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
 import { searchEngines } from '../../config'
@@ -32,11 +33,12 @@ const SearchEngine = (): JSX.Element => {
   return (
     <>
       <label>Search Engine</label>
-      {searchEngines.map((engine, key) => (
+      {searchEngines.map(engine => (
         <Product
-          key={key}
+          key={engine.label}
           isActive={searchEngine === engine.label}
-          onClick={() => setSetting('searchEngine', engine.label)}>
+          onClick={() => setSetting('searchEngine', engine.label)}
+        >
           {engine.icon}
         </Product>
       ))}

@@ -1,11 +1,12 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Switch from './Switch'
 
-const DarkModeToggle = styled.div`
+const Style = styled.div`
   position: absolute;
   left: 1em;
   top: 1em;
@@ -36,11 +37,13 @@ type Props = {
   toggleDarkMode: () => void
 }
 
-export default ({ isDarkMode, toggleDarkMode }: Props): JSX.Element => (
-  <DarkModeToggle>
+const DarkModeToggle = ({ isDarkMode, toggleDarkMode }: Props): JSX.Element => (
+  <Style>
     <ToggleArea checked={!!isDarkMode} onChange={toggleDarkMode}>
       <FontAwesomeIcon className="dark" icon={faMoon} fixedWidth={true} />
       <FontAwesomeIcon className="light" icon={faSun} fixedWidth={true} />
     </ToggleArea>
-  </DarkModeToggle>
+  </Style>
 )
+
+export default DarkModeToggle
