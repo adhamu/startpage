@@ -30,7 +30,7 @@ A super simple and customisable landing page.
 
 ## Installation
 
-### Clone the repository
+### Clone the repository
 
 ```sh
 $ git clone https://github.com/adhamu/startpage
@@ -49,17 +49,7 @@ export GITHUB_REGISTRY_TOKEN=YOUR_TOKEN_HERE
 
 Then `source ~/.zshrc` or `source ~/.bash_profile`.
 
-### Install the package
-
-Create an `.npmrc` in your project to install from the GitHub Package Registry
-
-```sh
-cat > .npmrc << EOF
-always-auth=true
-@adhamu:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=\${GITHUB_REGISTRY_TOKEN}
-EOF
-```
+## Install Dependencies
 
 ```sh
 $ yarn
