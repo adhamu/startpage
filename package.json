@@ -21,7 +21,7 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@adhamu/zero": "^1.0.12",
+    "@adhamu/zero": "^2.0.0",
     "@types/node": "^15.3.0",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",

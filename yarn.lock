@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adhamu/zero@^1.0.12":
-  version "1.0.12"
-  resolved "https://npm.pkg.github.com/download/@adhamu/zero/1.0.12/0dc668c72b04be347653c88782754d12575e512e13cc3082113534054fd2dae9#2e56d0e4b5987f1fd00e93383b317b9c69096750"
-  integrity sha512-DUeEw4pBkJOqK9UMJ6ZyT6AetDCJmhispPMewWsnTA4818TkRvhYcid/AOeypYtle40scLghIEzXa/edmPzCFg==
+"@adhamu/zero@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@adhamu/zero/-/zero-2.0.0.tgz#5dcc75b71e9ec13f7961d9d0558a69ada68403c9"
+  integrity sha512-9a9eADBwq1fA8N450ZbtndfsUQNPfGKcjqGY028j9CYuby6SOYF59V/F275qPp7K0hPGJ7EeCwADwsyzH4hHuQ==
   dependencies:
     "@babel/eslint-parser" "^7.16.3"
     "@emotion/eslint-plugin" "^11.7.0"
@@ -2824,9 +2824,9 @@ concat-map@0.0.1:
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
 confusing-browser-globals@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.10.tgz#30d1e7f3d1b882b25ec4933d1d1adac353d20a59"
-  integrity sha512-gNld/3lySHwuhaVluJUKLePYirM3QNCKzVxqAdhJII9/WXKVX5PURzMVJspS1jTslSqjeuG4KMVTSouit5YPHA==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.11.tgz#ae40e9b57cdd3915408a2805ebd3a5585608dc81"
+  integrity sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==
 
 connect@^3.7.0:
   version "3.7.0"
