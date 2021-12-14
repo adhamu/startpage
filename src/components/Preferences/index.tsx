@@ -1,18 +1,19 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
-import Name from './Name'
 import Bookmarks from './Bookmarks'
+import Name from './Name'
+import QuickSettings from './QuickSettings'
 import SearchEngine from './SearchEngine'
 import Theme from './Theme'
-import QuickSettings from './QuickSettings'
 
-const Preferences = styled.div<{ menuOpen: boolean }>`
+const Style = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
 `
 
-export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
-  <Preferences menuOpen={menuOpen}>
+const Preferences = ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
+  <Style menuOpen={menuOpen}>
     <h1>Preferences</h1>
     <Name />
     <br />
@@ -27,5 +28,7 @@ export default ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
     <br />
     <br />
     <Bookmarks />
-  </Preferences>
+  </Style>
 )
+
+export default Preferences

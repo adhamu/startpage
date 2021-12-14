@@ -1,4 +1,4 @@
-import { Interpolation, Theme } from '@emotion/react'
+import type { Interpolation, Theme } from '@emotion/react'
 
 export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
   '*': {
@@ -56,7 +56,7 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
   },
 })
 
-export default (isDark: boolean | undefined): Theme => {
+export const getTheme = (isDark: boolean | undefined): Theme => {
   if (isDark) {
     return {
       colors: {

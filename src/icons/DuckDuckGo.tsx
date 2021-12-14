@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { SettingsContext } from '../context/SettingsProvider'
 
-export default (): JSX.Element => {
+const DuckDuckGo = (): JSX.Element => {
   const {
     settings: { prefersDarkMode },
   } = React.useContext(SettingsContext)
@@ -15,7 +15,8 @@ export default (): JSX.Element => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 250 74.4">
+      viewBox="0 0 250 74.4"
+    >
       <style type="text/css">
         {`.dst0{fill:#DE5833}.dst1{fill:#FFFFFF;}.dst2{fill-rule:evenodd;clip-rule:evenodd;fill:#FED30A;}.dst3{fill:#2D4F8D;}.dst4{fill:#D5D7D8;}.dst5{fill:#67BD47;}.dst6{fill:#43A347;}.dst7{fill:${
           prefersDarkMode ? '#fff' : '#4C4C4C'
@@ -188,3 +189,5 @@ export default (): JSX.Element => {
     </svg>
   )
 }
+
+export default DuckDuckGo

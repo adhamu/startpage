@@ -1,7 +1,11 @@
 import * as React from 'react'
-import { keys, set, del, getMany } from 'idb-keyval'
 
-import { store } from '../config'
+import { keys, set, del, getMany, createStore } from 'idb-keyval'
+
+import type { BookmarkLink, BookmarkLinks } from '../types'
+import type { Theme } from '@emotion/react'
+
+const store = createStore('startpage', 'user-preferences')
 
 const getSettings = async () => {
   const getKeys = await keys(store)
@@ -17,7 +21,36 @@ export interface SettingsProviderProps {
   children: React.ReactNode
 }
 
-export const SettingsContext = React.createContext(null)
+type SettingsContextType = {
+  settings: {
+    name?: string
+    searchEngine?: string
+    weather?: boolean
+    bookmarks?: BookmarkLinks
+    themeLight?: Theme
+    themeDark?: Theme
+    prefersDarkMode?: boolean
+    showFavicons?: boolean
+  }
+  setSetting: <
+    T extends
+      | string
+      | boolean
+      | BookmarkLink[]
+      | undefined
+      | Record<string, any>
+  >(
+    setting: string,
+    value: T
+  ) => void
+  deleteSetting: (setting: string) => void
+}
+
+export const SettingsContext = React.createContext<SettingsContextType>({
+  settings: {},
+  setSetting: () => null,
+  deleteSetting: () => null,
+})
 
 const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
   const [settings, setSettings] = React.useState({})
@@ -29,7 +62,14 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
     })()
   }, [])
 
-  const setSetting = <T extends Record<string, unknown>>(
+  const setSetting = <
+    T extends
+      | string
+      | boolean
+      | BookmarkLink[]
+      | undefined
+      | Record<string, unknown>
+  >(
     setting: string,
     value: T
   ) => {

@@ -1,11 +1,13 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
+import type { BookmarkLink, BookmarkLinks } from '../types'
+
 import { SettingsContext } from '../context/SettingsProvider'
-import { BookmarkLink, BookmarkLinks } from '../types'
 import Bookmark from './Bookmark'
 
-const Bookmarks = styled.div`
+const Style = styled.div`
   padding: 2em 0;
 `
 
@@ -45,11 +47,11 @@ const getUniqueCategories = (bookmarks: BookmarkLinks) => [
 const mapItems = (bookmarks: BookmarkLinks) =>
   bookmarks
     ?.sort((a: BookmarkLink, b: BookmarkLink) => a.label.localeCompare(b.label))
-    .map((bookmark: BookmarkLink, key: number) => (
-      <Bookmark key={key} bookmark={bookmark} />
+    .map((bookmark: BookmarkLink) => (
+      <Bookmark key={bookmark.url} bookmark={bookmark} />
     ))
 
-export default (): JSX.Element => {
+const Bookmarks = (): JSX.Element | null => {
   const {
     settings: { bookmarks },
   } = React.useContext(SettingsContext)
@@ -62,9 +64,9 @@ export default (): JSX.Element => {
   const withoutCategories = bookmarks?.filter((f: BookmarkLink) => !f.category)
 
   return (
-    <Bookmarks>
-      {categories.map((category, key) => (
-        <Categories key={key}>
+    <Style>
+      {categories.map(category => (
+        <Categories key={category}>
           <CategoryLabel>{category}</CategoryLabel>
           <Links>
             {mapItems(
@@ -81,6 +83,8 @@ export default (): JSX.Element => {
       ) : (
         <Links>{mapItems(withoutCategories)}</Links>
       )}
-    </Bookmarks>
+    </Style>
   )
 }
+
+export default Bookmarks

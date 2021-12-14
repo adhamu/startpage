@@ -1,23 +1,26 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 
-import { timeOfDay } from '../date'
 import { SettingsContext } from '../context/SettingsProvider'
+import { timeOfDay } from '../date'
 
-const Greeting = styled.h1`
+const Style = styled.h1`
   margin-bottom: 1em;
   line-height: 1em;
 `
 
-export default (): JSX.Element => {
+const Greeting = (): JSX.Element => {
   const {
     settings: { name },
   } = React.useContext(SettingsContext)
 
   return (
-    <Greeting>
+    <Style>
       Good {timeOfDay()}
       {name && `, ${name}`}
-    </Greeting>
+    </Style>
   )
 }
+
+export default Greeting

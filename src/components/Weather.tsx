@@ -1,10 +1,11 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 import axios from 'axios'
 
 import { SettingsContext } from '../context/SettingsProvider'
 
-const Weather = styled.div`
+const Style = styled.div`
   margin-bottom: 1em;
   line-height: 1em;
   float: right;
@@ -14,12 +15,21 @@ const Temp = styled.span`
   color: ${props => props.theme.colors.highlight};
 `
 
-export default (): JSX.Element => {
+const Weather = (): JSX.Element | null => {
   const {
     settings: { weather = false },
   } = React.useContext(SettingsContext)
-  const [location, setLocation] = React.useState(null)
-  const [conditions, setConditions] = React.useState(null)
+  const [location, setLocation] = React.useState({
+    longitude: 0,
+    latitude: 0,
+  })
+  const [conditions, setConditions] = React.useState({
+    main: null,
+    description: null,
+    temperature: 0,
+    location: null,
+    icon: '',
+  })
 
   React.useEffect(() => {
     if (weather) {
@@ -58,9 +68,11 @@ export default (): JSX.Element => {
   }
 
   return (
-    <Weather>
+    <Style>
       {conditions.description}. Currently{' '}
       <Temp>{conditions.temperature}&deg;</Temp> in {conditions.location}
-    </Weather>
+    </Style>
   )
 }
+
+export default Weather

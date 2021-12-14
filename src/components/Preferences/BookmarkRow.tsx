@@ -1,13 +1,15 @@
 import * as React from 'react'
+
 import styled from '@emotion/styled'
 import axios from 'axios'
 
-import TextInput from './TextInput'
-import Button from './Button'
-import { BookmarkLink } from '../../types'
-import { SettingsContext } from '../../context/SettingsProvider'
+import type { BookmarkLink } from '../../types'
 
-const BookmarkRow = styled.div`
+import { SettingsContext } from '../../context/SettingsProvider'
+import Button from './Button'
+import TextInput from './TextInput'
+
+const Style = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr 100px;
@@ -20,7 +22,7 @@ type Props = {
   bookmark?: BookmarkLink
 }
 
-export default ({ bookmark }: Props): JSX.Element => {
+const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
   const [label, setLabel] = React.useState(bookmark?.label ?? '')
   const [url, setUrl] = React.useState(bookmark?.url ?? '')
   const [category, setCategory] = React.useState(bookmark?.category ?? '')
@@ -46,16 +48,35 @@ export default ({ bookmark }: Props): JSX.Element => {
     }
   }
 
-  const isExists = () => bookmarks?.find((f: BookmarkLink) => f.url === url)
+  const isExists = () =>
+    Boolean(bookmarks?.findIndex((f: BookmarkLink) => f.url === url))
 
   const validateLabel = () => !!label
 
   const validateUrl = () => {
     try {
-      new URL(url)
-      return true
+      return Boolean(new URL(url))
     } catch {
       return false
+    }
+  }
+
+  const getFavicon = async (uri: string): Promise<string | null> => {
+    try {
+      const {
+        data: { icons },
+      } = await axios.get(
+        `https://favicongrabber.com/api/grab/${new URL(uri).hostname}`,
+        { headers: { 'User-Agent': 'Mozilla/5.0' } }
+      )
+
+      return (
+        icons.find((f: { sizes: string }) => f.sizes === '32x32')?.src ||
+        icons.find((f: { type: string }) => f.type === 'image/x-icon')?.src ||
+        icons[0].src
+      )
+    } catch {
+      return null
     }
   }
 
@@ -76,38 +97,20 @@ export default ({ bookmark }: Props): JSX.Element => {
     }
   }
 
-  const getFavicon = async (url: string): Promise<string> => {
-    try {
-      const {
-        data: { icons },
-      } = await axios.get(
-        `https://favicongrabber.com/api/grab/${new URL(url).hostname}`,
-        { headers: { 'User-Agent': 'Mozilla/5.0' } }
-      )
-
-      return (
-        icons.find((f: { sizes: string }) => f.sizes === '32x32')?.src ||
-        icons.find((f: { type: string }) => f.type === 'image/x-icon')?.src ||
-        icons[0].src
-      )
-    } catch {
-      return null
-    }
-  }
-
   const updateBookmark = () => {
-    const b = bookmarks
-    const i = bookmarks.findIndex((c: BookmarkLink) => c.id === bookmark.id)
+    const b = bookmarks || []
+    const i =
+      bookmarks?.findIndex((c: BookmarkLink) => c.id === bookmark?.id) || 0
     b[i] = { ...b[i], label, url, category }
 
-    setSetting('bookmarks', b)
+    setSetting('bookmarks', !!b)
     setMode('remove')
   }
 
   const removeBookmark = () => {
     setSetting(
       'bookmarks',
-      bookmarks?.filter((f: BookmarkLink) => f.id !== bookmark.id)
+      bookmarks?.filter((f: BookmarkLink) => f.id !== bookmark?.id)
     )
     setMode('remove')
   }
@@ -121,7 +124,7 @@ export default ({ bookmark }: Props): JSX.Element => {
         case 'remove':
           removeBookmark()
           break
-        case 'add':
+        default:
           addBookmark()
           break
       }
@@ -133,7 +136,7 @@ export default ({ bookmark }: Props): JSX.Element => {
   }, [url, label, category])
 
   return (
-    <BookmarkRow>
+    <Style>
       <TextInput
         placeholder="Enter a label for this bookmark"
         value={label}
@@ -156,7 +159,8 @@ export default ({ bookmark }: Props): JSX.Element => {
         <Button
           disabled={!validateLabel() || !validateUrl()}
           className="warning"
-          onClick={updateBookmark}>
+          onClick={updateBookmark}
+        >
           Update
         </Button>
       )}
@@ -169,10 +173,13 @@ export default ({ bookmark }: Props): JSX.Element => {
         <Button
           onClick={addBookmark}
           className="success"
-          disabled={isExists() || !validateLabel() || !validateUrl()}>
+          disabled={isExists() || !validateLabel() || !validateUrl()}
+        >
           Add
         </Button>
       )}
-    </BookmarkRow>
+    </Style>
   )
 }
+
+export default BookmarkRow

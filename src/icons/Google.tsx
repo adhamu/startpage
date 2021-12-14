@@ -1,12 +1,13 @@
 import * as React from 'react'
 
-export default (): JSX.Element => (
+const Google = (): JSX.Element => (
   <svg
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 596 194.5"
     width="2500"
-    height="816">
+    height="816"
+  >
     <style>
       {
         '.st0{fill:#3780ff}.st1{fill:#38b137}.st2{fill:#fa3913}.st3{fill:#fcbd06}'
@@ -38,3 +39,5 @@ export default (): JSX.Element => (
     />
   </svg>
 )
+
+export default Google
