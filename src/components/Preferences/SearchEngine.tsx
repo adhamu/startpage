@@ -6,21 +6,21 @@ import { searchEngines } from '../../config'
 import { SettingsContext } from '../../context/SettingsProvider'
 
 const Product = styled.button<{ isActive: boolean }>`
-  background: 0;
+  padding: 20px 30px 16px;
   border: 0;
-  cursor: pointer;
 
   border: 2px solid ${props => props.theme.colors.border};
-  padding: 20px 30px 16px;
   margin-right: 1em;
   margin-bottom: 1em;
+  background: 0;
+  cursor: pointer;
 
   ${props =>
     props.isActive ? `border-color: ${props.theme.colors.highlight};` : ''}
 
   svg {
-    height: 40px;
     width: auto;
+    height: 40px;
   }
 `
 

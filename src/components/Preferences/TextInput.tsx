@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 const Style = styled.input`
   padding: 4px 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
 `
 
 type Props = {

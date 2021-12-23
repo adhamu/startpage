@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Style = styled.h1`
   position: absolute;
-  bottom: 0;
   right: 1em;
+  bottom: 0;
   color: ${props => props.theme.colors.highlight};
 
   svg {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `
 

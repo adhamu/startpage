@@ -21,18 +21,18 @@ const Categories = styled.div`
 `
 
 const CategoryLabel = styled.div`
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 13px;
-  color: ${props => props.theme.colors.highlight};
-  text-overflow: ellipsis;
   overflow: hidden;
+  color: ${props => props.theme.colors.highlight};
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
 `
 
 const Links = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 `
 
 const getUniqueCategories = (bookmarks: BookmarkLinks) => [

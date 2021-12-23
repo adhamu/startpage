@@ -9,10 +9,10 @@ import type { BookmarkLink } from '../types'
 import { SettingsContext } from '../context/SettingsProvider'
 
 const Style = styled.a`
-  text-align: left;
   color: ${props => props.theme.colors.body};
-  text-decoration: none;
   font-weight: 700;
+  text-align: left;
+  text-decoration: none;
 
   &:hover {
     color: ${props => props.theme.colors.highlight};
@@ -20,24 +20,24 @@ const Style = styled.a`
 `
 
 const Icon = styled.img`
-  vertical-align: middle;
-  line-height: 16px;
   display: inline-block;
   width: 16px;
   height: 16px;
   margin-right: 0.5em;
+  line-height: 1.6;
+  vertical-align: middle;
 `
 
 const PlaceholderContainer = styled.div`
   display: inline-block;
-  margin-right: 0.5em;
-  line-height: 16px;
   width: 16px;
   height: 16px;
+  margin-right: 0.5em;
   color: ${props => props.theme.colors.body};
+  line-height: 1.6;
 
   svg {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `
 

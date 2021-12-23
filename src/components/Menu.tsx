@@ -8,9 +8,9 @@ const Style = styled.button<{ menuOpen: boolean }>`
   position: absolute;
   top: 2em;
   right: 2em;
-  color: ${props => props.theme.colors.highlight};
-  background: transparent;
   border: none;
+  background: transparent;
+  color: ${props => props.theme.colors.highlight};
   cursor: pointer;
   transition: 0.15s;
 

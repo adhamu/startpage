@@ -3,15 +3,15 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 const Style = styled.label<{ checked: boolean }>`
+  position: relative;
   display: inline-block;
-  font-size: 16px;
   width: 2.8em;
   height: 1.25em;
-  border-radius: 1em;
-  position: relative;
   padding: 2px;
-  cursor: pointer;
   background: ${props => (props.checked ? '#55efc4' : props.theme.colors.body)};
+  border-radius: 1em;
+  cursor: pointer;
+  font-size: 1rem;
 
   input {
     position: absolute;
@@ -25,17 +25,17 @@ const Style = styled.label<{ checked: boolean }>`
   }
 
   div {
+    position: relative;
+    z-index: 1;
     top: 1px;
     left: 2px;
-    height: 1.1em;
     width: 1.1em;
-    border-radius: 1em;
+    height: 1.1em;
     background: ${props => props.theme.colors.background};
+    border-radius: 1em;
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
     transition: all 300ms;
-    z-index: 1;
-    position: relative;
   }
 `
 

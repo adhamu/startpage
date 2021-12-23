@@ -12,10 +12,10 @@ import TextInput from './TextInput'
 const Style = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr 100px;
+  justify-content: space-between;
   margin-bottom: 0.5em;
   grid-gap: 0.5em;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr 100px;
 `
 
 type Props = {
@@ -48,8 +48,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
     }
   }
 
-  const isExists = () =>
-    Boolean(bookmarks?.findIndex((f: BookmarkLink) => f.url === url))
+  const isExists = () => !!bookmarks?.find((f: BookmarkLink) => f.url === url)
 
   const validateLabel = () => !!label
 

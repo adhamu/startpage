@@ -16,8 +16,8 @@ const Preferences = React.lazy(() => import('./components/Preferences'))
 
 const Layout = styled.div`
   max-width: 960px;
-  margin: 8em auto;
   padding: 0 1em;
+  margin: 8em auto;
 `
 
 const Main = styled.div<{ menuOpen: boolean }>`

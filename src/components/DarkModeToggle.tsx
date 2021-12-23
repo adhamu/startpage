@@ -8,15 +8,15 @@ import Switch from './Switch'
 
 const Style = styled.div`
   position: absolute;
-  left: 1em;
   top: 1em;
+  left: 1em;
 
   svg {
     position: absolute;
     z-index: 0;
     top: 5px;
-    font-size: 14px;
     color: ${props => props.theme.colors.background};
+    font-size: 0.875rem;
 
     &.dark {
       left: 3px;

@@ -7,8 +7,8 @@ import { SettingsContext } from '../context/SettingsProvider'
 
 const Style = styled.div`
   margin-bottom: 1em;
-  line-height: 1em;
   float: right;
+  line-height: 1em;
 `
 
 const Temp = styled.span`

@@ -7,17 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SettingsContext } from '../../context/SettingsProvider'
 
 const Style = styled.button<{ isDisabled?: boolean }>`
-  cursor: pointer;
-  background: none;
-  border: none;
-  text-transform: uppercase;
-  font-weight: 700;
   width: 100px;
+  padding: 10px 10px;
+  border: none;
+  background: none;
   background: ${props => props.theme.colors.highlight};
   color: ${props => props.theme.colors.background};
-  padding: 10px 10px;
-  font-size: 12px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-align: center;
+  text-transform: uppercase;
 
   &.warning {
     background: #fdcb6e;
@@ -35,10 +35,10 @@ const Style = styled.button<{ isDisabled?: boolean }>`
   }
 
   &[disabled] {
-    cursor: not-allowed;
-    background: ${props => props.theme.colors.background};
     border: 1px solid ${props => props.theme.colors.border};
+    background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.border};
+    cursor: not-allowed;
   }
 
   &:hover {

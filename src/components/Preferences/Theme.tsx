@@ -9,18 +9,18 @@ import Button from './Button'
 
 const ColorOptions = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 150px);
-  grid-gap: 0.2em;
   justify-content: space-between;
+  grid-gap: 0.2em;
+  grid-template-columns: repeat(auto-fill, 150px);
 
   > div {
     display: flex;
     justify-content: space-between;
 
     label {
-      font-weight: 400;
       width: 100%;
       margin-left: 1em;
+      font-weight: 400;
     }
   }
 `
@@ -32,8 +32,8 @@ const ResetTheme = styled(Button)`
 const ColorInput = styled.input`
   width: 60px;
   height: 30px;
-  border: 1px solid ${props => props.theme.colors.border};
   padding: 0;
+  border: 1px solid ${props => props.theme.colors.border};
 `
 
 type AvailableOption =
