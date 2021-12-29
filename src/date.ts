@@ -2,10 +2,10 @@ import { format } from 'date-fns'
 
 const today = new Date()
 
-export const getDate = (): string => format(today, 'iii do MMM YYY')
+export const getDate = (): string => format(today, 'iii do MMM yyy')
 
 export const timeOfDay = (): string => {
-  const hour = new Date().getHours()
+  const hour = today.getHours()
 
   if (hour >= 5 && hour < 12) {
     return 'morning'
