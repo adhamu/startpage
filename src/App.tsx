@@ -15,6 +15,7 @@ const Weather = React.lazy(() => import('./components/Weather'))
 const Preferences = React.lazy(() => import('./components/Preferences'))
 
 const Layout = styled.div`
+  position: relative;
   max-width: 960px;
   padding: 0 1em;
   margin: 8em auto;
