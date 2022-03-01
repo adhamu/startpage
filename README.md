@@ -6,10 +6,14 @@ A super simple and customisable landing page.
 
 ![startpage](screens/home.png)
 
+## Assumptions
+
+Hosted on [Netlify](https://netlify.com)
+
 ## Features
 
 - Personalise with your name
-- Search with [Google](https://www.google.co.uk), [DuckDuckGo](https://duckduckgo.com) or [Startpage](https://www.startpage.com)
+- Search with [Google](https://www.google.co.uk), [DuckDuckGo](https://duckduckgo.com) or [Startpage](https://www.startpage.com) including [search suggestions](#search-suggestions)
 - Dark Mode
 - Customisable theme
 - Bookmarks
@@ -21,6 +25,12 @@ A super simple and customisable landing page.
 - IndexedDB
 - React
 - Emotion Styled Components
+
+## Search Suggestions
+
+These necessitate the use of server side functions and are therefore performed using [Netlify Functions](https://www.netlify.com/products/functions/).
+
+See `src/functions/searchSuggestions.ts`.
 
 ## Tooling
 
@@ -46,10 +56,10 @@ $ yarn
 ## Run it locally
 
 ```sh
-$ yarn dev
+$ yarn start
 ```
 
-Open up [http://localhost:1234](http://localhost:1234)
+Open up [http://localhost:8888](http://localhost:8888)
 
 ## Building for production
 

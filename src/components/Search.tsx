@@ -3,53 +3,58 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import axios from 'axios'
 
-import { searchEngines } from '../config'
+import type { SearchEngine } from '../types'
+
+import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
 import { useListKeyboardNav } from '../hooks/useListKeyboardNav'
+
+const Form = styled.form`
+  position: relative;
+`
 
 const Suggestions = styled.ul`
   position: absolute;
   top: calc(100% - 1px);
-  width: calc(100% - 2px);
+  width: calc(100% - 4px);
   max-height: 500px;
-  border-right: 1px solid #00ffbf;
-  border-bottom: 1px solid #00ffbf;
-  border-left: 1px solid #00ffbf;
-  background: #2d3f5f;
+  border-right: 2px solid ${props => props.theme.colors.border};
+  border-bottom: 2px solid ${props => props.theme.colors.border};
+  border-left: 2px solid ${props => props.theme.colors.border};
+  background: ${props => props.theme.colors.background};
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  color: #fff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   list-style-type: none;
   overflow-y: auto;
-
-  li:nth-of-type(odd) a {
-    background: #263550;
-  }
 
   li a {
     display: block;
     padding: 10px;
-    color: #fff;
+    color: ${props => props.theme.colors.body};
     text-decoration: none;
 
     &:focus {
       border: none;
-      background: #00ffbf;
+      background: ${props => props.theme.colors.highlight};
       box-shadow: none;
-      color: #2d3f5f;
+      color: ${props => props.theme.colors.background};
+      font-weight: bold;
       outline: none;
     }
   }
 `
 
-const fetchSuggestions = async (q: string): Promise<string[]> => {
+const fetchSuggestions = async (
+  q: string,
+  engine?: SearchEngine
+): Promise<string[]> => {
   if (q) {
     const { data } = await axios.get(
-      `https://cors-anywhere.herokuapp.com/suggestqueries.google.com/complete/search?client=firefox&q=${q}`
+      `/.netlify/functions/searchSuggestions?q=${q}&engine=${engine?.label}`
     )
 
-    return data[1]
+    return data
   }
 
   return []
@@ -57,7 +62,7 @@ const fetchSuggestions = async (q: string): Promise<string[]> => {
 
 const Search = (): JSX.Element => {
   const {
-    settings: { searchEngine = 'Google' },
+    settings: { searchEngine = Engine.GOOGLE },
   } = React.useContext(SettingsContext)
 
   const [searchParam, setSearchParam] = React.useState('')
@@ -71,21 +76,22 @@ const Search = (): JSX.Element => {
     onResultsKeyDown,
   } = useListKeyboardNav()
 
+  const engine = searchEngines.find(f => f.label === searchEngine)
+
   React.useEffect(() => {
     if (searchParam) {
       ;(async () => {
-        const results = await fetchSuggestions(searchParam)
+        const results = await fetchSuggestions(searchParam, engine)
 
         setSuggestions(results)
       })()
+    } else {
+      setSuggestions([])
     }
   }, [searchParam])
 
   return (
-    <form
-      action={searchEngines.find(f => f.label === searchEngine)?.url}
-      method="get"
-    >
+    <Form action={engine?.url} method="get" spellCheck="false">
       <input
         ref={inputSearchRef}
         type="search"
@@ -95,20 +101,20 @@ const Search = (): JSX.Element => {
         onChange={e => setSearchParam(e.target.value)}
         onKeyDown={selectInitialResult}
       />
-      <Suggestions ref={searchSuggestionsRef}>
-        {suggestions.map(suggestion => (
-          <li
-            key={suggestion}
-            onMouseOver={onResultsHover}
-            onKeyDown={onResultsKeyDown}
-          >
-            <a href={`https://www.google.com/search?q=${suggestion}`}>
-              {suggestion}
-            </a>
-          </li>
-        ))}
-      </Suggestions>
-    </form>
+      {suggestions.length > 0 && (
+        <Suggestions ref={searchSuggestionsRef}>
+          {suggestions.map(suggestion => (
+            <li
+              key={suggestion}
+              onMouseOver={onResultsHover}
+              onKeyDown={onResultsKeyDown}
+            >
+              <a href={`${engine?.url}?q=${suggestion}`}>{suggestion}</a>
+            </li>
+          ))}
+        </Suggestions>
+      )}
+    </Form>
   )
 }
 

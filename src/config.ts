@@ -1,23 +1,26 @@
-import { createElement } from 'react'
-
 import type { SearchEngine } from './types'
 
-import { DuckDuckGo, Google, Startpage } from './icons'
+export enum Engine {
+  GOOGLE = 'Google',
+  DUCKDUCKGO = 'DuckDuckGo',
+  STARTPAGE = 'Startpage',
+}
 
 export const searchEngines: SearchEngine[] = [
   {
-    label: 'Google',
+    label: Engine.GOOGLE,
     url: 'https://www.google.co.uk/search',
-    icon: createElement(Google),
+    suggestions:
+      'https://suggestqueries.google.com/complete/search?client=firefox&q=',
   },
   {
-    label: 'DuckDuckGo',
+    label: Engine.DUCKDUCKGO,
     url: 'https://duckduckgo.com',
-    icon: createElement(DuckDuckGo),
+    suggestions: 'https://duckduckgo.com/ac/?type=list&q=',
   },
   {
-    label: 'Startpage',
+    label: Engine.STARTPAGE,
     url: 'https://www.startpage.com/sp/search',
-    icon: createElement(Startpage),
+    suggestions: 'https://www.startpage.com/suggestions?q=',
   },
 ]

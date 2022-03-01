@@ -1,7 +1,7 @@
 export type SearchEngine = {
   label: string
   url: string
-  icon?: JSX.Element
+  suggestions: string
 }
 
 export type BookmarkLink = {

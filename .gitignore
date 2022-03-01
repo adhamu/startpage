@@ -4,3 +4,4 @@ dist
 .env
 *cache*
 yarn-error*
+.netlify

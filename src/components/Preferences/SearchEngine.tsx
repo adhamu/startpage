@@ -2,8 +2,18 @@ import * as React from 'react'
 
 import styled from '@emotion/styled'
 
-import { searchEngines } from '../../config'
+import { Engine, searchEngines } from '../../config'
 import { SettingsContext } from '../../context/SettingsProvider'
+import { DuckDuckGo, Google, Startpage } from '../../icons'
+
+const searchIconMap: Record<
+  string,
+  React.FunctionComponentElement<Record<string, never>>
+> = {
+  [Engine.GOOGLE]: React.createElement(Google),
+  [Engine.DUCKDUCKGO]: React.createElement(DuckDuckGo),
+  [Engine.STARTPAGE]: React.createElement(Startpage),
+}
 
 const Product = styled.button<{ isActive: boolean }>`
   padding: 20px 30px 16px;
@@ -39,7 +49,7 @@ const SearchEngine = (): JSX.Element => {
           isActive={searchEngine === engine.label}
           onClick={() => setSetting('searchEngine', engine.label)}
         >
-          {engine.icon}
+          {searchIconMap[engine.label]}
         </Product>
       ))}
     </>

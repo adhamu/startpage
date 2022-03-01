@@ -26,7 +26,7 @@ export const useListKeyboardNav = () => {
   }
 
   const hasFocus = () =>
-    searchSuggestionsRef.current?.querySelector('li a:has(:focus)')
+    searchSuggestionsRef.current?.querySelector('li a:focus')
 
   const selectInitialResult = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
