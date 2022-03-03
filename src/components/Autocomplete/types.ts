@@ -1,3 +1,8 @@
+export type Suggestion = {
+  label: string
+  url: string
+}
+
 export type ColourTheme = {
   borderWidth?: number
   borderRadius?: number
@@ -6,10 +11,11 @@ export type ColourTheme = {
   colour: string
   activeBackgroundColour: string
   activeColour: string
+  zebra?: boolean
 }
 
 export type Props = {
-  suggestions: React.ReactNode[]
+  suggestions: Suggestion[]
   colourTheme: ColourTheme
   name?: string
   placeholder?: string

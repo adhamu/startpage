@@ -57,11 +57,10 @@ const Search = (): JSX.Element => {
           activeBackgroundColour: theme.colors.highlight,
           activeColour: theme.colors.background,
         }}
-        suggestions={suggestions.map(suggestion => (
-          <a key={suggestion} href={`${engine?.url}?q=${suggestion}`}>
-            {suggestion}
-          </a>
-        ))}
+        suggestions={suggestions.map(suggestion => ({
+          label: suggestion,
+          url: `${engine?.url}?q=${suggestion}`,
+        }))}
         placeholder={`Search ${searchEngine}...`}
         autoFocus={true}
         onChange={e => setSearchParam(e.target.value)}

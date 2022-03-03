@@ -36,11 +36,11 @@ const Autocomplete = ({
         <Suggestions ref={searchSuggestionsRef} colourTheme={colourTheme}>
           {suggestions.map(suggestion => (
             <li
-              key={suggestion?.toString()}
+              key={suggestion.label}
               onMouseOver={onResultsHover}
               onKeyDown={onResultsKeyDown}
             >
-              {suggestion}
+              <a href={suggestion.url}>{suggestion.label}</a>
             </li>
           ))}
         </Suggestions>
