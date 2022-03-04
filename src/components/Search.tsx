@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import SearchSuggestions from '@adhamu/react-search-suggestions'
 import styled from '@emotion/styled'
 import axios from 'axios'
 
@@ -7,9 +8,8 @@ import type { SearchEngine } from '../types'
 
 import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
-import Autocomplete from './Autocomplete'
 
-const StyledAutocomplete = styled(Autocomplete)`
+const StyledSearchSuggestions = styled(SearchSuggestions)`
   ul {
     border: 2px solid ${props => props.theme.colors.border};
     border-top: 0;
@@ -73,7 +73,7 @@ const Search = (): JSX.Element => {
 
   return (
     <form action={engine?.url} method="get" spellCheck="false">
-      <StyledAutocomplete
+      <StyledSearchSuggestions
         suggestions={suggestions.map(suggestion => ({
           label: suggestion,
           url: `${engine?.url}?q=${suggestion}`,
