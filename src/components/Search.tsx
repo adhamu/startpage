@@ -1,13 +1,38 @@
 import * as React from 'react'
 
+import styled from '@emotion/styled'
 import axios from 'axios'
 
 import type { SearchEngine } from '../types'
 
 import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
-import { useTheme } from '../hooks/useTheme'
 import Autocomplete from './Autocomplete'
+
+const StyledAutocomplete = styled(Autocomplete)`
+  ul {
+    border: 2px solid ${props => props.theme.colors.border};
+    border-top: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    font-size: 1rem;
+
+    li a {
+      padding: 10px;
+      background: ${props => props.theme.colors.background};
+      color: ${props => props.theme.colors.body};
+
+      &:focus {
+        border: none;
+        background: ${props => props.theme.colors.highlight};
+        box-shadow: none;
+        color: ${props => props.theme.colors.background};
+        font-weight: bold;
+        outline: none;
+      }
+    }
+  }
+`
 
 const fetchSuggestions = async (
   q: string,
@@ -31,7 +56,6 @@ const Search = (): JSX.Element => {
 
   const [searchParam, setSearchParam] = React.useState('')
   const [suggestions, setSuggestions] = React.useState<string[]>([])
-  const theme = useTheme()
 
   const engine = searchEngines.find(f => f.label === searchEngine)
 
@@ -49,14 +73,7 @@ const Search = (): JSX.Element => {
 
   return (
     <form action={engine?.url} method="get" spellCheck="false">
-      <Autocomplete
-        colourTheme={{
-          borderColour: theme.colors.border,
-          backgroundColour: theme.colors.background,
-          colour: theme.colors.body,
-          activeBackgroundColour: theme.colors.highlight,
-          activeColour: theme.colors.background,
-        }}
+      <StyledAutocomplete
         suggestions={suggestions.map(suggestion => ({
           label: suggestion,
           url: `${engine?.url}?q=${suggestion}`,
