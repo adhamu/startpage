@@ -39,9 +39,12 @@ const fetchSuggestions = async (
   engine?: SearchEngine
 ): Promise<string[]> => {
   if (q) {
+    const abortController = new AbortController()
     const { data } = await axios.get(
-      `/.netlify/functions/searchSuggestions?q=${q}&engine=${engine?.label}`
+      `/.netlify/functions/searchSuggestions?q=${q}&engine=${engine?.label}`,
+      { signal: abortController.signal }
     )
+    abortController.abort()
 
     return data
   }
@@ -62,12 +65,9 @@ const Search = (): JSX.Element => {
   React.useEffect(() => {
     if (searchParam) {
       ;(async () => {
-        const abortController = new AbortController()
         const results = await fetchSuggestions(searchParam, engine)
 
         setSuggestions(results)
-
-        return abortController.abort()
       })()
     } else {
       setSuggestions([])
