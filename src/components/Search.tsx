@@ -13,6 +13,7 @@ const StyledSearchSuggestions = styled(SearchSuggestions)`
   ul {
     border: 2px solid ${props => props.theme.colors.border};
     border-top: 0;
+    margin-top: -2px;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     font-size: 1rem;
@@ -23,12 +24,8 @@ const StyledSearchSuggestions = styled(SearchSuggestions)`
       color: ${props => props.theme.colors.body};
 
       &:focus {
-        border: none;
         background: ${props => props.theme.colors.highlight};
-        box-shadow: none;
         color: ${props => props.theme.colors.background};
-        font-weight: bold;
-        outline: none;
       }
     }
   }
