@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adhamu/react-search-suggestions@^0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@adhamu/react-search-suggestions/-/react-search-suggestions-0.0.17.tgz#61914280ade9ce46a4d60dd40271e18f73d14e99"
-  integrity sha512-RfRtGWtYijkbVAkFxI9kyyGno4O0OfmuC4m58guLGg2/yjOmoKsGd9RQC7614nFsmShTGs4ziTpJroV27RAxBQ==
+"@adhamu/react-search-suggestions@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@adhamu/react-search-suggestions/-/react-search-suggestions-1.0.0.tgz#7983433235b9a6aa04accd7697c8f9ba8e8bf257"
+  integrity sha512-94oH5bWNqjXG8DAgBpRI9ivngOfFCgAdip/8cXADISOkXmIP3n09GNspsqaC+mHAqjqlXuN4aaNMHLv9GI3c6g==
   dependencies:
     "@emotion/react" "^11.8.1"
     "@emotion/styled" "^11.8.1"

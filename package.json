@@ -11,7 +11,7 @@
     "lint:styles": "stylelint 'src/**/*.tsx'"
   },
   "dependencies": {
-    "@adhamu/react-search-suggestions": "^0.0.17",
+    "@adhamu/react-search-suggestions": "^1.0.0",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
