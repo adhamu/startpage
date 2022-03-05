@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import SearchSuggestions from '@adhamu/react-search-suggestions'
+import { SearchSuggestions } from '@adhamu/react-search-suggestions'
 import styled from '@emotion/styled'
 import axios from 'axios'
 
@@ -62,9 +62,12 @@ const Search = (): JSX.Element => {
   React.useEffect(() => {
     if (searchParam) {
       ;(async () => {
+        const abortController = new AbortController()
         const results = await fetchSuggestions(searchParam, engine)
 
         setSuggestions(results)
+
+        return abortController.abort()
       })()
     } else {
       setSuggestions([])
