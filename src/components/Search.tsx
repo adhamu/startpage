@@ -74,10 +74,11 @@ const Search = (): JSX.Element => {
   return (
     <form action={engine?.url} method="get" spellCheck="false">
       <StyledSearchSuggestions
-        suggestions={suggestions.map(suggestion => ({
-          label: suggestion,
-          url: `${engine?.url}?q=${suggestion}`,
-        }))}
+        suggestions={suggestions.map(suggestion => (
+          <a key={suggestion} href={`${engine?.url}?q=${suggestion}`}>
+            {suggestion}
+          </a>
+        ))}
         placeholder={`Search ${searchEngine}...`}
         autoFocus={true}
         onChange={e => setSearchParam(e.target.value)}
