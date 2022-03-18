@@ -9,7 +9,7 @@ import type { SearchEngine } from '../types'
 import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
 
-const StyledSearchSuggestions = styled(InputSuggestions)`
+const StyledInputSuggestions = styled(InputSuggestions)`
   ul {
     border: 2px solid ${props => props.theme.colors.border};
     border-top: 0;
@@ -83,7 +83,7 @@ const Search = (): JSX.Element => {
 
   return (
     <form action={engine?.url} method="get" spellCheck="false">
-      <StyledSearchSuggestions
+      <StyledInputSuggestions
         suggestions={suggestions.map(suggestion => (
           <a key={suggestion} href={`${engine?.url}?q=${suggestion}`}>
             {suggestion}
