@@ -2,14 +2,14 @@ import * as React from 'react'
 
 import styled from '@emotion/styled'
 import axios from 'axios'
-import { SearchSuggestions } from 'react-search-suggestions'
+import { InputSuggestions } from 'react-input-suggestions'
 
 import type { SearchEngine } from '../types'
 
 import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
 
-const StyledSearchSuggestions = styled(SearchSuggestions)`
+const StyledSearchSuggestions = styled(InputSuggestions)`
   ul {
     border: 2px solid ${props => props.theme.colors.border};
     border-top: 0;
@@ -23,9 +23,19 @@ const StyledSearchSuggestions = styled(SearchSuggestions)`
       background: ${props => props.theme.colors.background};
       color: ${props => props.theme.colors.body};
 
+      mark {
+        background: transparent;
+        color: ${props => props.theme.colors.highlight};
+        font-weight: bold;
+      }
+
       &:focus {
         background: ${props => props.theme.colors.highlight};
         color: ${props => props.theme.colors.background};
+
+        mark {
+          color: ${props => props.theme.colors.background};
+        }
       }
     }
   }
@@ -80,8 +90,8 @@ const Search = (): JSX.Element => {
           </a>
         ))}
         placeholder={`Search ${searchEngine}...`}
-        autoFocus
         onChange={e => setSearchParam(e.target.value)}
+        autoFocus
         highlightKeywords
       />
     </form>

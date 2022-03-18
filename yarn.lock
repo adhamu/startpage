@@ -9662,6 +9662,17 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-input-suggestions@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-input-suggestions/-/react-input-suggestions-1.0.1.tgz#a9626f4bfcbbf9f7399e7fc78bbc2d31f5cf7984"
+  integrity sha512-0ahhHtPSLU+0k2SSL08uSpXUzaUVznWBt2OcJVM6xx4Pe0IxRRuSgt34Ee87K75/yR0ejWsdvwaejga8qOYEmg==
+  dependencies:
+    "@emotion/react" "^11.8.1"
+    "@emotion/styled" "^11.8.1"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-string-replace "^1.0.0"
+
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -9676,17 +9687,6 @@ react-refresh@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
   integrity sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
-
-react-search-suggestions@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-search-suggestions/-/react-search-suggestions-1.0.0.tgz#30dc8294d6f3dd9a59a5faa5776a05dbaa1c8711"
-  integrity sha512-4JhSdZw5jNp91FZEwMFpSHGIve2/DO7rKuX07VtW5UwRpzij3sZn08Wl0nrQlIbUCY1KkenxhSoJOKfysIxxVQ==
-  dependencies:
-    "@emotion/react" "^11.8.1"
-    "@emotion/styled" "^11.8.1"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-string-replace "^1.0.0"
 
 react-string-replace@^1.0.0:
   version "1.0.0"
