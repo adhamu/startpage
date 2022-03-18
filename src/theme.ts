@@ -54,6 +54,11 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
     color: theme.colors.body,
     textDecoration: 'none',
   },
+  mark: {
+    color: theme.colors.body,
+    background: 'transparent',
+    fontWeight: 'bold',
+  },
 })
 
 export const getTheme = (isDark: boolean | undefined): Theme => {

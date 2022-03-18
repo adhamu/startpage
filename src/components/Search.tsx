@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import { SearchSuggestions } from '@adhamu/react-search-suggestions'
 import styled from '@emotion/styled'
 import axios from 'axios'
+import { SearchSuggestions } from 'react-search-suggestions'
 
 import type { SearchEngine } from '../types'
 
@@ -80,8 +80,9 @@ const Search = (): JSX.Element => {
           </a>
         ))}
         placeholder={`Search ${searchEngine}...`}
-        autoFocus={true}
+        autoFocus
         onChange={e => setSearchParam(e.target.value)}
+        highlightKeywords
       />
     </form>
   )

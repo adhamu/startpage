@@ -2,16 +2,6 @@
 # yarn lockfile v1
 
 
-"@adhamu/react-search-suggestions@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@adhamu/react-search-suggestions/-/react-search-suggestions-2.0.1.tgz#7931146896fcfad83a51f9bbdbb019a5dcdc73b7"
-  integrity sha512-Xdkk0UQHw++bE9TpERUUyCgUlQhD+lI09xCWjpEVmzBvne02CUHv9JkYV4a7oiS6a2SAARTlcltoy/w9mckhxw==
-  dependencies:
-    "@emotion/react" "^11.8.1"
-    "@emotion/styled" "^11.8.1"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-
 "@adhamu/zero@^2.0.8":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@adhamu/zero/-/zero-2.1.1.tgz#4d9e5ddb25b56906334f6a9d9415edf52c9638f5"
@@ -9686,6 +9676,22 @@ react-refresh@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
   integrity sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
+
+react-search-suggestions@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-search-suggestions/-/react-search-suggestions-1.0.0.tgz#30dc8294d6f3dd9a59a5faa5776a05dbaa1c8711"
+  integrity sha512-4JhSdZw5jNp91FZEwMFpSHGIve2/DO7rKuX07VtW5UwRpzij3sZn08Wl0nrQlIbUCY1KkenxhSoJOKfysIxxVQ==
+  dependencies:
+    "@emotion/react" "^11.8.1"
+    "@emotion/styled" "^11.8.1"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-string-replace "^1.0.0"
+
+react-string-replace@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-string-replace/-/react-string-replace-1.0.0.tgz#a003f94792147509107af9d376436460234911b1"
+  integrity sha512-+iLsyE4AeSmnfctgswXOf1PmKRgns6wJ4LVb+8ADMU6mDK3jvBE11QzfMQf7CYtPUUiBCDjZ9ZppzXOIYrzCRg==
 
 react@^17.0.2:
   version "17.0.2"
