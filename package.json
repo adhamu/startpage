@@ -21,8 +21,8 @@
     "dotenv": "^16.0.0",
     "idb-keyval": "^6.1.0",
     "react": "^17.0.2",
-    "react-input-suggestions": "^1.0.1",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-input-suggestions": "^1.0.2"
   },
   "devDependencies": {
     "@adhamu/zero": "^2.0.8",

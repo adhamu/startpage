@@ -9662,10 +9662,10 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-input-suggestions@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-input-suggestions/-/react-input-suggestions-1.0.1.tgz#a9626f4bfcbbf9f7399e7fc78bbc2d31f5cf7984"
-  integrity sha512-0ahhHtPSLU+0k2SSL08uSpXUzaUVznWBt2OcJVM6xx4Pe0IxRRuSgt34Ee87K75/yR0ejWsdvwaejga8qOYEmg==
+react-input-suggestions@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-input-suggestions/-/react-input-suggestions-1.0.2.tgz#d674a1b63249cbd32c4390bc0d59b0e69a39d502"
+  integrity sha512-P4I8J/x71UC9IfhWkNxHPppjMOQdUtSuW7JU7g2JBwlerldYah9creP8ZnFZTprZqhGAVkbgUbqySujIdz4m7w==
   dependencies:
     "@emotion/react" "^11.8.1"
     "@emotion/styled" "^11.8.1"
