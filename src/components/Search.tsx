@@ -79,7 +79,7 @@ const Search = (): JSX.Element => {
     } else {
       setSuggestions([])
     }
-  }, [searchParam])
+  }, [engine, searchParam])
 
   return (
     <form action={engine?.url} method="get" spellCheck="false">

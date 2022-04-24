@@ -33,21 +33,6 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
     setSetting,
   } = React.useContext(SettingsContext)
 
-  const determineMode = () => {
-    if (!bookmark) {
-      setMode('add')
-    } else if (
-      bookmark?.label !== label ||
-      bookmark?.url !== url ||
-      (bookmark?.category && bookmark?.category !== category) ||
-      (!bookmark?.category && category !== '')
-    ) {
-      setMode('update')
-    } else {
-      setMode('remove')
-    }
-  }
-
   const isExists = () => !!bookmarks?.find((f: BookmarkLink) => f.url === url)
 
   const validateLabel = () => !!label
@@ -100,7 +85,12 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
     const b = bookmarks || []
     const i =
       bookmarks?.findIndex((c: BookmarkLink) => c.id === bookmark?.id) || 0
-    b[i] = { ...b[i], label, url, category }
+    b[i as number] = {
+      ...b[i as number],
+      label,
+      url,
+      category,
+    }
 
     setSetting('bookmarks', !!b)
     setMode('remove')
@@ -131,8 +121,23 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
   }
 
   React.useEffect(() => {
+    const determineMode = () => {
+      if (!bookmark) {
+        setMode('add')
+      } else if (
+        bookmark?.label !== label ||
+        bookmark?.url !== url ||
+        (bookmark?.category && bookmark?.category !== category) ||
+        (!bookmark?.category && category !== '')
+      ) {
+        setMode('update')
+      } else {
+        setMode('remove')
+      }
+    }
+
     determineMode()
-  }, [url, label, category])
+  }, [url, label, category, bookmark])
 
   return (
     <Style>

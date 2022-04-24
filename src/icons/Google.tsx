@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 const Google = (): JSX.Element => (
   <svg
     id="Layer_1"

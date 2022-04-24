@@ -1,6 +1,6 @@
 {
   "name": "startpage",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "node bin/build-env.js && parcel build ./src/index.html --no-source-maps",
@@ -11,30 +11,30 @@
     "lint:styles": "stylelint 'src/**/*.tsx'"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.1",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^6.0.0",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "axios": "^0.26.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "axios": "^0.26.1",
     "date-fns": "^2.17.0",
     "dotenv": "^16.0.0",
     "idb-keyval": "^6.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-input-suggestions": "^1.0.2"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-input-suggestions": "^2.0.1"
   },
   "devDependencies": {
-    "@adhamu/zero": "^2.0.8",
+    "@adhamu/zero": "^4.1.1",
     "@netlify/functions": "^1.0.0",
     "@stylelint/postcss-css-in-js": "^0.37.2",
-    "@types/node": "^15.3.0",
-    "@types/react": "^17.0.1",
-    "@types/react-dom": "^17.0.0",
-    "netlify-cli": "^9.8.4",
-    "parcel": "^2.0.0-beta.2",
+    "@types/node": "^17.0.25",
+    "@types/react": "^18.0.6",
+    "@types/react-dom": "^18.0.2",
+    "netlify-cli": "^10.0.0",
+    "parcel": "^2.5.0",
     "postcss-syntax": "^0.36.2",
     "process": "^0.11.10",
-    "typescript": "^4.5.4"
+    "typescript": "^4.6.3"
   }
 }

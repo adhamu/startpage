@@ -12,19 +12,18 @@ export const useTheme = (): Theme => {
   } = useContext(SettingsContext)
   const [theme, setTheme] = useState(getTheme(prefersDarkMode))
 
-  const refreshTheme = () => {
-    if (prefersDarkMode) {
-      return themeDark !== undefined
-        ? setTheme(themeDark)
-        : setTheme(getTheme(true))
-    }
-
-    return themeLight !== undefined
-      ? setTheme(themeLight)
-      : setTheme(getTheme(false))
-  }
-
   useEffect(() => {
+    const refreshTheme = () => {
+      if (prefersDarkMode) {
+        return themeDark !== undefined
+          ? setTheme(themeDark)
+          : setTheme(getTheme(true))
+      }
+
+      return themeLight !== undefined
+        ? setTheme(themeLight)
+        : setTheme(getTheme(false))
+    }
     refreshTheme()
   }, [prefersDarkMode, themeLight, themeDark])
 

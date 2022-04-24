@@ -12,7 +12,7 @@ const getSettings = async () => {
   const getValues = await getMany(getKeys, store)
 
   return getKeys.reduce(
-    (acc, curr, i) => ({ ...acc, [curr as string]: getValues[i] }),
+    (acc, curr, i) => ({ ...acc, [curr as string]: getValues[i as number] }),
     {}
   )
 }

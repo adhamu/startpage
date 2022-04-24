@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import styled from '@emotion/styled'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -40,8 +38,8 @@ type Props = {
 const DarkModeToggle = ({ isDarkMode, toggleDarkMode }: Props): JSX.Element => (
   <Style>
     <ToggleArea checked={!!isDarkMode} onChange={toggleDarkMode}>
-      <FontAwesomeIcon className="dark" icon={faMoon} fixedWidth={true} />
-      <FontAwesomeIcon className="light" icon={faSun} fixedWidth={true} />
+      <FontAwesomeIcon className="dark" icon={faMoon} fixedWidth />
+      <FontAwesomeIcon className="light" icon={faSun} fixedWidth />
     </ToggleArea>
   </Style>
 )
