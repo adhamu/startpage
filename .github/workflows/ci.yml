@@ -10,7 +10,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.17'
+          node-version-file: ".nvmrc"
       - name: Install dependencies
         env:
           GITHUB_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
