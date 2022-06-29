@@ -47,10 +47,11 @@ const Style = styled.button<{ isDisabled?: boolean }>`
 `
 
 type Props = {
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent) => void
   disabled?: boolean
   className?: 'warning' | 'danger' | 'success'
   children: string
+  setClick?: boolean
 }
 
 const Button = ({
@@ -58,6 +59,7 @@ const Button = ({
   disabled,
   className,
   children,
+  setClick = true,
 }: Props): JSX.Element => {
   const [clicked, setClicked] = React.useState(false)
   const { settings } = React.useContext(SettingsContext)
@@ -68,10 +70,12 @@ const Button = ({
 
   return (
     <Style
-      onClick={() => {
-        setClicked(true)
+      onClick={e => {
+        if (setClick) {
+          setClicked(true)
+        }
 
-        return onClick ? onClick() : false
+        return onClick ? onClick(e) : false
       }}
       disabled={disabled}
       className={className}

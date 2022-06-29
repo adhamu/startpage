@@ -4,6 +4,7 @@ import { keys, set, del, getMany, createStore } from 'idb-keyval'
 
 import type { BookmarkLink, BookmarkLinks } from '../types'
 import type { Theme } from '@emotion/react'
+import type { UseStore } from 'idb-keyval'
 
 const store = createStore('startpage', 'user-preferences')
 
@@ -21,17 +22,19 @@ export interface SettingsProviderProps {
   children: React.ReactNode
 }
 
-type SettingsContextType = {
-  settings: {
-    name?: string
-    searchEngine?: string
-    weather?: boolean
-    bookmarks?: BookmarkLinks
-    themeLight?: Theme
-    themeDark?: Theme
-    prefersDarkMode?: boolean
-    showFavicons?: boolean
-  }
+export interface Settings {
+  name?: string
+  searchEngine?: string
+  weather?: boolean
+  bookmarks?: BookmarkLinks
+  themeLight?: Theme
+  themeDark?: Theme
+  prefersDarkMode?: boolean
+  showFavicons?: boolean
+}
+
+interface SettingsContextType {
+  settings: Settings
   setSetting: <
     T extends
       | string
@@ -44,12 +47,16 @@ type SettingsContextType = {
     value: T
   ) => void
   deleteSetting: (setting: string) => void
+  setSettings: (settings: Settings) => void
+  store?: UseStore
 }
 
 export const SettingsContext = React.createContext<SettingsContextType>({
   settings: {},
   setSetting: () => null,
   deleteSetting: () => null,
+  setSettings: () => null,
+  store: undefined,
 })
 
 const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
@@ -89,7 +96,9 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
   }
 
   return (
-    <SettingsContext.Provider value={{ settings, setSetting, deleteSetting }}>
+    <SettingsContext.Provider
+      value={{ settings, setSetting, deleteSetting, setSettings, store }}
+    >
       {children}
     </SettingsContext.Provider>
   )

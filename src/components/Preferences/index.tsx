@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+import BackupRestore from './BackupRestore'
 import Bookmarks from './Bookmarks'
 import Name from './Name'
 import QuickSettings from './QuickSettings'
@@ -26,6 +27,9 @@ const Preferences = ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
     <br />
     <br />
     <Bookmarks />
+    <br />
+    <br />
+    <BackupRestore />
   </Style>
 )
 
