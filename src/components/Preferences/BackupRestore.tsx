@@ -61,7 +61,11 @@ const BackupRestore = (): JSX.Element => {
       <section>
         <label>Restore</label>
         <p>Restore your preferences from a backup.</p>
-        <UploadInput label="Restore from backup" onChange={onChange} />
+        <UploadInput
+          label="Restore from backup"
+          onChange={onChange}
+          accept=".json,application/json"
+        />
         <p>
           <small>
             Note: This operation will overwrite <b>all</b> preferences so ensure
