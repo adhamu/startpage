@@ -15,7 +15,21 @@ const Style = styled.div`
   justify-content: space-between;
   margin-bottom: 0.5em;
   grid-gap: 0.5em;
-  grid-template-columns: 1fr 1fr 1fr 100px;
+  grid-template-columns: 1fr;
+
+  > button:last-of-type {
+    margin-bottom: 2em;
+  }
+
+  @media (min-width: 768px) {
+    > button:last-of-type {
+      margin-bottom: 0;
+    }
+
+    margin-bottom: 0.5em;
+    grid-gap: 0.5em;
+    grid-template-columns: 1fr 1fr 1fr 100px;
+  }
 `
 
 type Props = {

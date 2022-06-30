@@ -12,6 +12,7 @@ const ColorOptions = styled.div`
   justify-content: space-between;
   grid-gap: 0.2em;
   grid-template-columns: repeat(auto-fill, 150px);
+  margin-bottom: 1.5em;
 
   > div {
     display: flex;
@@ -75,7 +76,6 @@ const Theme = (): JSX.Element => {
             </div>
           ))}
       </ColorOptions>
-      <br />
       <ResetTheme
         className="danger"
         onClick={() => {

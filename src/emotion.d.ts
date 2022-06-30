@@ -8,6 +8,7 @@ declare module '@emotion/react' {
       border: string
       highlight: string
       inputFocus: string
+      muted: string
     }
   }
 }

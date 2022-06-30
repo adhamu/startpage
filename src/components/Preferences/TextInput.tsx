@@ -22,6 +22,8 @@ const TextInput = ({
 }: Props): JSX.Element => (
   <Style
     type="text"
+    autoComplete="off"
+    autoCorrect="off"
     defaultValue={defaultValue}
     placeholder={placeholder}
     onChange={onChange}

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SettingsContext } from '../../context/SettingsProvider'
 
 const Style = styled.button<{ isDisabled?: boolean }>`
-  width: 100px;
+  min-width: 100px;
   padding: 10px 10px;
   border: none;
   background: none;

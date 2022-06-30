@@ -11,25 +11,31 @@ const Style = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'block' : 'none')};
 `
 
+const Setting = styled.section`
+  margin-bottom: 2em;
+`
+
 const Preferences = ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
   <Style menuOpen={menuOpen}>
     <h1>Preferences</h1>
-    <Name />
-    <br />
-    <br />
-    <Theme />
-    <br />
-    <br />
-    <SearchEngine />
-    <br />
-    <br />
-    <QuickSettings />
-    <br />
-    <br />
-    <Bookmarks />
-    <br />
-    <br />
-    <BackupRestore />
+    <Setting>
+      <Name />
+    </Setting>
+    <Setting>
+      <Theme />
+    </Setting>
+    <Setting>
+      <SearchEngine />
+    </Setting>
+    <Setting>
+      <QuickSettings />
+    </Setting>
+    <Setting>
+      <Bookmarks />
+    </Setting>
+    <Setting>
+      <BackupRestore />
+    </Setting>
   </Style>
 )
 

@@ -54,6 +54,12 @@ export const globalStyles = (theme: Theme): Interpolation<Theme> => ({
     color: theme.colors.body,
     textDecoration: 'none',
   },
+  p: {
+    margin: '1em 0',
+  },
+  small: {
+    color: theme.colors.muted,
+  },
 })
 
 export const getTheme = (isDark: boolean | undefined): Theme => {
@@ -65,6 +71,7 @@ export const getTheme = (isDark: boolean | undefined): Theme => {
         border: '#1c2d41',
         highlight: '#0bd2ff',
         inputFocus: '#af6bef',
+        muted: '#999',
       },
     }
   }
@@ -76,6 +83,7 @@ export const getTheme = (isDark: boolean | undefined): Theme => {
       border: '#efefef',
       highlight: '#ff0099',
       inputFocus: '#3a3a3a',
+      muted: '#999',
     },
   }
 }

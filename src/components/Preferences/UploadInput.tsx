@@ -21,7 +21,9 @@ const UploadInput = ({
 
   return (
     <>
-      <Button onClick={selectFiles}>{label}</Button>
+      <Button onClick={selectFiles} setClick={false}>
+        {label}
+      </Button>
       <input
         type="file"
         ref={input}
