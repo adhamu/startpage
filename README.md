@@ -26,11 +26,9 @@ Hosted on [Netlify](https://netlify.com)
 - React
 - Emotion Styled Components
 
-## Search Suggestions
+## Serverless Functions
 
-These necessitate the use of server side functions and are therefore performed using [Netlify Functions](https://www.netlify.com/products/functions/).
-
-See `src/functions/searchSuggestions.ts`.
+Serverless functions are a part of this project. This means you need to deploy to an environment that supports these such as [Netlify Functions](https://www.netlify.com/products/functions/).
 
 ## Tooling
 

@@ -61,18 +61,11 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
 
   const getFavicon = async (uri: string): Promise<string | null> => {
     try {
-      const {
-        data: { icons },
-      } = await axios.get(
-        `https://favicongrabber.com/api/grab/${new URL(uri).hostname}`,
-        { headers: { 'User-Agent': 'Mozilla/5.0' } }
+      const { data } = await axios.get(
+        `/.netlify/functions/getFavicon?domain=${new URL(uri).hostname}`
       )
 
-      return (
-        icons.find((f: { sizes: string }) => f.sizes === '32x32')?.src ||
-        icons.find((f: { type: string }) => f.type === 'image/x-icon')?.src ||
-        icons[0].src
-      )
+      return data
     } catch {
       return null
     }
