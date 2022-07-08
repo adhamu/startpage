@@ -22,13 +22,13 @@ const Style = styled.div`
   }
 
   @media (min-width: 768px) {
-    > button:last-of-type {
-      margin-bottom: 0;
-    }
-
     margin-bottom: 0.5em;
     grid-gap: 0.5em;
     grid-template-columns: 1fr 1fr 1fr 100px;
+
+    > button:last-of-type {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -99,7 +99,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
       category,
     }
 
-    setSetting('bookmarks', !!b)
+    setSetting('bookmarks', b)
     setMode('remove')
   }
 
