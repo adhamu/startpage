@@ -2,9 +2,8 @@ import axios from 'axios'
 
 import type { Handler } from '@netlify/functions'
 
-import type { SearchEngine } from '../types'
-
 import { Engine, searchEngines } from '../config'
+import type { SearchEngine } from '../types'
 
 export const handler: Handler = async event => {
   let results: string[] = []

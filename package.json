@@ -25,7 +25,7 @@
     "react-input-suggestions": "^2.2.0"
   },
   "devDependencies": {
-    "@adhamu/zero": "^5.0.3",
+    "@adhamu/zero": "^5.1.0",
     "@netlify/functions": "^1.0.0",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/node": "^18.0.0",

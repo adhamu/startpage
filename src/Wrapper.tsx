@@ -5,6 +5,7 @@ import { Global, ThemeProvider } from '@emotion/react'
 import DarkModeToggle from './components/DarkModeToggle'
 import { SettingsContext } from './context/SettingsProvider'
 import { useTheme } from './hooks/useTheme'
+
 import { globalStyles } from './theme'
 
 const matchMediaFallback = (): boolean =>

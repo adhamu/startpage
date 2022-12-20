@@ -4,9 +4,9 @@ import axios from 'axios'
 
 import styled from '@emotion/styled'
 
+import { SettingsContext } from '../../context/SettingsProvider'
 import type { BookmarkLink } from '../../types'
 
-import { SettingsContext } from '../../context/SettingsProvider'
 import Button from './Button'
 import TextInput from './TextInput'
 

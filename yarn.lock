@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adhamu/zero@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@adhamu/zero/-/zero-5.0.3.tgz#19af19f617dbe64a0a514f8a5f569ac896930bf0"
-  integrity sha512-O9O2DaEOcEFTZto9Ri+h1lS91IFSKel1q7D02y8cdt0VR8tmBkPvntIHQsvutIUzZs59YVD85I2R0Z/DIVn3kg==
+"@adhamu/zero@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@adhamu/zero/-/zero-5.1.0.tgz#ccef8a5aab466f3260354139e2cc2893e33258d6"
+  integrity sha512-ClVKEG0iqLk47CIQHdLauAFqg1FwXVErFE5I1fVjEOCQ22HJTjuRcyd+J9p+bwIRgHBPffaduw7eUs4UpShpsQ==
   dependencies:
     "@emotion/eslint-plugin" "^11.10.0"
     "@typescript-eslint/eslint-plugin" "^5.47.0"
