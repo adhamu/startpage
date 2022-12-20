@@ -7,7 +7,7 @@
     "start": "netlify dev --functions=src/functions",
     "dev": "parcel serve ./src/index.html",
     "lint": "yarn lint:scripts && yarn lint:styles",
-    "lint:scripts": "eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json",
+    "lint:scripts": "eslint .",
     "lint:styles": "stylelint 'src/**/*.tsx'"
   },
   "dependencies": {
@@ -25,7 +25,7 @@
     "react-input-suggestions": "^2.2.0"
   },
   "devDependencies": {
-    "@adhamu/zero": "^4.3.1",
+    "@adhamu/zero": "^5.0.3",
     "@netlify/functions": "^1.0.0",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/node": "^18.0.0",

@@ -10,9 +10,9 @@ import Button from './Button'
 const ColorOptions = styled.div`
   display: grid;
   justify-content: space-between;
+  margin-bottom: 1.5em;
   grid-gap: 0.2em;
   grid-template-columns: repeat(auto-fill, 150px);
-  margin-bottom: 1.5em;
 
   > div {
     display: flex;

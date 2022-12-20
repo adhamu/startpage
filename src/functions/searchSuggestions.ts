@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-import type { SearchEngine } from '../types'
 import type { Handler } from '@netlify/functions'
+
+import type { SearchEngine } from '../types'
 
 import { Engine, searchEngines } from '../config'
 

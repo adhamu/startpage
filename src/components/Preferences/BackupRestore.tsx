@@ -1,7 +1,8 @@
 import * as React from 'react'
 
-import styled from '@emotion/styled'
 import { setMany, clear } from 'idb-keyval'
+
+import styled from '@emotion/styled'
 
 import type { Settings } from '../../context/SettingsProvider'
 
@@ -14,11 +15,11 @@ import UploadInput from './UploadInput'
 const Style = styled.div`
   display: grid;
   align-items: center;
+  align-items: start;
   justify-content: space-between;
   margin-bottom: 1.5em;
   grid-gap: 1.5em;
   grid-template-columns: 1fr;
-  align-items: start;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;

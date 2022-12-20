@@ -1,8 +1,9 @@
 import * as React from 'react'
 
-import styled from '@emotion/styled'
 import axios from 'axios'
 import { InputSuggestions } from 'react-input-suggestions'
+
+import styled from '@emotion/styled'
 
 import type { SearchEngine } from '../types'
 

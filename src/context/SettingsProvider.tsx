@@ -2,8 +2,9 @@ import * as React from 'react'
 
 import { keys, set, del, getMany, createStore } from 'idb-keyval'
 
-import type { BookmarkLink, BookmarkLinks } from '../types'
 import type { Theme } from '@emotion/react'
+
+import type { BookmarkLink, BookmarkLinks } from '../types'
 import type { UseStore } from 'idb-keyval'
 
 const store = createStore('startpage', 'user-preferences')

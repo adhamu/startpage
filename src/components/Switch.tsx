@@ -6,8 +6,8 @@ const Style = styled.label<{ checked: boolean }>`
   width: 2.8em;
   height: 1.25em;
   padding: 2px;
-  background: ${props => (props.checked ? '#55efc4' : props.theme.colors.body)};
   border-radius: 1em;
+  background: ${props => (props.checked ? '#55efc4' : props.theme.colors.body)};
   cursor: pointer;
   font-size: 1rem;
 
@@ -29,8 +29,8 @@ const Style = styled.label<{ checked: boolean }>`
     left: 2px;
     width: 1.1em;
     height: 1.1em;
-    background: ${props => props.theme.colors.background};
     border-radius: 1em;
+    background: ${props => props.theme.colors.background};
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
     transition: all 300ms;
