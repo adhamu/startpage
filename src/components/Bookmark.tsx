@@ -4,8 +4,9 @@ import styled from '@emotion/styled'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { SettingsContext } from '../context/SettingsProvider'
 import type { BookmarkLink } from '../types'
+
+import { SettingsContext } from '../context/SettingsProvider'
 
 const Style = styled.a`
   color: ${props => props.theme.colors.body};

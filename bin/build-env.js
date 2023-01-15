@@ -1,10 +1,8 @@
 const fs = require('fs')
 
-const ENV = './.env'
-
-if (!fs.existsSync(ENV)) {
+if (!fs.existsSync('./.env')) {
   fs.writeFileSync(
-    ENV,
+    './.env',
     `OPEN_WEATHER_API_KEY=${process.env.OPEN_WEATHER_API_KEY}\n`
   )
 }

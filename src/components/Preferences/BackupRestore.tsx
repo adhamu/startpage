@@ -5,6 +5,7 @@ import { setMany, clear } from 'idb-keyval'
 import styled from '@emotion/styled'
 
 import type { Settings } from '../../context/SettingsProvider'
+
 import { SettingsContext } from '../../context/SettingsProvider'
 import { initiateDownload } from '../../utils/downloadUtility'
 import { readJsonFile } from '../../utils/readJsonFile'

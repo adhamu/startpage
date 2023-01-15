@@ -75,7 +75,7 @@ $ yarn lint
 
 ## Weather
 
-In order to enable the weather capibility, you need to sign up for an API key at [https://openweathermap.org](https://openweathermap.org). Once you have done that, create an `.env` file in the root of the project as follows.
+In order to enable the weather capability, you need to sign up for an API key at [https://openweathermap.org](https://openweathermap.org). Once you have done that, create an `.env` file in the root of the project as follows.
 
 ```sh
 $ cp .env.example .env
