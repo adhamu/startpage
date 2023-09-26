@@ -1,7 +1,8 @@
-import type { ChangeEventHandler } from 'react'
 import { useRef } from 'react'
 
 import Button from './Button'
+
+import type { ChangeEventHandler } from 'react'
 
 interface Props {
   label?: string

@@ -2,11 +2,10 @@ import { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
-import type { BookmarkLink } from '../types'
-
+import Bookmark from './Bookmark'
 import { SettingsContext } from '../context/SettingsProvider'
 
-import Bookmark from './Bookmark'
+import type { BookmarkLink } from '../types'
 
 const Style = styled.div`
   padding: 2em 0;

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 
-import type { Theme } from '@emotion/react'
-
 import { SettingsContext } from '../context/SettingsProvider'
 import { getTheme } from '../theme'
 import { matchMediaFallback } from '../utils'
+
+import type { Theme } from '@emotion/react'
 
 export const useTheme = (): Theme => {
   const {

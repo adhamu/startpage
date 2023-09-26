@@ -1,4 +1,3 @@
-import type { FunctionComponentElement } from 'react'
 import { createElement, useContext } from 'react'
 
 import styled from '@emotion/styled'
@@ -6,6 +5,8 @@ import styled from '@emotion/styled'
 import { Engine, searchEngines } from '../../config'
 import { SettingsContext } from '../../context/SettingsProvider'
 import { DuckDuckGo, Google, Startpage } from '../../icons'
+
+import type { FunctionComponentElement } from 'react'
 
 const searchIconMap: Record<
   string,

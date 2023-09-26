@@ -1,12 +1,11 @@
-import type { ReactNode } from 'react'
-import { createContext, useState, useEffect, useMemo } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 import { keys, set, del, getMany, createStore } from 'idb-keyval'
 
-import type { Theme } from '@emotion/react'
-
 import type { BookmarkLink } from '../types'
+import type { Theme } from '@emotion/react'
 import type { UseStore } from 'idb-keyval'
+import type { ReactNode } from 'react'
 
 const store = createStore('startpage', 'user-preferences')
 
@@ -85,13 +84,10 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
     setSettings(s)
   }
 
-  const value = useMemo(
-    () => ({ settings, setSetting, deleteSetting, setSettings, store }),
-    []
-  )
-
   return (
-    <SettingsContext.Provider value={value}>
+    <SettingsContext.Provider
+      value={{ settings, setSetting, deleteSetting, setSettings, store }}
+    >
       {children}
     </SettingsContext.Provider>
   )

@@ -1,6 +1,6 @@
-import type { ChangeEvent, KeyboardEvent } from 'react'
-
 import styled from '@emotion/styled'
+
+import type { ChangeEvent, KeyboardEvent } from 'react'
 
 const Style = styled.input`
   padding: 4px 10px;

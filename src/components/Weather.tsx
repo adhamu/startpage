@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 
-import axios from 'axios'
-
 import styled from '@emotion/styled'
+import axios from 'axios'
 
 import { SettingsContext } from '../context/SettingsProvider'
 
@@ -20,10 +19,12 @@ const Weather = () => {
   const {
     settings: { weather = false },
   } = useContext(SettingsContext)
-  const [location, setLocation] = useState({
-    longitude: 0,
-    latitude: 0,
-  })
+
+  const [location, setLocation] = useState<{
+    longitude: number
+    latitude: number
+  } | null>(null)
+
   const [conditions, setConditions] = useState({
     main: null,
     description: null,

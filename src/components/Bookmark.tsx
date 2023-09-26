@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 
 import styled from '@emotion/styled'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import type { BookmarkLink } from '../types'
-
 import { SettingsContext } from '../context/SettingsProvider'
+
+import type { BookmarkLink } from '../types'
 
 const Style = styled.a`
   color: ${props => props.theme.colors.body};
@@ -35,10 +35,6 @@ const PlaceholderContainer = styled.div`
   margin-right: 0.5em;
   color: ${props => props.theme.colors.body};
   line-height: 1.6;
-
-  svg {
-    font-size: 1rem;
-  }
 `
 
 type Props = {
@@ -53,12 +49,12 @@ const Bookmark = ({ bookmark }: Props) => {
 
   return (
     <Style href={bookmark.url} key={bookmark.id}>
-      {showFavicons && bookmark?.icon && !error && (
+      {!!showFavicons && !!bookmark?.icon && !error && (
         <Icon src={bookmark?.icon} onError={() => setError(true)} />
       )}
-      {showFavicons && (!bookmark?.icon || error === true) && (
+      {!!showFavicons && (!bookmark?.icon || error === true) && (
         <PlaceholderContainer>
-          <FontAwesomeIcon icon={faLink} fixedWidth />
+          <FontAwesomeIcon icon={faUpRightFromSquare} fixedWidth size="xs" />
         </PlaceholderContainer>
       )}{' '}
       {bookmark.label}

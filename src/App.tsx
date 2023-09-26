@@ -2,6 +2,7 @@ import { Suspense, lazy, useState } from 'react'
 
 import styled from '@emotion/styled'
 
+import Wrapper from './Wrapper'
 import Bookmarks from './components/Bookmarks'
 import DateTime from './components/DateTime'
 import Greeting from './components/Greeting'
@@ -9,8 +10,6 @@ import Loading from './components/Loading'
 import Menu from './components/Menu'
 import Search from './components/Search'
 import SettingsProvider from './context/SettingsProvider'
-
-import Wrapper from './Wrapper'
 
 const Weather = lazy(() => import('./components/Weather'))
 const Preferences = lazy(() => import('./components/Preferences'))

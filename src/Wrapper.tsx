@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { useContext } from 'react'
 
 import { Global, ThemeProvider } from '@emotion/react'
@@ -6,8 +5,9 @@ import { Global, ThemeProvider } from '@emotion/react'
 import DarkModeToggle from './components/DarkModeToggle'
 import { SettingsContext } from './context/SettingsProvider'
 import { useTheme } from './hooks/useTheme'
-
 import { globalStyles } from './theme'
+
+import type { ReactNode } from 'react'
 
 const matchMediaFallback = (): boolean =>
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches

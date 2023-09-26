@@ -12,30 +12,30 @@
     "type": "yarn tsc --noEmit"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^1.2.2",
-    "date-fns": "^2.17.0",
-    "dotenv": "^16.0.1",
-    "idb-keyval": "^6.2.0",
+    "axios": "^1.5.0",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "idb-keyval": "^6.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-input-suggestions": "^2.3.4"
   },
   "devDependencies": {
-    "@adhamu/zero": "^5.1.9",
-    "@netlify/functions": "^1.4.0",
+    "@adhamu/zero": "^6.1.0",
+    "@netlify/functions": "^2.0.2",
     "@stylelint/postcss-css-in-js": "^0.38.0",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.10",
-    "netlify-cli": "^12.7.2",
-    "parcel": "^2.6.2",
+    "@types/node": "^20.7.0",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "netlify-cli": "^16.4.2",
+    "parcel": "^2.9.3",
     "postcss-syntax": "^0.36.2",
     "process": "^0.11.10",
-    "typescript": "^4.7.4"
+    "typescript": "^5.2.2"
   }
 }

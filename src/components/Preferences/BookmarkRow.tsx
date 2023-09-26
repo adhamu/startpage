@@ -1,15 +1,13 @@
 import { useEffect, type KeyboardEvent, useState, useContext } from 'react'
 
-import axios from 'axios'
-
 import styled from '@emotion/styled'
-
-import type { BookmarkLink } from '../../types'
-
-import { SettingsContext } from '../../context/SettingsProvider'
+import axios from 'axios'
 
 import Button from './Button'
 import TextInput from './TextInput'
+import { SettingsContext } from '../../context/SettingsProvider'
+
+import type { BookmarkLink } from '../../types'
 
 const Style = styled.div`
   display: grid;

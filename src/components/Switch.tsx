@@ -1,6 +1,6 @@
-import type { ChangeEvent, ReactNode } from 'react'
-
 import styled from '@emotion/styled'
+
+import type { ChangeEvent, ReactNode } from 'react'
 
 const Style = styled.label<{ checked: boolean }>`
   position: relative;

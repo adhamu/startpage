@@ -1,8 +1,7 @@
 import { useContext } from 'react'
 
-import { SettingsContext } from '../../context/SettingsProvider'
-
 import TextInput from './TextInput'
+import { SettingsContext } from '../../context/SettingsProvider'
 
 const Name = () => {
   const {

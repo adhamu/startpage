@@ -1,18 +1,16 @@
-import type { ChangeEvent } from 'react'
 import { useContext } from 'react'
 
+import styled from '@emotion/styled'
 import { setMany, clear } from 'idb-keyval'
 
-import styled from '@emotion/styled'
-
-import type { Settings } from '../../context/SettingsProvider'
-
+import Button from './Button'
+import UploadInput from './UploadInput'
 import { SettingsContext } from '../../context/SettingsProvider'
 import { initiateDownload } from '../../utils/downloadUtility'
 import { readJsonFile } from '../../utils/readJsonFile'
 
-import Button from './Button'
-import UploadInput from './UploadInput'
+import type { Settings } from '../../context/SettingsProvider'
+import type { ChangeEvent } from 'react'
 
 const Style = styled.div`
   display: grid;

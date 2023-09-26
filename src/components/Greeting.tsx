@@ -18,7 +18,7 @@ const Greeting = () => {
   return (
     <Style>
       Good {timeOfDay()}
-      {name && `, ${name}`}
+      {!!name && `, ${name}`}
     </Style>
   )
 }

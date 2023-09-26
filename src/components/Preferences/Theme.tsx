@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 
-import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import Button from './Button'
 import { SettingsContext } from '../../context/SettingsProvider'
 import { useTheme } from '../../hooks/useTheme'
 import { matchMediaFallback } from '../../utils'
 
-import Button from './Button'
+import type { Theme } from '@emotion/react'
 
 const ColorOptions = styled.div`
   display: grid;
@@ -59,7 +59,7 @@ const Themer = () => {
     <>
       <label>Theme</label>
       <ColorOptions>
-        {theme &&
+        {!!theme &&
           Object.keys(theme.colors).map(option => (
             <div key={option}>
               <ColorInput

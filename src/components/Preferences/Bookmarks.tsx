@@ -1,10 +1,9 @@
 import { useContext } from 'react'
 
-import type { BookmarkLink } from '../../types'
-
+import BookmarkRow from './BookmarkRow'
 import { SettingsContext } from '../../context/SettingsProvider'
 
-import BookmarkRow from './BookmarkRow'
+import type { BookmarkLink } from '../../types'
 
 const Bookmarks = () => {
   const {

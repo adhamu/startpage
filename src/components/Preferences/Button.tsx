@@ -1,4 +1,3 @@
-import type { MouseEvent } from 'react'
 import { useContext, useEffect, useState } from 'react'
 
 import styled from '@emotion/styled'
@@ -6,6 +5,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { SettingsContext } from '../../context/SettingsProvider'
+
+import type { MouseEvent } from 'react'
 
 const Style = styled.button<{ isDisabled?: boolean }>`
   min-width: 100px;

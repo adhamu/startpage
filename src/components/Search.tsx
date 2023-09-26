@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
 
+import styled from '@emotion/styled'
 import axios from 'axios'
 import { InputSuggestions } from 'react-input-suggestions'
 
-import styled from '@emotion/styled'
-
-import type { SearchEngine } from '../types'
-
 import { Engine, searchEngines } from '../config'
 import { SettingsContext } from '../context/SettingsProvider'
+
+import type { SearchEngine } from '../types'
 
 const StyledInputSuggestions = styled(InputSuggestions)`
   ul {
