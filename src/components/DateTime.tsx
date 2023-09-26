@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 import { format } from 'date-fns'
 
@@ -16,10 +16,10 @@ const Style = styled.div`
   font-weight: 600;
 `
 
-const DateTime = (): JSX.Element => {
-  const [time, setTime] = React.useState(new Date())
+const DateTime = () => {
+  const [time, setTime] = useState(new Date())
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setTime(new Date())
     }, 1000)

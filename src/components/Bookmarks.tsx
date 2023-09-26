@@ -1,8 +1,8 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
-import type { BookmarkLink, BookmarkLinks } from '../types'
+import type { BookmarkLink } from '../types'
 
 import { SettingsContext } from '../context/SettingsProvider'
 
@@ -36,7 +36,7 @@ const Links = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 `
 
-const getUniqueCategories = (bookmarks: BookmarkLinks) => [
+const getUniqueCategories = (bookmarks: BookmarkLink[]) => [
   ...new Set(
     bookmarks
       ?.map(bookmark => bookmark.category)
@@ -45,17 +45,17 @@ const getUniqueCategories = (bookmarks: BookmarkLinks) => [
   ),
 ]
 
-const mapItems = (bookmarks: BookmarkLinks) =>
+const mapItems = (bookmarks: BookmarkLink[]) =>
   bookmarks
     ?.sort((a: BookmarkLink, b: BookmarkLink) => a.label.localeCompare(b.label))
     .map((bookmark: BookmarkLink) => (
       <Bookmark key={bookmark.url} bookmark={bookmark} />
     ))
 
-const Bookmarks = (): JSX.Element | null => {
+const Bookmarks = () => {
   const {
     settings: { bookmarks },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   if (!bookmarks) {
     return null

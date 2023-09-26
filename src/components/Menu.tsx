@@ -25,7 +25,7 @@ const Menu = ({
 }: {
   menuOpen: boolean
   onClick: () => void
-}): JSX.Element => (
+}) => (
   <Style menuOpen={menuOpen} onClick={onClick}>
     <FontAwesomeIcon icon={faBars} size="2x" />
   </Style>

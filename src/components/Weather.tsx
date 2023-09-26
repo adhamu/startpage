@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import axios from 'axios'
 
@@ -16,15 +16,15 @@ const Temp = styled.span`
   color: ${props => props.theme.colors.highlight};
 `
 
-const Weather = (): JSX.Element | null => {
+const Weather = () => {
   const {
     settings: { weather = false },
-  } = React.useContext(SettingsContext)
-  const [location, setLocation] = React.useState({
+  } = useContext(SettingsContext)
+  const [location, setLocation] = useState({
     longitude: 0,
     latitude: 0,
   })
-  const [conditions, setConditions] = React.useState({
+  const [conditions, setConditions] = useState({
     main: null,
     description: null,
     temperature: 0,
@@ -32,7 +32,7 @@ const Weather = (): JSX.Element | null => {
     icon: '',
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (weather) {
       navigator.geolocation.getCurrentPosition(r => {
         setLocation({
@@ -43,7 +43,7 @@ const Weather = (): JSX.Element | null => {
     }
   }, [weather])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (location !== null) {
       ;(async () => {
         const { data } = await axios.get(

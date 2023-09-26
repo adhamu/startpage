@@ -1,4 +1,5 @@
-import * as React from 'react'
+import type { MouseEvent } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import styled from '@emotion/styled'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
@@ -47,7 +48,7 @@ const Style = styled.button<{ isDisabled?: boolean }>`
 `
 
 type Props = {
-  onClick?: (e: React.MouseEvent) => void
+  onClick?: (e: MouseEvent) => void
   disabled?: boolean
   className?: 'warning' | 'danger' | 'success'
   children: string
@@ -60,11 +61,11 @@ const Button = ({
   className,
   children,
   setClick = true,
-}: Props): JSX.Element => {
-  const [clicked, setClicked] = React.useState(false)
-  const { settings } = React.useContext(SettingsContext)
+}: Props) => {
+  const [clicked, setClicked] = useState(false)
+  const { settings } = useContext(SettingsContext)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setClicked(false)
   }, [settings])
 

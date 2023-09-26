@@ -1,4 +1,5 @@
-import * as React from 'react'
+import type { ReactNode } from 'react'
+import { useContext } from 'react'
 
 import { Global, ThemeProvider } from '@emotion/react'
 
@@ -11,11 +12,11 @@ import { globalStyles } from './theme'
 const matchMediaFallback = (): boolean =>
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
-const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
+const Wrapper = ({ children }: { children: ReactNode }) => {
   const {
     settings: { prefersDarkMode = matchMediaFallback() },
     setSetting,
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   const theme = useTheme()
 

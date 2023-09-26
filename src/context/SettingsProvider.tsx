@@ -1,10 +1,11 @@
-import * as React from 'react'
+import type { ReactNode } from 'react'
+import { createContext, useState, useEffect, useMemo } from 'react'
 
 import { keys, set, del, getMany, createStore } from 'idb-keyval'
 
 import type { Theme } from '@emotion/react'
 
-import type { BookmarkLink, BookmarkLinks } from '../types'
+import type { BookmarkLink } from '../types'
 import type { UseStore } from 'idb-keyval'
 
 const store = createStore('startpage', 'user-preferences')
@@ -20,14 +21,14 @@ const getSettings = async () => {
 }
 
 export interface SettingsProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export interface Settings {
   name?: string
   searchEngine?: string
   weather?: boolean
-  bookmarks?: BookmarkLinks
+  bookmarks?: BookmarkLink[]
   themeLight?: Theme
   themeDark?: Theme
   prefersDarkMode?: boolean
@@ -45,7 +46,7 @@ interface SettingsContextType {
   store?: UseStore
 }
 
-export const SettingsContext = React.createContext<SettingsContextType>({
+export const SettingsContext = createContext<SettingsContextType>({
   settings: {},
   setSetting: () => null,
   deleteSetting: () => null,
@@ -53,10 +54,10 @@ export const SettingsContext = React.createContext<SettingsContextType>({
   store: undefined,
 })
 
-const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
-  const [settings, setSettings] = React.useState({})
+const SettingsProvider = ({ children }: SettingsProviderProps) => {
+  const [settings, setSettings] = useState({})
 
-  React.useEffect(() => {
+  useEffect(() => {
     ;(async () => {
       const s = await getSettings()
       setSettings(s)
@@ -84,7 +85,10 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
     setSettings(s)
   }
 
-  const value = { settings, setSetting, deleteSetting, setSettings, store }
+  const value = useMemo(
+    () => ({ settings, setSetting, deleteSetting, setSettings, store }),
+    []
+  )
 
   return (
     <SettingsContext.Provider value={value}>

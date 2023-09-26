@@ -1,11 +1,11 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import { SettingsContext } from '../context/SettingsProvider'
 
-const DuckDuckGo = (): JSX.Element => {
+const DuckDuckGo = () => {
   const {
     settings: { prefersDarkMode },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <svg

@@ -15,7 +15,7 @@ const Setting = styled.section`
   margin-bottom: 2em;
 `
 
-const Preferences = ({ menuOpen }: { menuOpen: boolean }): JSX.Element => (
+const Preferences = ({ menuOpen }: { menuOpen: boolean }) => (
   <Style menuOpen={menuOpen}>
     <h1>Preferences</h1>
     <Setting>

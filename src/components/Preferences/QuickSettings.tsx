@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
@@ -10,11 +10,11 @@ const Style = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 `
 
-const QuickSettings = (): JSX.Element => {
+const QuickSettings = () => {
   const {
     settings: { weather = false, showFavicons = true },
     setSetting,
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <Style>

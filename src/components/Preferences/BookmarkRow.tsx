@@ -1,10 +1,10 @@
-import * as React from 'react'
+import { useEffect, type KeyboardEvent, useState, useContext } from 'react'
 
 import axios from 'axios'
 
 import styled from '@emotion/styled'
 
-import type { BookmarkLink, BookmarkLinks } from '../../types'
+import type { BookmarkLink } from '../../types'
 
 import { SettingsContext } from '../../context/SettingsProvider'
 
@@ -38,16 +38,16 @@ type Props = {
   bookmark?: BookmarkLink
 }
 
-const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
-  const [label, setLabel] = React.useState(bookmark?.label ?? '')
-  const [url, setUrl] = React.useState(bookmark?.url ?? '')
-  const [category, setCategory] = React.useState(bookmark?.category ?? '')
-  const [mode, setMode] = React.useState('remove')
+const BookmarkRow = ({ bookmark }: Props) => {
+  const [label, setLabel] = useState(bookmark?.label ?? '')
+  const [url, setUrl] = useState(bookmark?.url ?? '')
+  const [category, setCategory] = useState(bookmark?.category ?? '')
+  const [mode, setMode] = useState('remove')
 
   const {
     settings: { bookmarks },
     setSetting,
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   const isExists = () => !!bookmarks?.find((f: BookmarkLink) => f.url === url)
 
@@ -79,7 +79,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
       const newBookmark = { id: Date.now(), label, url, icon, category }
 
       if (bookmarks !== undefined) {
-        setSetting<BookmarkLinks>('bookmarks', [...bookmarks, newBookmark])
+        setSetting<BookmarkLink[]>('bookmarks', [...bookmarks, newBookmark])
       } else {
         setSetting('bookmarks', [newBookmark])
       }
@@ -113,7 +113,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
     setMode('remove')
   }
 
-  const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       switch (mode) {
         case 'update':
@@ -129,7 +129,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const determineMode = () => {
       if (!bookmark) {
         setMode('add')

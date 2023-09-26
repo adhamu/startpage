@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import styled from '@emotion/styled'
 
@@ -10,10 +10,10 @@ const Style = styled.h1`
   line-height: 1em;
 `
 
-const Greeting = (): JSX.Element => {
+const Greeting = () => {
   const {
     settings: { name },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <Style>

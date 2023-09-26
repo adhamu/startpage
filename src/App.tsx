@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { Suspense, lazy, useState } from 'react'
 
 import styled from '@emotion/styled'
 
@@ -12,8 +12,8 @@ import SettingsProvider from './context/SettingsProvider'
 
 import Wrapper from './Wrapper'
 
-const Weather = React.lazy(() => import('./components/Weather'))
-const Preferences = React.lazy(() => import('./components/Preferences'))
+const Weather = lazy(() => import('./components/Weather'))
+const Preferences = lazy(() => import('./components/Preferences'))
 
 const Layout = styled.div`
   position: relative;
@@ -26,8 +26,8 @@ const Main = styled.div<{ menuOpen: boolean }>`
   display: ${props => (props.menuOpen ? 'none' : 'block')};
 `
 
-const App = (): JSX.Element => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <SettingsProvider>
@@ -36,16 +36,16 @@ const App = (): JSX.Element => {
         <Layout>
           <DateTime />
           <Main menuOpen={menuOpen}>
-            <React.Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading />}>
               <Weather />
-            </React.Suspense>
+            </Suspense>
             <Greeting />
             <Search />
             <Bookmarks />
           </Main>
-          <React.Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />}>
             <Preferences menuOpen={menuOpen} />
-          </React.Suspense>
+          </Suspense>
         </Layout>
       </Wrapper>
     </SettingsProvider>

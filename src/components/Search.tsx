@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import axios from 'axios'
 import { InputSuggestions } from 'react-input-suggestions'
@@ -60,17 +60,17 @@ const fetchSuggestions = async (
   return []
 }
 
-const Search = (): JSX.Element => {
+const Search = () => {
   const {
     settings: { searchEngine = Engine.GOOGLE },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
-  const [searchParam, setSearchParam] = React.useState('')
-  const [suggestions, setSuggestions] = React.useState<string[]>([])
+  const [searchParam, setSearchParam] = useState('')
+  const [suggestions, setSuggestions] = useState<string[]>([])
 
   const engine = searchEngines.find(f => f.label === searchEngine)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (searchParam) {
       ;(async () => {
         const results = await fetchSuggestions(searchParam, engine)

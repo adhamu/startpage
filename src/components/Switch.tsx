@@ -1,3 +1,5 @@
+import type { ChangeEvent, ReactNode } from 'react'
+
 import styled from '@emotion/styled'
 
 const Style = styled.label<{ checked: boolean }>`
@@ -39,17 +41,12 @@ const Style = styled.label<{ checked: boolean }>`
 
 type Props = {
   checked?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   className?: string
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
-const Switch = ({
-  checked,
-  onChange,
-  className,
-  children,
-}: Props): JSX.Element => (
+const Switch = ({ checked, onChange, className, children }: Props) => (
   <Style className={className} checked={!!checked}>
     {children}
     <input type="checkbox" checked={checked} onChange={onChange} />

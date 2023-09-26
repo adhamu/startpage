@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import type { BookmarkLink } from '../../types'
 
@@ -6,10 +6,10 @@ import { SettingsContext } from '../../context/SettingsProvider'
 
 import BookmarkRow from './BookmarkRow'
 
-const Bookmarks = (): JSX.Element => {
+const Bookmarks = () => {
   const {
     settings: { bookmarks },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <>

@@ -1,3 +1,5 @@
+import type { ChangeEvent, KeyboardEvent } from 'react'
+
 import styled from '@emotion/styled'
 
 const Style = styled.input`
@@ -8,9 +10,9 @@ const Style = styled.input`
 type Props = {
   defaultValue?: string
   placeholder?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   value?: string
-  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void
 }
 
 const TextInput = ({
@@ -19,7 +21,7 @@ const TextInput = ({
   onChange,
   value,
   onKeyDown,
-}: Props): JSX.Element => (
+}: Props) => (
   <Style
     type="text"
     autoComplete="off"

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext, useState } from 'react'
 
 import styled from '@emotion/styled'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
@@ -45,11 +45,11 @@ type Props = {
   bookmark: BookmarkLink
 }
 
-const Bookmark = ({ bookmark }: Props): JSX.Element => {
-  const [error, setError] = React.useState(false)
+const Bookmark = ({ bookmark }: Props) => {
+  const [error, setError] = useState(false)
   const {
     settings: { showFavicons = true },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <Style href={bookmark.url} key={bookmark.id}>

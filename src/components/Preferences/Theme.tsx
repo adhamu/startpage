@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useContext } from 'react'
 
 import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -46,12 +46,12 @@ type AvailableOption =
   | 'highlight'
   | 'inputFocus'
 
-const Themer = (): JSX.Element => {
+const Themer = () => {
   const {
     settings: { prefersDarkMode = matchMediaFallback() },
     setSetting,
     deleteSetting,
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   const theme = useTheme()
 

@@ -1,4 +1,5 @@
-import * as React from 'react'
+import type { ChangeEvent } from 'react'
+import { useContext } from 'react'
 
 import { setMany, clear } from 'idb-keyval'
 
@@ -27,10 +28,10 @@ const Style = styled.div`
   }
 `
 
-const BackupRestore = (): JSX.Element => {
-  const { settings, setSettings, store } = React.useContext(SettingsContext)
+const BackupRestore = () => {
+  const { settings, setSettings, store } = useContext(SettingsContext)
 
-  const onChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const newSettings = (await readJsonFile(
         event.target.files[0]

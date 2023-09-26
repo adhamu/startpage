@@ -1,4 +1,5 @@
-import * as React from 'react'
+import type { FunctionComponentElement } from 'react'
+import { createElement, useContext } from 'react'
 
 import styled from '@emotion/styled'
 
@@ -8,11 +9,11 @@ import { DuckDuckGo, Google, Startpage } from '../../icons'
 
 const searchIconMap: Record<
   string,
-  React.FunctionComponentElement<Record<string, never>>
+  FunctionComponentElement<Record<string, never>>
 > = {
-  [Engine.GOOGLE]: React.createElement(Google),
-  [Engine.DUCKDUCKGO]: React.createElement(DuckDuckGo),
-  [Engine.STARTPAGE]: React.createElement(Startpage),
+  [Engine.GOOGLE]: createElement(Google),
+  [Engine.DUCKDUCKGO]: createElement(DuckDuckGo),
+  [Engine.STARTPAGE]: createElement(Startpage),
 }
 
 const Product = styled.button<{ isActive: boolean }>`
@@ -34,11 +35,11 @@ const Product = styled.button<{ isActive: boolean }>`
   }
 `
 
-const SearchEngine = (): JSX.Element => {
+const SearchEngine = () => {
   const {
     setSetting,
     settings: { searchEngine = 'Google' },
-  } = React.useContext(SettingsContext)
+  } = useContext(SettingsContext)
 
   return (
     <>

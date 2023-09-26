@@ -35,7 +35,7 @@ type Props = {
   toggleDarkMode: () => void
 }
 
-const DarkModeToggle = ({ isDarkMode, toggleDarkMode }: Props): JSX.Element => (
+const DarkModeToggle = ({ isDarkMode, toggleDarkMode }: Props) => (
   <Style>
     <ToggleArea checked={!!isDarkMode} onChange={toggleDarkMode}>
       <FontAwesomeIcon className="dark" icon={faMoon} fixedWidth />

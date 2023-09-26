@@ -13,7 +13,7 @@ const Style = styled.h1`
   }
 `
 
-const Loading = (): JSX.Element => (
+const Loading = () => (
   <Style>
     <FontAwesomeIcon icon={faSpinner} spin fixedWidth />
   </Style>
