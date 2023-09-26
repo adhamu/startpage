@@ -31,7 +31,7 @@ const ToggleArea = styled(Switch)`
 `
 
 type Props = {
-  isDarkMode: boolean
+  isDarkMode?: boolean
   toggleDarkMode: () => void
 }
 

@@ -1,30 +1,37 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 
 import { SettingsContext } from '../context/SettingsProvider'
 import { getTheme } from '../theme'
-import { matchMediaFallback } from '../utils'
 
 import type { Theme } from '@emotion/react'
 
-export const useTheme = (): Theme => {
+export const useTheme = () => {
   const {
-    settings: { themeLight, themeDark, prefersDarkMode = matchMediaFallback() },
+    settings: { themeLight, themeDark, prefersDarkMode },
   } = useContext(SettingsContext)
-  const [theme, setTheme] = useState(getTheme(prefersDarkMode))
 
-  useEffect(() => {
-    const refreshTheme = () => {
-      if (prefersDarkMode) {
-        return themeDark !== undefined
-          ? setTheme(themeDark)
-          : setTheme(getTheme(true))
-      }
+  const [theme, setTheme] = useState<Theme>()
 
-      return themeLight !== undefined
-        ? setTheme(themeLight)
-        : setTheme(getTheme(false))
+  useMemo(() => {
+    let themeToSet
+
+    if (
+      prefersDarkMode ||
+      window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    ) {
+      themeToSet = themeDark ?? getTheme(true)
     }
-    refreshTheme()
+
+    if (
+      !prefersDarkMode ||
+      !window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
+    ) {
+      themeToSet = themeLight ?? getTheme(false)
+    }
+
+    if (JSON.stringify(themeToSet) !== JSON.stringify(theme)) {
+      setTheme(themeToSet)
+    }
   }, [prefersDarkMode, themeLight, themeDark])
 
   return theme

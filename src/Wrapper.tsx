@@ -9,16 +9,17 @@ import { globalStyles } from './theme'
 
 import type { ReactNode } from 'react'
 
-const matchMediaFallback = (): boolean =>
-  window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
-
 const Wrapper = ({ children }: { children: ReactNode }) => {
   const {
-    settings: { prefersDarkMode = matchMediaFallback() },
+    settings: { prefersDarkMode },
     setSetting,
   } = useContext(SettingsContext)
 
   const theme = useTheme()
+
+  if (!theme) {
+    return null
+  }
 
   return (
     <ThemeProvider theme={theme}>

@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import Button from './Button'
 import { SettingsContext } from '../../context/SettingsProvider'
 import { useTheme } from '../../hooks/useTheme'
-import { matchMediaFallback } from '../../utils'
 
 import type { Theme } from '@emotion/react'
 
@@ -48,7 +47,7 @@ type AvailableOption =
 
 const Themer = () => {
   const {
-    settings: { prefersDarkMode = matchMediaFallback() },
+    settings: { prefersDarkMode },
     setSetting,
     deleteSetting,
   } = useContext(SettingsContext)

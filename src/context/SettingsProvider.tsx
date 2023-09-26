@@ -63,13 +63,13 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
     })()
   }, [])
 
-  const setSetting = <
+  const setSetting = async <
     T extends string | boolean | BookmarkLink[] | undefined | Theme,
   >(
     setting: string,
     value: T
   ) => {
-    set(setting, value, store).then(() => {
+    await set(setting, value, store).then(() => {
       setSettings(prevState => ({
         ...prevState,
         [setting]: value,
