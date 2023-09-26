@@ -36,14 +36,7 @@ export interface Settings {
 
 interface SettingsContextType {
   settings: Settings
-  setSetting: <
-    T extends
-      | string
-      | boolean
-      | BookmarkLink[]
-      | undefined
-      | Record<string, any>
-  >(
+  setSetting: <T extends string | boolean | BookmarkLink[] | Theme | undefined>(
     setting: string,
     value: T
   ) => void
@@ -71,12 +64,7 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
   }, [])
 
   const setSetting = <
-    T extends
-      | string
-      | boolean
-      | BookmarkLink[]
-      | undefined
-      | Record<string, unknown>
+    T extends string | boolean | BookmarkLink[] | undefined | Theme,
   >(
     setting: string,
     value: T
@@ -96,10 +84,10 @@ const SettingsProvider = ({ children }: SettingsProviderProps): JSX.Element => {
     setSettings(s)
   }
 
+  const value = { settings, setSetting, deleteSetting, setSettings, store }
+
   return (
-    <SettingsContext.Provider
-      value={{ settings, setSetting, deleteSetting, setSettings, store }}
-    >
+    <SettingsContext.Provider value={value}>
       {children}
     </SettingsContext.Provider>
   )

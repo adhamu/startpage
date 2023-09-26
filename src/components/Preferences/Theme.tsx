@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { SettingsContext } from '../../context/SettingsProvider'
@@ -45,7 +46,7 @@ type AvailableOption =
   | 'highlight'
   | 'inputFocus'
 
-const Theme = (): JSX.Element => {
+const Themer = (): JSX.Element => {
   const {
     settings: { prefersDarkMode = matchMediaFallback() },
     setSetting,
@@ -59,18 +60,21 @@ const Theme = (): JSX.Element => {
       <label>Theme</label>
       <ColorOptions>
         {theme &&
-          Object.keys(theme.colors).map((option: string) => (
+          Object.keys(theme.colors).map(option => (
             <div key={option}>
               <ColorInput
                 type="color"
                 value={theme.colors[option as AvailableOption]}
                 onChange={e => {
-                  setSetting(prefersDarkMode ? 'themeDark' : 'themeLight', {
-                    colors: {
-                      ...theme.colors,
-                      [option]: e.target.value,
-                    },
-                  })
+                  setSetting<Theme>(
+                    prefersDarkMode ? 'themeDark' : 'themeLight',
+                    {
+                      colors: {
+                        ...theme.colors,
+                        [option]: e.target.value,
+                      },
+                    }
+                  )
                 }}
               />
               <label>{option}</label>
@@ -89,4 +93,4 @@ const Theme = (): JSX.Element => {
   )
 }
 
-export default Theme
+export default Themer

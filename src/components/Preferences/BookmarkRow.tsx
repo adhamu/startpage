@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import styled from '@emotion/styled'
 
-import type { BookmarkLink } from '../../types'
+import type { BookmarkLink, BookmarkLinks } from '../../types'
 
 import { SettingsContext } from '../../context/SettingsProvider'
 
@@ -79,7 +79,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
       const newBookmark = { id: Date.now(), label, url, icon, category }
 
       if (bookmarks !== undefined) {
-        setSetting('bookmarks', [...bookmarks, newBookmark])
+        setSetting<BookmarkLinks>('bookmarks', [...bookmarks, newBookmark])
       } else {
         setSetting('bookmarks', [newBookmark])
       }
@@ -93,7 +93,7 @@ const BookmarkRow = ({ bookmark }: Props): JSX.Element => {
   const updateBookmark = () => {
     const b = bookmarks || []
     const i =
-      bookmarks?.findIndex((c: BookmarkLink) => c.id === bookmark?.id) || 0
+      bookmarks?.findIndex((c: BookmarkLink) => c.id === bookmark?.id) ?? 0
     b[i as number] = {
       ...b[i as number],
       label,

@@ -8,7 +8,8 @@
     "dev": "parcel serve ./src/index.html",
     "lint": "yarn lint:scripts && yarn lint:styles",
     "lint:scripts": "eslint .",
-    "lint:styles": "stylelint 'src/**/*.tsx'"
+    "lint:styles": "stylelint 'src/**/*.tsx'",
+    "type": "yarn tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
