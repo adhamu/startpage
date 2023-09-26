@@ -10,7 +10,7 @@ import { globalStyles } from './theme'
 import type { ReactNode } from 'react'
 
 const matchMediaFallback = (): boolean =>
-  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  window.matchMedia?.('(prefers-color-scheme: dark)')?.matches
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
   const {
