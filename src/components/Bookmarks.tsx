@@ -15,7 +15,7 @@ const Categories = styled.div`
   display: grid;
   padding: 1em 0;
 
-  @media (min-width: 767px) {
+  @media (width >= 767px) {
     grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
   }
 `

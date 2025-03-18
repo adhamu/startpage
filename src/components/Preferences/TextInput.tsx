@@ -7,7 +7,7 @@ const Style = styled.input`
   font-size: 0.875rem;
 `
 
-type Props = {
+interface Props {
   defaultValue?: string
   placeholder?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void

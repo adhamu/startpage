@@ -37,7 +37,7 @@ const PlaceholderContainer = styled.div`
   line-height: 1.6;
 `
 
-type Props = {
+interface Props {
   bookmark: BookmarkLink
 }
 

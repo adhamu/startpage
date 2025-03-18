@@ -13,17 +13,6 @@ const Style = styled.label<{ checked: boolean }>`
   cursor: pointer;
   font-size: 1rem;
 
-  input {
-    position: absolute;
-    opacity: 0;
-
-    &:checked + div {
-      -webkit-transform: translate3d(1.45em, 0, 0);
-      -moz-transform: translate3d(1.45em, 0, 0);
-      transform: translate3d(1.45em, 0, 0);
-    }
-  }
-
   div {
     position: relative;
     z-index: 1;
@@ -33,13 +22,20 @@ const Style = styled.label<{ checked: boolean }>`
     height: 1.1em;
     border-radius: 1em;
     background: ${props => props.theme.colors.background};
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
     transition: all 300ms;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+
+    &:checked + div {
+      transform: translate3d(1.45em, 0, 0);
+    }
   }
 `
 
-type Props = {
+interface Props {
   checked?: boolean
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   className?: string

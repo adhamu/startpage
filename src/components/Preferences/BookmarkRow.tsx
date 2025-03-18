@@ -21,7 +21,7 @@ const Style = styled.div`
     margin-bottom: 2em;
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     margin-bottom: 0.5em;
     grid-gap: 0.5em;
     grid-template-columns: 1fr 1fr 1fr 100px;
@@ -32,7 +32,7 @@ const Style = styled.div`
   }
 `
 
-type Props = {
+interface Props {
   bookmark?: BookmarkLink
 }
 

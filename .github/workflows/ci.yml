@@ -6,20 +6,39 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Environment Variables
+        run: |
+          echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+        id: env_vars
+
+      - name: Install Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
-        env:
-          GITHUB_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn
+        run: yarn --frozen-lockfile
+
       - name: Security Audit
         run: yarn audit || true
+
       - name: Outdated Packages
         run: yarn outdated || true
+
       - name: TypeScript / JavaScript Standards
-        run: node_modules/.bin/eslint 'src/**/*.ts*' --ignore-path=.eslintignore --config=.eslintrc.json
-        env:
-          CI: true
+        run: yarn lint:scripts
+
+      - name: SCSS/CSS Standards
+        run: yarn lint:styles
+
+      - name: Type
+        run: yarn type

@@ -21,7 +21,7 @@ const Style = styled.div`
   grid-gap: 1.5em;
   grid-template-columns: 1fr;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     grid-template-columns: 1fr 1fr;
   }
 `

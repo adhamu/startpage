@@ -30,7 +30,7 @@ const ToggleArea = styled(Switch)`
   background: ${props => props.theme.colors.highlight};
 `
 
-type Props = {
+interface Props {
   isDarkMode?: boolean
   toggleDarkMode: () => void
 }

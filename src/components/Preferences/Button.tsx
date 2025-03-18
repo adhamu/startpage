@@ -10,7 +10,7 @@ import type { MouseEvent } from 'react'
 
 const Style = styled.button<{ isDisabled?: boolean }>`
   min-width: 100px;
-  padding: 10px 10px;
+  padding: 10px;
   border: none;
   background: none;
   background: ${props => props.theme.colors.highlight};
@@ -48,7 +48,7 @@ const Style = styled.button<{ isDisabled?: boolean }>`
   }
 `
 
-type Props = {
+interface Props {
   onClick?: (e: MouseEvent) => void
   disabled?: boolean
   className?: 'warning' | 'danger' | 'success'
