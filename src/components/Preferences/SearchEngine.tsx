@@ -19,15 +19,14 @@ const searchIconMap: Record<
 
 const Product = styled.button<{ isActive: boolean }>`
   padding: 20px 30px 16px;
-  border: 0;
-  border: 2px solid ${props => props.theme.colors.border};
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${props =>
+    props.isActive ? props.theme.colors.highlight : props.theme.colors.border};
   margin-right: 1em;
   margin-bottom: 1em;
   background: 0;
   cursor: pointer;
-
-  ${props =>
-    props.isActive ? `border-color: ${props.theme.colors.highlight}` : ''}
 
   svg {
     width: auto;

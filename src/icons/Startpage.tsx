@@ -9,8 +9,6 @@ const Startpage = () => {
 
   return (
     <svg
-      height="490"
-      width="2500"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="-0.08000000000000007 1.2399999999999998 318.08 60.459999999999994"
     >
